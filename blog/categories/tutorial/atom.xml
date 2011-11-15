@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tutorial | Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/blog/categories/tutorial/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2011-11-09T13:34:56-05:00</updated>
+  <updated>2011-11-15T15:58:01-05:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Hosted Weinre]]></title>
+    <link href="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/"/>
+    <updated>2011-11-14T22:40:00-05:00</updated>
+    <id>http://mulberry.toura.com/blog/2011/11/14/hosted-weinre</id>
+    <content type="html"><![CDATA[<p>At Toura, we perform the vast majority of our day-to-day development in our
+desktop WebKit browsers - Chrome and Safari. Although the desktop browsers
+are a very close approximation to the mobile browsers, there's no substitute
+for actually performing final QA and fit &amp; finish checks on the mobile
+browsers themselves followed by a final sanity check with a compiled application.</p>
+
+<p>What happens, though, if you find a display bug on device browser that you
+don't see on the desktop? What about a JavaScript error in the WebView? How would
+you go about debugging that? Enter: <a href="http://phonegap.github.com/weinre/">Weinre</a>.</p>
+
+<p>Weinre, written by <a href="https://github.com/pmuellr/weinre">Patrick Mueller</a>, provides
+a client/server environment to present you with a familiar "web inspector"-like
+experience on apps running on mobile device browsers and webviews.</p>
+
+<p>Installing and configuring Weinre is simple enough and you can accomplish this
+by following the instructions at the Weinre website. OR, instead of going through
+all of that and keeping Weinre running (it requires a local process) and poking
+holes in your firewall, you can use our free hosted Weinre service!</p>
+
+<p>To use the hosted Weinre service:</p>
+
+<ol>
+<li><p>Boot any app in development mode via:</p>
+
+<p> a. <code>mulberry serve</code> and point your device browser to your local Mulberry server OR</p>
+
+<p> b. <code>mulberry test</code> and run the app in your device simulator/emulator</p></li>
+<li><p>In the lower right hand corner, tap the "Weinre" button <img src="/images/weinre_button.png" alt="weinre button" /></p></li>
+<li>Go to <a href="http://api.toura.com/weinre">Toura Weinre</a> and enter the code displayed at the top of the page</li>
+<li>Debug away! That's it!</li>
+</ol>
+
+
+<p><img src="http://mulberry.toura.com/images/weinre_screen.png" width="600px" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating Custom Functionality with Mulberry]]></title>

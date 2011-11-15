@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>Using Hosted Weinre - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="At Toura, we perform the vast majority of our day-to-day development in ourdesktop WebKit browsers - Chrome and Safari. Although the desktop browse...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2011-11-15T15:58:01-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -84,49 +84,129 @@
 
   <div id="main">
     <div id="content">
-      <article role="article">
+      <div>
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    
+      <h1 class="entry-title">Using Hosted Weinre</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+  
+
+<time datetime="2011-11-14T22:40:00-05:00" pubdate>Nov 14<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+      <p class="meta author">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Matt Rogish</span></span>
+
+      </p>
     
   </header>
-  
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+
+<div class="entry-content"><p>At Toura, we perform the vast majority of our day-to-day development in our
+desktop WebKit browsers - Chrome and Safari. Although the desktop browsers
+are a very close approximation to the mobile browsers, there&#8217;s no substitute
+for actually performing final QA and fit &amp; finish checks on the mobile
+browsers themselves followed by a final sanity check with a compiled application.</p>
+
+<p>What happens, though, if you find a display bug on device browser that you
+don&#8217;t see on the desktop? What about a JavaScript error in the WebView? How would
+you go about debugging that? Enter: <a href="http://phonegap.github.com/weinre/">Weinre</a>.</p>
+
+<p>Weinre, written by <a href="https://github.com/pmuellr/weinre">Patrick Mueller</a>, provides
+a client/server environment to present you with a familiar &#8220;web inspector&#8221;-like
+experience on apps running on mobile device browsers and webviews.</p>
+
+<p>Installing and configuring Weinre is simple enough and you can accomplish this
+by following the instructions at the Weinre website. OR, instead of going through
+all of that and keeping Weinre running (it requires a local process) and poking
+holes in your firewall, you can use our free hosted Weinre service!</p>
+
+<p>To use the hosted Weinre service:</p>
 
 <ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
+<li><p>Boot any app in development mode via:</p>
+
+<p> a. <code>mulberry serve</code> and point your device browser to your local Mulberry server OR</p>
+
+<p> b. <code>mulberry test</code> and run the app in your device simulator/emulator</p></li>
+<li><p>In the lower right hand corner, tap the &#8220;Weinre&#8221; button <img src="/images/weinre_button.png" alt="weinre button" /></p></li>
+<li>Go to <a href="http://api.toura.com/weinre">Toura Weinre</a> and enter the code displayed at the top of the page</li>
+<li>Debug away! That&#8217;s it!</li>
 </ol>
 
 
+<p><img src="/images/weinre_screen.png" width="600px" /></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-    <footer>
+
+<span class="byline author vcard">Posted by <span class="fn">Matt Rogish</span></span>
+
+      
+
+
+
+
+  
+
+<time datetime="2011-11-14T22:40:00-05:00" pubdate>Nov 14<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  in
+  
+    <a class='category' href='/blog/categories/tutorial/'>tutorial</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/" data-via="touradev" data-counturl="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/" title="Previous Post: An Opinionated Framework, Focused on Reuse">&laquo; An Opinionated Framework, Focused on Reuse</a>
       
       
-    </footer>
-  
+    </p>
+  </footer>
 </article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
-
+</div>
 
 <aside class="sidebar">
   
@@ -231,7 +311,10 @@ $.domReady(function() {
       var disqus_shortname = 'touramulberry';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/';
+        var disqus_url = 'http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
