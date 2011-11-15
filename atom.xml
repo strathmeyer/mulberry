@@ -4,7 +4,7 @@
   <title><![CDATA[Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2011-11-15T15:58:01-05:00</updated>
+  <updated>2011-11-15T16:36:25-05:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -47,11 +47,15 @@ holes in your firewall, you can use our free hosted Weinre service!</p>
 <p> b. <code>mulberry test</code> and run the app in your device simulator/emulator</p></li>
 <li><p>In the lower right hand corner, tap the &#8220;Weinre&#8221; button <img src="http://mulberry.toura.com/images/weinre_button.png" alt="weinre button" /></p></li>
 <li>Go to <a href="http://api.toura.com/weinre">Toura Weinre</a> and enter the code displayed at the top of the page</li>
-<li>Debug away! That&#8217;s it!</li>
+<li>Click the provided link and debug away; that&#8217;s it!
+<img src="http://mulberry.toura.com/images/weinre_screen.png" width="600px" /></li>
 </ol>
 
 
-<p><img src="http://mulberry.toura.com/images/weinre_screen.png" width="600px" /></p>
+<p>Now you can develop on your local browser and perform final checks on your
+iOS and Android devices. If you encounter a bug, you can quickly and easily
+hook a remote web inspector to your page. Access the Javascript console, edit
+HTML, and more - right on the device!</p>
 ]]></content>
   </entry>
   
