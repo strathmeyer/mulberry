@@ -1391,73 +1391,89 @@ nav.main > div form input[type="text"]::-webkit-input-placeholder {
   margin: 40px 0 8px 0;
 }
 /* line 24, ../../sass/custom/mulberry/_main.scss */
+#main article h4 {
+  color: black;
+  font-size: 18px;
+  margin: 40px 0 8px 0;
+}
+/* line 30, ../../sass/custom/mulberry/_main.scss */
 #main article p.img {
   text-align: center;
   padding: 0;
   margin: 0;
 }
-/* line 30, ../../sass/custom/mulberry/_main.scss */
+/* line 36, ../../sass/custom/mulberry/_main.scss */
 #main article .filename + div {
   margin-bottom: 50px;
 }
-/* line 34, ../../sass/custom/mulberry/_main.scss */
+/* line 40, ../../sass/custom/mulberry/_main.scss */
 #main article p {
   font-size: 15px;
   line-height: 24px;
 }
-/* line 39, ../../sass/custom/mulberry/_main.scss */
+/* line 45, ../../sass/custom/mulberry/_main.scss */
 #main article li {
   font-size: 15px;
   line-height: 24px;
 }
-/* line 44, ../../sass/custom/mulberry/_main.scss */
+/* line 50, ../../sass/custom/mulberry/_main.scss */
 #main article p.filename {
   margin: 30px 0 0 0;
   font-family: Helvetica, Arial, sans-serif;
   color: #ccc;
   font-size: 90%;
 }
-/* line 51, ../../sass/custom/mulberry/_main.scss */
+/* line 57, ../../sass/custom/mulberry/_main.scss */
 #main article p.filename + div {
   margin-top: 5px;
 }
-/* line 55, ../../sass/custom/mulberry/_main.scss */
+/* line 61, ../../sass/custom/mulberry/_main.scss */
 #main article pre + p {
   margin-top: 30px;
 }
-/* line 59, ../../sass/custom/mulberry/_main.scss */
+/* line 65, ../../sass/custom/mulberry/_main.scss */
 #main article p.small {
   font-size: 90%;
 }
-/* line 65, ../../sass/custom/mulberry/_main.scss */
+/* line 71, ../../sass/custom/mulberry/_main.scss */
 #main figure.code .highlight {
   overflow: auto;
 }
-/* line 68, ../../sass/custom/mulberry/_main.scss */
+/* line 74, ../../sass/custom/mulberry/_main.scss */
 #main figure.code .highlight::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.5);
 }
-/* line 72, ../../sass/custom/mulberry/_main.scss */
+/* line 78, ../../sass/custom/mulberry/_main.scss */
 #main figure.code .highlight pre {
   margin-top: 0;
 }
-/* line 76, ../../sass/custom/mulberry/_main.scss */
+/* line 82, ../../sass/custom/mulberry/_main.scss */
 #main figure.code .highlight .line {
   white-space: pre !important;
 }
-/* line 82, ../../sass/custom/mulberry/_main.scss */
+/* line 88, ../../sass/custom/mulberry/_main.scss */
 #main #twitter {
   margin: 40px 0 0 0;
   padding-top: 40px;
   border-top: 1px solid #ccc;
 }
-/* line 88, ../../sass/custom/mulberry/_main.scss */
+/* line 94, ../../sass/custom/mulberry/_main.scss */
 #main #tour {
   margin-bottom: 1em;
 }
-/* line 92, ../../sass/custom/mulberry/_main.scss */
+/* line 98, ../../sass/custom/mulberry/_main.scss */
 #main .sharing {
   margin-top: 50px;
+}
+/* line 102, ../../sass/custom/mulberry/_main.scss */
+#main p.date {
+  font-style: italic;
+  font-size: 13px;
+}
+/* line 107, ../../sass/custom/mulberry/_main.scss */
+#main span.location {
+  padding: 0 0 0 10px;
+  color: #0076a3;
 }
 
 /* line 2, ../../sass/custom/mulberry/_asides.scss */
