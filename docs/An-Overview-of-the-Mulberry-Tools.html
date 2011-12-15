@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Toura Mulberry</title>
+  <title>An Overview of the Mulberry Tools - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="    From zero to app in minutesMulberry takes the promise of PhoneGap — mobile apps built with webtechnologies — and smooths over many of the “gotc...">
+  <meta name="description" content="        An Overview of the Mulberry Tools          The Mulberry toolkit is made up of three distinct pieces of functionality: the Mulberry Applicat...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -86,65 +86,70 @@
     <div id="content">
       <article role="article">
   
-  <h1>From zero to app in minutes</h1>
+  <header>
+    <h1 class="entry-title">An Overview of the Mulberry Tools</h1>
+    
+  </header>
+  
 
-<p>Mulberry takes the promise of PhoneGap — mobile apps built with web
-technologies — and smooths over many of the “gotchas” that front-end developers
-confront as they venture into client-side application development in a mobile
-environment. When you use Mulberry to help you build mobile apps with web
-technologies, here are just a few of the things you get out of the box:</p>
+  <p>The Mulberry toolkit is made up of three distinct pieces of functionality: the Mulberry Application Framework; the Mulberry Command Line Interface; and the Mulberry Builder. Together, these three pieces help developers create, customize, and test applications using familiar web technologies, then deploy those applications as native mobile experiences.</p>
+
+<h2>The Mulberry Application Framework</h2>
+
+<p>Location: toura_app/</p>
+
+<p>The Mulberry Application Framework provides the underlying architecture for building applications that will work without the benefit of a remote server to serve up each page in the application — these types of applications are often referred to as “single-page applications.”</p>
+
+<h3>Creating the User Interface</h3>
+
+<p>In the framework, each page displays a unit of content; we refer to a unit of content as a “node.” Nodes are displayed using page templates, which specify the layout of the page, the components to be displayed on the page, and how the components should interact with the page and with each other. These interactions are described via “capabilities.”</p>
+
+<p>Template definitions are authored in YAML, which is compiled to JSON that can be parsed by the framework. When the framework displays a page, it combines the data about the node that is being displayed with the template definition that is associated with the node, and creates a page controller. The page controller is responsible for setting up the layout of the page, placing the components in the layout, providing the components with the data from the node, and brokering communication between the components.</p>
+
+<p>Each component encapsulates a unit of functionality, and components can be reused across multiple page templates. When a component receives data to display, it manipulates that data as required, and then uses the data to populate a template. The template is the DOM representation of the component. Once the DOM representation is created, a component can add event listeners to react to user interaction. A component can also expose an API of “setter” methods, allowing the page controller to send it new data as required. Ideally, components simply receive data and announce user interaction; they should not communicate directly with a remote resource, or with the data layer of the application.</p>
+
+<p>The Mulberry application framework comes with a selection of built-in templates, components, and capabilities, but it also allows developers to author their own. Developers can create unique experiences by following clear patterns and using simple APIs, all without worrying about the underlying “plumbing” of their application.</p>
+
+<h3>Creating Custom Functionality</h3>
+
+<p>In addition to providing clear patterns for creating and connecting user interface components, the Mulberry application framework also provides tools and features that facilitate more complex application development:</p>
 
 <ul>
-<li>Ready-to-deploy apps to Android, iPhone, and iPad</li>
-<li>Rapid in-browser iteration, eliminating the need for constant, time-consuming
-device builds</li>
-<li>Over-the-air data updates that persist for offline use, keeping your app’s
-content current without requiring resubmission</li>
-<li>Integration of common plugins and components</li>
-<li>A complete framework for creating dynamic JavaScript applications</li>
+<li>a Router that can be used to specify custom state management functions</li>
+<li>APIs for persisting data locally, so applications will work without a network connection</li>
+<li>over-the-air updates, allowing applications to occasionally poll a remote server for new data, and store any new data that is found so it will be available for offline use</li>
+<li>structured, modular markup that allows for easy design customization</li>
 </ul>
 
 
-<p>Mulberry provides all of this and more, giving you the building blocks you need
-to create a content-rich application that will work on iOS and Android, whether
-your user is online or off. With Mulberry’s clear patterns and simple APIs, you
-can develop a robust “single-page” application that you can immediately deploy
-to the iOS and Android app stores. When you’re ready to build your next app,
-your components, templates, and themes will plug easily into any application
-that uses the Mulberry framework.</p>
+<h2>The Mulberry Command Line Interface (CLI)</h2>
 
-<div id="tour">
-  <h3>Take a tour</h3>
-  <iframe src="http://player.vimeo.com/video/29127698?title=0&amp;byline=0&amp;portrait=0&amp;color=c2d78b" width="585" height="329" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
-</div>
+<p>Location: mulberry/bin/mulberry</p>
+
+<p>The CLI is a set of helpers that makes it easy to scaffold, develop, and test an application. Specifically, it provides the ability to</p>
+
+<ul>
+<li>rapidly spin up a new application</li>
+<li>create nodes and their associated resources and data</li>
+<li>create skeleton files for page templates, components, and capabilities</li>
+<li>serve the application locally for rapid in-browser iteration</li>
+<li>create test builds that can run on simulators and (properly provisioned) devices</li>
+<li>create production builds that can be submitted to app stores</li>
+</ul>
 
 
-<h3>A pluggable framework for building mobile apps</h3>
+<h2>The Mulberry Builder</h2>
 
-<p>Mulberry is a powerful, pluggable framework for creating mobile applications
-using familiar HTML5 technologies. Use Mulberry’s <strong>built-in components</strong> to
-create, customize, and compile content-rich applications, or use Mulberry’s
-simple APIs to build components, interactions, layouts, and themes that you can
-<strong>share across your applications</strong>.</p>
+<p>Location: lib/builder.rb</p>
 
-<h3>Powerful out of the box</h3>
+<p>The Mulberry Builder takes content and customizations from a given “content source,” and combines it with the Mulberry Application Framework to create a functional application for a specified target environment (referred to as the “build target”).</p>
 
-<p>Mulberry comes with built-in components, page layouts, and a simple theme that
-will get you up and running in a hurry, which means you can <strong><a href="/getting-started/">create your
-first Mulberry app in the time it takes to create and organize your content</a></strong>. When you’re ready to branch out, you can create
-your own components using Haml and Mulberry’s Javascript APIs. You can also
-take advantage of SASS to customize the default theme or create your own style
-from scratch.</p>
+<p>A Mulberry project — as created by the Mulberry CLI — is one example of a content source, but the builder can consume any content source that exposes an interface via a Build Helper. A Build Helper must provide an interface as defined by the base Build::BuildHelper class (lib/builder/build_helper.rb). This interface allows the Builder to interrogate the Build Helper in order to access the content and customizations provided by the content source.</p>
 
-<h3>An emphasis on smart reuse</h3>
+<p>Separately, the Builder must be provided with information about the target environment for which it is building the application. Based on that information, the builder creates a project directory using a project template (lib/builder/project_templates/), and then populates the project directory with the Mulberry Application Framework files and the content and customizations from the content source.</p>
 
-<p>The Mulberry framework was designed from the start with reuse in mind, with a
-focus on loose coupling and separation of concerns. Mulberry provides <strong>a solid
-base for custom development</strong>, with an emphasis on smart reuse within and across
-applications. It gives you the infrastructure you need — a router, models,
-views, offline storage, over-the-air data updates, and lots more — plus simple
-APIs for extending the framework with your own functionality. With Mulberry,
-creating and customizing apps becomes a <strong>reliably repeatable process</strong>.</p>
+<p>The output of the Builder is a project directory that can be compiled if necessary, and then executed in the target environment.</p>
+
 
   
     <footer>
@@ -152,7 +157,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/index.html" data-via="touradev" data-counturl="http://mulberry.toura.com/index.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -164,8 +169,6 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -248,6 +251,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
 
   
 </aside>
+
 
 
     </div>

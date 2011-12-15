@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Toura Mulberry</title>
+  <title>Browser-based development: Fewer builds, better tools - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="    From zero to app in minutesMulberry takes the promise of PhoneGap — mobile apps built with webtechnologies — and smooths over many of the “gotc...">
+  <meta name="description" content="I&#8217;m in London after attending the Full Frontal JavaScript Conference,put on by the fantastic Remy and JulieanneSharp in lovely, foggy, chilly...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/">
+  <link rel="canonical" href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -84,75 +84,163 @@
 
   <div id="main">
     <div id="content">
-      <article role="article">
+      <div>
+<article class="hentry" role="article">
   
-  <h1>From zero to app in minutes</h1>
-
-<p>Mulberry takes the promise of PhoneGap — mobile apps built with web
-technologies — and smooths over many of the “gotchas” that front-end developers
-confront as they venture into client-side application development in a mobile
-environment. When you use Mulberry to help you build mobile apps with web
-technologies, here are just a few of the things you get out of the box:</p>
-
-<ul>
-<li>Ready-to-deploy apps to Android, iPhone, and iPad</li>
-<li>Rapid in-browser iteration, eliminating the need for constant, time-consuming
-device builds</li>
-<li>Over-the-air data updates that persist for offline use, keeping your app’s
-content current without requiring resubmission</li>
-<li>Integration of common plugins and components</li>
-<li>A complete framework for creating dynamic JavaScript applications</li>
-</ul>
+  <header>
+    
+      <h1 class="entry-title">Browser-based Development: Fewer Builds, Better Tools</h1>
+    
+    
+      <p class="meta">
+        
 
 
-<p>Mulberry provides all of this and more, giving you the building blocks you need
-to create a content-rich application that will work on iOS and Android, whether
-your user is online or off. With Mulberry’s clear patterns and simple APIs, you
-can develop a robust “single-page” application that you can immediately deploy
-to the iOS and Android app stores. When you’re ready to build your next app,
-your components, templates, and themes will plug easily into any application
-that uses the Mulberry framework.</p>
 
-<div id="tour">
-  <h3>Take a tour</h3>
-  <iframe src="http://player.vimeo.com/video/29127698?title=0&amp;byline=0&amp;portrait=0&amp;color=c2d78b" width="585" height="329" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+
+  
+
+<time datetime="2011-11-16T10:13:00-05:00" pubdate>Nov 16<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+      <p class="meta author">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rebecca Murphey</span></span>
+
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&#8217;m in London after attending the <a href="http://fullfrontal.org">Full Frontal JavaScript Conference</a>,
+put on by the fantastic Remy and Julieanne
+Sharp in lovely, foggy, chilly Brighton. It was a great chance to meet a ton of
+developers from whom I&#8217;m usually separated by an ocean, and of course I spent
+a lot of time talking to those developers about Mulberry.</p>
+
+<p>One of the things that seemed to especially get their attention was how
+Mulberry lets you do day-to-day development in a browser, avoiding
+time-consuming compilations most of the time.  Setting up browser-based
+development on a PhoneGap project can be tricky, and development on device or
+in a simulator harkens back to the bad old days of IE6.</p>
+
+<p>If you want to develop content-rich native apps that include a non-trivial
+amount of JavaScript, you&#8217;re going to want the comforts of a modern browser.
+We&#8217;ve solved this in Mulberry in a few different ways.</p>
+
+<h2>Wrappers for PhoneGap APIs</h2>
+
+<p>PhoneGap and PhoneGap plugin APIs don&#8217;t work when you&#8217;re running your code in
+a desktop browser &#8211; indeed, if you try to call them, you&#8217;ll usually get an
+error that blocks execution of any code that comes next, which can make
+debugging a serious pain.</p>
+
+<p>Mulberry solves this by providing an interface for creating wrappers for
+PhoneGap APIs and plugins; it also has a few built-in wrappers. For example,
+here&#8217;s a wrapper for the notification API:</p>
+
+<pre><code>toura.app.PhoneGap.notification = function(pg, device) {
+  return {
+    alert : function(msg) {
+      if (pg) {
+        navigator.notification.alert(msg);
+      } else {
+        alert(msg);
+      }
+    }
+  }
+};
+</code></pre>
+
+<p>We set up the built-in wrappers using <code>toura.app.PhoneGap.registerAPI(apiName,
+module)</code>, which you can use to create your own wrappers, too. Each wrapper is
+simply a function that gets two arguments: a boolean indicating whether
+PhoneGap is present, and a device object with information about the device
+that&#8217;s being targeted. Wrappers return an object with methods that become
+available at <code>toura.app.Phonegap[apiName]</code>.</p>
+
+<p>In the example of the notification API above, once the API is registered we can
+call the function <code>toura.app.PhoneGap.notification.alert</code> from anywhere in our
+code, and it will &#8220;just work&#8221; whether we&#8217;re developing in a browser or on
+device. <a href="https://github.com/Toura/mulberry/blob/master/toura_app/javascript/toura/app/Phonegap/browser.js">Mulberry&#8217;s wrapper around the ChildBrowser plugin</a>
+is a more complex example &#8211; it simulates ChildBrowser&#8217;s behavior in a desktop
+browser, and handles differences in the Android and iOS implementations behind
+the scenes, so opening a new URL in your app requires the exact same code
+regardless of the environment.</p>
+
+<h2>Rapid Switching Between Device-Specific Code Paths</h2>
+
+<p>Even though most of your JavaScript can be the same from one device to the
+next, sometimes you&#8217;ll need to branch your code to deal with a quirk of
+a particular OS. Working on the different code paths can be a challenge when
+you&#8217;re developing in the browser, because you need a way to tell your code
+which environment you want to be simulating.</p>
+
+<p>Mulberry comes with a built-in server, and the server is set up so that
+switching between configurations is as simple as changing the URL. You can work
+on the iPad version of your app at http://localhost:3001/ios/tablet/, and then
+switch to working on the Android phone version of your app at
+http://localhost:3001/android/phone/. All of your code will automatically get
+access to information about the &#8220;device&#8221; you&#8217;re working on by calling
+<code>toura.app.Config.get('device')</code>, and of course any changes you make to your
+code or content will be visible as soon as you reload the page.</p>
+
+<h2>Remote Debugging</h2>
+
+<p>While browser-based development is great, nothing compares to testing your app
+on a device, but when you do, you&#8217;re suddenly in a world where <code>console.log</code>
+and <code>alert</code> feel like your only friends.</p>
+
+<p>Every development build you make with Mulberry has a button in the lower
+right-hand corner of the screen marked &#8220;weinre&#8221;. If you haven&#8217;t seen
+<a href="http://phonegap.github.com/weinre/">weinre</a> before, prepare for your life to
+be changed, because it lets you debug an app that&#8217;s running on your device from
+the comfort of your computer, using the Webkit developer tools you know and
+love.</p>
+
+<p>As of this week, Toura is hosting its own version of weinre for Mulberry
+developers, and it&#8217;s connected directly to the weinre button in Mulberry apps.
+<a href="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/">Read more about it here</a>.</p>
+
+<h2>More to Come</h2>
+
+<p>The Toura Dev team doesn&#8217;t just work on Mulberry &#8211; we&#8217;ve also shipped more
+than 100 apps that use the underlying Mulberry technology, which means we&#8217;re
+always trying to make our <em>own</em> experience of the toolkit a pleasant one.
+Pretty much every developer-friendly feature we&#8217;ve added so far was added
+because we&#8217;re developers, too, and we hate when our tools get in our way. That
+said, we know tools can always be better &#8211; if there&#8217;s something we could do to
+make your life easier when developing mobile apps, we hope you&#8217;ll let us know.</p>
 </div>
 
 
-<h3>A pluggable framework for building mobile apps</h3>
+  <footer>
+    <p class="meta">
+      
+  
 
-<p>Mulberry is a powerful, pluggable framework for creating mobile applications
-using familiar HTML5 technologies. Use Mulberry’s <strong>built-in components</strong> to
-create, customize, and compile content-rich applications, or use Mulberry’s
-simple APIs to build components, interactions, layouts, and themes that you can
-<strong>share across your applications</strong>.</p>
+<span class="byline author vcard">Posted by <span class="fn">Rebecca Murphey</span></span>
 
-<h3>Powerful out of the box</h3>
+      
 
-<p>Mulberry comes with built-in components, page layouts, and a simple theme that
-will get you up and running in a hurry, which means you can <strong><a href="/getting-started/">create your
-first Mulberry app in the time it takes to create and organize your content</a></strong>. When you’re ready to branch out, you can create
-your own components using Haml and Mulberry’s Javascript APIs. You can also
-take advantage of SASS to customize the default theme or create your own style
-from scratch.</p>
 
-<h3>An emphasis on smart reuse</h3>
 
-<p>The Mulberry framework was designed from the start with reuse in mind, with a
-focus on loose coupling and separation of concerns. Mulberry provides <strong>a solid
-base for custom development</strong>, with an emphasis on smart reuse within and across
-applications. It gives you the infrastructure you need — a router, models,
-views, offline storage, over-the-air data updates, and lots more — plus simple
-APIs for extending the framework with your own functionality. With Mulberry,
-creating and customizing apps becomes a <strong>reliably repeatable process</strong>.</p>
 
   
-    <footer>
+
+<time datetime="2011-11-16T10:13:00-05:00" pubdate>Nov 16<span>th</span>, 2011</time>
       
-      
-        <div class="sharing">
+
+
+    </p>
+    
+      <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/index.html" data-via="touradev" data-counturl="http://mulberry.toura.com/index.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/" data-via="touradev" data-counturl="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -160,13 +248,25 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2011/11/14/hosted-weinre/" title="Previous Post: Weinre: Sane, hosted debugging tools for your Mulberry apps">&laquo; Weinre: Sane, hosted debugging tools for your Mulberry apps</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/11/29/mulberry-0.2/" title="next Post: Announcing Mulberry 0.2: More Features for Easy Customization">Announcing Mulberry 0.2: More Features for Easy Customization &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
-
+</div>
 
 <aside class="sidebar">
   
@@ -279,7 +379,10 @@ $.domReady(function() {
       var disqus_shortname = 'touramulberry';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mulberry.toura.com/blog/2011/11/16/browser-based-development/';
+        var disqus_url = 'http://mulberry.toura.com/blog/2011/11/16/browser-based-development/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Toura Mulberry</title>
+  <title>Getting Started - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="    From zero to app in minutesMulberry takes the promise of PhoneGap — mobile apps built with webtechnologies — and smooths over many of the “gotc...">
+  <meta name="description" content="        Getting Started          InstallationYou should read the READMEfor installation instructions before proceeding with the rest of the steps b...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/Getting-Started.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -86,65 +86,102 @@
     <div id="content">
       <article role="article">
   
-  <h1>From zero to app in minutes</h1>
+  <header>
+    <h1 class="entry-title">Getting Started</h1>
+    
+  </header>
+  
 
-<p>Mulberry takes the promise of PhoneGap — mobile apps built with web
-technologies — and smooths over many of the “gotchas” that front-end developers
-confront as they venture into client-side application development in a mobile
-environment. When you use Mulberry to help you build mobile apps with web
-technologies, here are just a few of the things you get out of the box:</p>
+  <h2>Installation</h2>
 
-<ul>
-<li>Ready-to-deploy apps to Android, iPhone, and iPad</li>
-<li>Rapid in-browser iteration, eliminating the need for constant, time-consuming
-device builds</li>
-<li>Over-the-air data updates that persist for offline use, keeping your app’s
-content current without requiring resubmission</li>
-<li>Integration of common plugins and components</li>
-<li>A complete framework for creating dynamic JavaScript applications</li>
-</ul>
+<p><strong>You should read the <a href="https://github.com/Toura/mulberry/blob/master/README.md">README</a>
+for installation instructions before proceeding with the rest of the steps below.</strong></p>
 
+<h2>Scaffold</h2>
 
-<p>Mulberry provides all of this and more, giving you the building blocks you need
-to create a content-rich application that will work on iOS and Android, whether
-your user is online or off. With Mulberry’s clear patterns and simple APIs, you
-can develop a robust “single-page” application that you can immediately deploy
-to the iOS and Android app stores. When you’re ready to build your next app,
-your components, templates, and themes will plug easily into any application
-that uses the Mulberry framework.</p>
+<p>Mulberry lets you quickly create the basic structure for an application at the
+location you specify. Run this from the directory where you want to create a new
+directory that will contain your app.</p>
 
-<div id="tour">
-  <h3>Take a tour</h3>
-  <iframe src="http://player.vimeo.com/video/29127698?title=0&amp;byline=0&amp;portrait=0&amp;color=c2d78b" width="585" height="329" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
-</div>
+<pre><code>mulberry scaffold myapp
+</code></pre>
 
+<h2>Configure</h2>
 
-<h3>A pluggable framework for building mobile apps</h3>
+<p>The scaffolding step will create a few files and directories. You&#8217;ll need to
+edit the file <code>config.yml</code> to provide some basic configuration information. See
+the notes in the file for details.</p>
 
-<p>Mulberry is a powerful, pluggable framework for creating mobile applications
-using familiar HTML5 technologies. Use Mulberry’s <strong>built-in components</strong> to
-create, customize, and compile content-rich applications, or use Mulberry’s
-simple APIs to build components, interactions, layouts, and themes that you can
-<strong>share across your applications</strong>.</p>
+<h2>Construct</h2>
 
-<h3>Powerful out of the box</h3>
+<p>The scaffolding step also creates a <code>sitemap.yml</code> file. Edit this to describe
+the structure of your application. Note that the home and about pages are
+created for you automatically, and generally are the only two pages at the top
+level of the sitemap; all other pages should be placed below the home page.</p>
 
-<p>Mulberry comes with built-in components, page layouts, and a simple theme that
-will get you up and running in a hurry, which means you can <strong><a href="/getting-started/">create your
-first Mulberry app in the time it takes to create and organize your content</a></strong>. When you’re ready to branch out, you can create
-your own components using Haml and Mulberry’s Javascript APIs. You can also
-take advantage of SASS to customize the default theme or create your own style
-from scratch.</p>
+<pre><code>- home:
+  - schedule
+  - speakers
+  - points-of-interest
+- about
+</code></pre>
 
-<h3>An emphasis on smart reuse</h3>
+<p>In order for your app to work, you&#8217;ll need a Markdown file in the pages
+directory for each page in the sitemap. These files also include some metadata
+in the form of a YAML header. At a minimum, you need to specify the title to
+display for the page, and the template you want to use. Make sure that the file
+you create has the same name as the entry in the sitemap; for example, the home
+page should be placed at <code>pages/home.md</code>:</p>
 
-<p>The Mulberry framework was designed from the start with reuse in mind, with a
-focus on loose coupling and separation of concerns. Mulberry provides <strong>a solid
-base for custom development</strong>, with an emphasis on smart reuse within and across
-applications. It gives you the infrastructure you need — a router, models,
-views, offline storage, over-the-air data updates, and lots more — plus simple
-APIs for extending the framework with your own functionality. With Mulberry,
-creating and customizing apps becomes a <strong>reliably repeatable process</strong>.</p>
+<pre><code>---
+title: CapitolJS
+template: Home
+---
+
+Good afternoon agent. Your mission, should you choose to accept it, involves
+the learning of the programming language JavaScript and how to use it properly
+and effectively. You will be joined by an intimate task force of elite members
+of the JavaScript community to assist you in this task. You may select to
+attend either or both of the evening social events occurring the night before
+and night of the event. This event is happening on September 18th, 2011 in
+Washington, DC at the [Hotel Palomar](http://www.hotelpalomar-arlington.com/).
+If you accept this mission, be sure to follow
+[@capitoljs](http://www.twitter.com/capitoljs) and register today, like all
+JSConf events - it will sell out. See you in Washington DC.
+</code></pre>
+
+<p>For more on creating pages, see the Creating Pages and Assets documentation.</p>
+
+<h2>Customize</h2>
+
+<p>Mulberry allows extensive customization of your application. See the documentation
+in the repository <a href="https://github.com/toura/mulberry/wiki">Wiki</a> for details.</p>
+
+<h2>Develop</h2>
+
+<p>For rapid iteration, you can run your app in a desktop WebKit browser and get
+access to your standard development tools. Run the following from the root of
+your project:</p>
+
+<pre><code>mulberry serve
+</code></pre>
+
+<h2>Test</h2>
+
+<p>Generate test builds that you can run in a simulator or on a properly
+provisioned device. Run the following from the root of your project:</p>
+
+<pre><code>mulberry test
+</code></pre>
+
+<h2>Deploy</h2>
+
+<p>Create binaries for the various form factors and operating systems your app
+supports. Run the following from the root of your project:</p>
+
+<pre><code>mulberry deploy
+</code></pre>
+
 
   
     <footer>
@@ -152,7 +189,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/index.html" data-via="touradev" data-counturl="http://mulberry.toura.com/index.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/Getting-Started.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/Getting-Started.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -164,8 +201,6 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -248,6 +283,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
 
   
 </aside>
+
 
 
     </div>

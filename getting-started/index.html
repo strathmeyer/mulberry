@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/getting-started/">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2011-11-15T18:10:25-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -64,9 +64,9 @@
       <li><a href="/download/">Download</a></li>
       <li><a href="/getting-started/">Getting Started</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="https://github.com/Toura/mulberry/wiki">Docs</a></li>
+      <li><a href="/docs/">Docs</a></li>
       <li><a href="/support/">Support</a></li>
-      <li><a href="/license/">License</a></li>
+      <li><a href="/upcoming_events/">Upcoming Events</a></li>
     </ul>
 
     <form action="http://google.com/search" method="get">
@@ -93,7 +93,10 @@
   
   <p>Mulberry smooths over the bumps that web developers often encounter when
 they apply web technologies to a native platform.  It separates the app
-development process into a few simple steps:</p>
+development process into a few simple steps.</p>
+
+<p>If you want to follow along, <a href="/download/">download the Mulberry toolkit</a> and
+follow the instructions in the README for getting it set up on your computer.</p>
 
 <h2 id="scaffold">Scaffold</h2>
 
@@ -262,7 +265,7 @@ information, including settings for the base theme:</p>
 <p>Create your pages &hellip;</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mulberry create_page speakers</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mulberry create page speakers</span></code></pre></td></tr></table></div></figure>
 
 <p>&hellip; then organize your content and metadata using YAML, Markdown, and
 your filesystem:</p>
@@ -397,7 +400,7 @@ your filesystem:</p>
 <p class="img"><img src="/images/twitter-page.png" title="A custom page using a custom component"></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mulberry create_component Twitter</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mulberry create component Twitter</span></code></pre></td></tr></table></div></figure>
 
 <figure class='code'><figcaption><span>javascript/components/Twitter.js </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -569,6 +572,14 @@ a <a href="/license/">permissive license</a>.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/browser-based-development/">Browser-based development: Fewer builds, better tools</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2011/11/14/hosted-weinre/">Weinre: Sane, hosted debugging tools for your Mulberry apps</a>

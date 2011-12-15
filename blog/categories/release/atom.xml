@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: release | Toura Mulberry]]></title>
+  <link href="http://mulberry.toura.com/blog/categories/release/atom.xml" rel="self"/>
+  <link href="http://mulberry.toura.com/"/>
+  <updated>2011-12-15T12:54:12-05:00</updated>
+  <id>http://mulberry.toura.com/</id>
+  <author>
+    <name><![CDATA[Toura Dev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Announcing Mulberry 0.2: More Features for Easy Customization]]></title>
+    <link href="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/"/>
+    <updated>2011-11-29T09:21:00-05:00</updated>
+    <id>http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2</id>
+    <content type="html"><![CDATA[<p><a href="/download/">Mulberry 0.2</a> is out today, with several new features to make it
+even easier to customize your apps:</p>
+
+<ul>
+<li>In Mulberry 0.1, you had to be very verbose when overriding the default
+styles. As of 0.2, when an app is scaffolded, the default theme is copied
+into the app, where it can be modified directly. To pull any upstream changes
+to the built-in themes, we added <code>mulberry update_themes</code> to the CLI.</li>
+<li>A new <code>toura.app.Phonegap.registerAPI</code> method lets you create your own
+wrappers that make it easier to do development in a browser. <a href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/">Read more about browser-based development with Mulberry.</a></li>
+<li>We beefed up <code>mulberry create component</code>; it now automatically
+creates a stub .scss file for the component, and adds an @import statement to
+your theme's <code>base.scss</code> file.</li>
+<li>Now when you add pages to your sitemap, you can just run <code>mulberry scaffold</code>
+inside your Mulberry project to create them all at once, rather than having
+to remember which ones to create yourself. <a href="/docs/Command-Line-Interface.html">Read about all the command line options.</a></li>
+<li>It's often necessary to repopulate a component or a piece of a component when
+it gets new data or its state changes. Mulberry 0.2 introduces the <code>populate</code>
+and <code>populateElement</code> methods on components to make this easier -- just pass
+it a template and the data for the template, and it handles the rest. <a href="/docs/Creating-Custom-Components.html">Read
+more about custom components.</a></li>
+<li>Lots of people were asking us about how to create custom routes; it was
+possible before, but it's easier in Mulberry 0.2: we added mulberry.route and
+mulberry.routes for defining custom routes. <a href="/docs/Javascript-API.html">Read more about defining routes and other aspects of the JavaScript API.</a></li>
+</ul>
+
+
+<p>We also landed a few other features, several bug fixes, some improvements to
+the command line, and lots of docs. Read the full release notes
+<a href="/docs/0.2-Release-Notes.html">here</a>.</p>
+
+<p>As always, you can find us on Twitter <a href="http://twitter.com/touradev">@touradev</a>,
+visit us in the #touramulberry channel on irc.freenode.net, or drop us a note
+at <a href="mailto:mulberry@toura.com">mulberry@toura.com</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

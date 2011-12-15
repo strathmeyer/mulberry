@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Toura Mulberry</title>
+  <title>0.1.1 release notes - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="    From zero to app in minutesMulberry takes the promise of PhoneGap — mobile apps built with webtechnologies — and smooths over many of the “gotc...">
+  <meta name="description" content="        0.1.1 Release Notes          This is a bugfix and refactoring release. It should include no breaking changes for &#8220;public&#8221; APIs....">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/0.1.1-release-notes.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -86,65 +86,33 @@
     <div id="content">
       <article role="article">
   
-  <h1>From zero to app in minutes</h1>
+  <header>
+    <h1 class="entry-title">0.1.1 Release Notes</h1>
+    
+  </header>
+  
 
-<p>Mulberry takes the promise of PhoneGap — mobile apps built with web
-technologies — and smooths over many of the “gotchas” that front-end developers
-confront as they venture into client-side application development in a mobile
-environment. When you use Mulberry to help you build mobile apps with web
-technologies, here are just a few of the things you get out of the box:</p>
+  <p>This is a bugfix and refactoring release. It should include no breaking changes for &#8220;public&#8221; APIs.</p>
 
 <ul>
-<li>Ready-to-deploy apps to Android, iPhone, and iPad</li>
-<li>Rapid in-browser iteration, eliminating the need for constant, time-consuming
-device builds</li>
-<li>Over-the-air data updates that persist for offline use, keeping your app’s
-content current without requiring resubmission</li>
-<li>Integration of common plugins and components</li>
-<li>A complete framework for creating dynamic JavaScript applications</li>
+<li>Refactored the TouraAPP class for better organization. Some method names and behaviors changed.</li>
+<li>Added tests for the TouraAPP class.</li>
+<li>Added a version command to the Mulberry CLI: <code>mulberry version</code> or <code>mulberry -v</code>.</li>
+<li>Build helpers now return an object, not a string, when asked for application data.</li>
+<li>Added Capybara and some incredibly basic integration tests.</li>
+<li>Converted the GoogleMaps1 page template to the new &#8220;configurable&#8221; template definition style.</li>
+<li>Fixed some issues in the audios-with-text-* page templates.</li>
+<li>Updated the license on the built JavaScript to reflect the Mulberry licensing terms.</li>
+<li>Fixed the iPhone project template to disable ARC.</li>
+<li>Fixed an issue where <code>mulberry test</code> failed on projects without a <code>javascript</code> directory.</li>
+<li>Fixed an issue with Android builds that only affected Eclipse.</li>
+<li>Capabilities will now throw an error if their requirements aren&#8217;t met.</li>
+<li>Fixed an issue where custom JS wasn&#8217;t being properly built.</li>
+<li>Fixed an issue where ChildBrowser wasn&#8217;t declared as a property of <code>window</code> on iOS, which was preventing Facebook posting.</li>
+<li>Fixed Facebook, Twitter API keys to be camelCased, not underscore.</li>
 </ul>
 
 
-<p>Mulberry provides all of this and more, giving you the building blocks you need
-to create a content-rich application that will work on iOS and Android, whether
-your user is online or off. With Mulberry’s clear patterns and simple APIs, you
-can develop a robust “single-page” application that you can immediately deploy
-to the iOS and Android app stores. When you’re ready to build your next app,
-your components, templates, and themes will plug easily into any application
-that uses the Mulberry framework.</p>
-
-<div id="tour">
-  <h3>Take a tour</h3>
-  <iframe src="http://player.vimeo.com/video/29127698?title=0&amp;byline=0&amp;portrait=0&amp;color=c2d78b" width="585" height="329" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
-</div>
-
-
-<h3>A pluggable framework for building mobile apps</h3>
-
-<p>Mulberry is a powerful, pluggable framework for creating mobile applications
-using familiar HTML5 technologies. Use Mulberry’s <strong>built-in components</strong> to
-create, customize, and compile content-rich applications, or use Mulberry’s
-simple APIs to build components, interactions, layouts, and themes that you can
-<strong>share across your applications</strong>.</p>
-
-<h3>Powerful out of the box</h3>
-
-<p>Mulberry comes with built-in components, page layouts, and a simple theme that
-will get you up and running in a hurry, which means you can <strong><a href="/getting-started/">create your
-first Mulberry app in the time it takes to create and organize your content</a></strong>. When you’re ready to branch out, you can create
-your own components using Haml and Mulberry’s Javascript APIs. You can also
-take advantage of SASS to customize the default theme or create your own style
-from scratch.</p>
-
-<h3>An emphasis on smart reuse</h3>
-
-<p>The Mulberry framework was designed from the start with reuse in mind, with a
-focus on loose coupling and separation of concerns. Mulberry provides <strong>a solid
-base for custom development</strong>, with an emphasis on smart reuse within and across
-applications. It gives you the infrastructure you need — a router, models,
-views, offline storage, over-the-air data updates, and lots more — plus simple
-APIs for extending the framework with your own functionality. With Mulberry,
-creating and customizing apps becomes a <strong>reliably repeatable process</strong>.</p>
 
   
     <footer>
@@ -152,7 +120,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/index.html" data-via="touradev" data-counturl="http://mulberry.toura.com/index.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/0.1.1-release-notes.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/0.1.1-release-notes.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -164,8 +132,6 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -248,6 +214,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
 
   
 </aside>
+
 
 
     </div>

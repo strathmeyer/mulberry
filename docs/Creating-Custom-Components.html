@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Creating Custom Components - Toura Mulberry</title>
+  <meta name="author" content="Toura Dev">
+
+  
+  <meta name="description" content="        Creating Custom Components          Mulberry exposes a simple API for creating custom components that you can use onyour own page templates...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mulberry.toura.com/docs/Creating-Custom-Components.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/TouraMulberry" rel="alternate" title="Toura Mulberry" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25683438-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      if (document.location.host.match('localhost')) { return; }
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+
+<body   >
+  <header role="banner">
+    <hgroup class=header>
+  <a href="http://github.com/Toura/mulberry" class="fork-me"><img src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+  <h1 class=logo><a href="http://mulberry.toura.com">Toura Mulberry</a></h1>
+</hgroup>
+
+
+  </header>
+
+  <nav role="navigation">
+    <nav class="main">
+  <div>
+    <ul>
+      <li><a href="/download/">Download</a></li>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/docs/">Docs</a></li>
+      <li><a href="/support/">Support</a></li>
+      <li><a href="/upcoming_events/">Upcoming Events</a></li>
+    </ul>
+
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:mulberry.toura.com" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+
+  </div>
+</nav>
+
+
+  </nav>
+
+  <div id="main">
+    <div id="content">
+      <article role="article">
+  
+  <header>
+    <h1 class="entry-title">Creating Custom Components</h1>
+    
+  </header>
+  
+
+  <p>Mulberry exposes a simple API for creating custom components that you can use on
+your own page templates. This section explains how you might create a simple
+component for displaying a Twitter feed.</p>
+
+<p>To start, run the following command from your app directory:</p>
+
+<pre><code>mulberry create component MyCustomComponent
+</code></pre>
+
+<p>This will:</p>
+
+<ul>
+<li>create a component JavaScript file at <code>javascript/components/MyCustomComponent.js</code> that uses <code>mulberry.component</code> to define the component. The <code>mulberry.component</code> method receives the name of the component, and an object to be used as the component&#8217;s prototype (see the information below about Component Lifecycle Methods and Component Instance Methods).</li>
+<li>create a component resources directory at <code>javascript/components/MyCustomComponent/</code></li>
+<li>create a component template file at
+<code>javascript/components/MyCustomComponent/MyCustomComponent.haml</code> that sets the component&#8217;s initial template as a simple <code>&lt;div&gt;</code>.</li>
+<li>add the appropriate <code>dojo.require</code> statement to your project&#8217;s base
+JavaScript file, located at <code>javascript/base.js</code></li>
+<li>create a SCSS file at <code>javascript/components/MyCustomComponent/_my-custom-component.scss</code></li>
+<li>add the appropriate <code>@import</code> statement to your project&#8217;s base SCSS file.</li>
+</ul>
+
+
+<p>The rest of this page explains the features and methods available to custom components. You may want to <a href="http://mulberry.toura.com/blog/2011/10/30/custom-functionality/">read this post that shows an example of creating a custom component</a>.</p>
+
+<h3>Querying the DOM of Your Component</h3>
+
+<p>If your component code needs to refer to a specific element in your component&#8217;s
+DOM structure, you can query that element using jQuery or dojo.query, but a
+better solution is to label the element as a <code>dojoAttachPoint</code> in the component template.</p>
+
+<pre><code>%div.component.my-custom-component
+  %button{ dojoAttachPoint : 'refreshButton' }
+  %ul{ dojoAttachPoint : 'list' }
+</code></pre>
+
+<p>These nodes will automatically be available to you as <code>this.refreshButton</code> and
+<code>this.list</code> in your component code.</p>
+
+<h3>Component Properties</h3>
+
+<p>Component instances have built-in properties that you can take advantage of.</p>
+
+<ul>
+<li><code>baseObj</code> An object representing the page on which the component is being displayed. This
+object contains all of the asset data associated with the page, as well as useful methods.</li>
+<li><code>device</code> A object containing information about the device environment, with a <code>type</code> and
+<code>os</code> property.</li>
+<li><code>domNode</code> The root DOM node.</li>
+<li><code>$domNode</code> A jQuery object containing the component&#8217;s root DOM node. Available only if your project has jQuery enabled.</li>
+<li><code>region</code> The region in which the component is displayed.</li>
+<li><code>screen</code> The screen on which the component is displayed.</li>
+</ul>
+
+
+<h3>Component Properties You Can Provide</h3>
+
+<ul>
+<li><code>componentTemplate</code> A string that can be parsed as Haml that will be used to construct the
+component. This can be a plain string, or a string returned by <code>dojo.cache</code>
+(see the example above). If you do not provide a <code>componentTemplate</code> property,
+then the default is <code>%div</code>.</li>
+</ul>
+
+
+<h3>Component Lifecycle Methods</h3>
+
+<p>Mulberry&#8217;s extensible component system offers a number of &#8220;lifecycle&#8221; methods, allowing you to control aspects of a component&#8217;s behavior at various points.</p>
+
+<p>These methods run in order when a component is placed on a page. Here are those methods in the order in which they are called:</p>
+
+<ul>
+<li><code>prep</code>: Prepare the data that your component will need. In this method, you can rearrange data that&#8217;s contained in the component&#8217;s <code>baseObj</code> property, which will contain all of the information that Mulberry knows about the page that&#8217;s using the component. This method is part of the default component skeleton that Mulberry generates for you.</li>
+<li><code>setupChildComponents</code>: Runs after the component is created, but before it is visible on the page. If you want to programmatically add child components to your component prior to displaying it, this is the place to do it. Be sure to read about <code>this.adopt</code>, below, which allows you to add components in a way that they will be properly torn down when the parent component is removed from the page.</li>
+<li><code>adjustMarkup</code>: You can make changes to your component&#8217;s markup here. For instance, if you need to dynamically add a class, this is the place to do it. This method fires after the component&#8217;s DOM has been created, but before it is visible on the page.</li>
+<li><code>setupConnections</code>: You should bind to DOM events (<code>click</code>, <code>focus</code>, etc.) here using <code>this.connect</code>. More information on creating connections is available in the <a href="http://dojotoolkit.org/reference-guide/dojo/connect.html">Dojo documentation</a>.</li>
+<li><code>setupSubscriptions</code>: If you need your component to subscribe to a topic, this is where you should add that subscription using <code>this.connect</code>. This is the last lifecycle method to execute before the component is added to the page. More information on creating subscriptions is available in the <a href="http://dojotoolkit.org/reference-guide/dojo/subscribe.html">Dojo documentation</a>. See also <a href="http://dojotoolkit.org/reference-guide/dojo/publish.html">dojo.publish</a>.</li>
+<li><code>init</code>: Once the component has been placed on the page, you can do any setup that&#8217;s required in this method. Like <code>prep</code>, <code>init</code> is a method on the default generated component.</li>
+<li><code>teardown</code>: Perform anything that needs to be done when a component instance is no longer needed. In particular, this is the place to clean up objects that might remain in memory when the component is destroyed. <code>tearDown</code> is called right before the component instance is destroyed, which in practice is usually when the user navigates away from the page containing the component. Note that any subscriptions or event connections that you create using <code>this.connect</code> or <code>this.subscribe</code> do not have to be torn down; they will be torn down automatically.</li>
+</ul>
+
+
+<p>All of these methods are defined in <code>toura_app/javascript/toura/components/_Component.js</code>, so you can look there for more details. You may also find it useful to explore the built-in components in <code>toura_app/javascript/toura/components/</code> for examples of how these lifecycle methods can be used.</p>
+
+<p>To take advantage of these methods, add the method to the object you pass to <code>mulberry.component</code> (see <code>prep</code> and <code>init</code> in the generated component for examples). Then add your custom code to the contents of the method.</p>
+
+<h3>Component Instance Methods</h3>
+
+<p>Components expose a number of useful instance methods. For example usage, see the built-in components in <code>toura_app/javascript/toura/components</code>.</p>
+
+<ul>
+<li><code>this.connect(nodeOrObject, event, handlerFn)</code>: Handle events inside a component. Works almost exactly like dojo.connect, except the context is always the instance of the component. The <code>handler</code> argument may be either a function or a string; if it is a string, it should refer to a method of the component.</li>
+<li><code>this.subscribe(topic, handler)</code>: Make the component subscribe to pub/sub topics. Works almost exactly like dojo.connect, except the context is always the instance of the component.</li>
+<li><code>this.addClass(className)</code>, <code>this.removeClass(className)</code>: Add or remove a class from the top level container of the component. A good place to use these methods might be in the <code>adjustMarkup</code> lifecycle method.</li>
+<li><code>this.show()</code>, <code>this.hide()</code>, <code>this.toggle()</code>: By default, these methods toggle a <code>hidden</code> class on the component’s root DOM node; this class by default will set <code>display: none</code></li>
+<li><code>this.enable()</code>, <code>this.disable()</code>: By default, these methods simply toggle a <code>disabled</code> class on the component’s root DOM node. You can attach styling to that class as needed; you can also connect to or override these methods to add your own functionality around enabling and disabling your components.</li>
+<li><code>this.populateElement(node, templateFn, data)</code>: Takes as arguments a DOM node, a function that receives a data object and returns a string, and some data. Populates the template with the specified data, and populates the node with that template. Note that <code>mulberry.haml</code> will take a Haml template and return an appropriate template function.</li>
+<li><code>this.populate(templateFn, data)</code>: A convenience method which simply calls <code>this.populateElement</code> on the component&#8217;s DOM node.</li>
+<li><code>this.adopt(constructorFn, properties, node)</code>: A safe way to add a child component to a parent component without risk of memory leaks. The first argument is the constructor function for the component (e.g. <code>toura.components.BodyText</code>); the second argument is an object that will be passed to the constructor on instantiation; the third (optional) argument is the node that the component should replace. This method returns the component instance. For more information on <code>this.adopt</code> and its companion, <code>this.orphan</code>, see <a href="http://higginsforpresident.net/2010/01/widgets-within-widgets/">this blog post</a>.</li>
+<li><code>this.orphan</code>: If you have instantiated a component via <code>this.adopt</code>, <code>this.orphan</code> is the way to destroy it when you are finished with it.</li>
+<li><code>this.inherited</code>: When overriding a method from a superclass, invoking <code>this.inherited(arguments)</code> within the subclass method will call the superclass method that is being overridden and pass the arguments through. <code>this.inherited</code> is similar to <code>super</code> in other object-oriented languages.</li>
+</ul>
+
+
+<p>You can use these instance methods as appropriate throughout your custom component definition.</p>
+
+<h3>Connecting to Events</h3>
+
+<p>While Mulberry provides access to jQuery API methods for convenience, <strong>you should not
+use jQuery for connecting to events unless you have a plan for managing the
+teardown of those events</strong>. Instead, you should use the
+component&#8217;s built-in <code>connect</code> method, which will automatically manage event
+teardown.</p>
+
+<pre><code>this.connect(this.refreshButton, 'click', '_onRefresh');
+</code></pre>
+
+<p>The above code registers an event listener on the DOM node referenced by
+<code>this.refreshButton</code>. When the node is clicked, the component&#8217;s <code>_onRefresh</code>
+method will be called. Note that you must define the <code>_onRefresh</code> method.</p>
+
+<h3>Providing Setter Methods</h3>
+
+<p>If you want other parts of your application to be able to change the data for
+your component, you need to define setter methods on your component. For
+example, if you wanted to allow other pieces of your app to change the username
+that the Twitter component is using, you could provide a method
+<code>_setUsernameAttr</code> in your component definition:</p>
+
+<pre><code>_setUsernameAttr : function(username) {
+  $.ajax(userTweets({ username : username, count : 20 }), {
+    dataType : 'jsonp',
+    success : $.proxy(this, '_onLoad')
+  })
+}
+</code></pre>
+
+<p>Then, any piece of your application that has a reference to an instance of the
+Twitter component can set the username for that instance:</p>
+
+<pre><code>myTwitterInstance.set('username', 'rmurphey');
+</code></pre>
+
+<h3>Announcing Interaction</h3>
+
+<p>When a user interacts with a component, you may want to announce that
+interaction so other pieces of the application can react.</p>
+
+<p>For announcements that are of interest to other components on a page, you
+should use custom event methods. For example, if you wanted to announce when a
+user clicked on the Twitter refresh button, you could do the following in your
+component&#8217;s <code>init</code> method:</p>
+
+<pre><code>this.connect(this.refreshButton, 'click', '_onRefresh');
+</code></pre>
+
+<p>Then, you would define <code>_onRefresh</code> and <code>onRefresh</code> methods for your component:</p>
+
+<pre><code>// ...
+
+_onRefresh : function() {
+  // ... code to refresh the component ...
+  this.refreshTimes = (this.refreshTimes || 0)++;
+  this.onRefresh(this.refreshTimes);
+},
+
+onRefresh : function(refreshTimes) {
+  // stub for connection
+},
+
+// ...
+</code></pre>
+
+<p>Now, you can define a capability that listens to the component&#8217;s <code>onRefresh</code>
+custom event method. For details, see the docs for Capabilities.</p>
+
+<p>For announcements that are interesting beyond the page you&#8217;re currently on &#8211;
+for instance, announcements that may alter the overall application behavior &#8211;
+you can publish your announcement:</p>
+
+<pre><code>_onRefresh : function() {
+  // ... code to refresh the component ...
+  this.refreshTimes = (this.refreshTimes || 0)++;
+  dojo.publish('/mycomponent/refresh', [ this.refreshTimes ]);
+}
+</code></pre>
+
+<p>Then, other pieces of your application can subscribe to these announcements:</p>
+
+<pre><code>dojo.subscribe('/mycomponent/refresh', function(refreshTimes) {
+  // ...
+});
+</code></pre>
+
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/Creating-Custom-Components.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/Creating-Custom-Components.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+
+<aside class="sidebar">
+  
+    <section class="mailing-list">
+  <h1>Stay in Touch</h1>
+
+  <form class="signup-form" method="POST"
+    action="http://github.us1.list-manage2.com/subscribe/post?u=55fc9d13f9b123630e693855b&amp;id=5eb483eb97">
+
+    <input id="email_1" type="text" name="EMAIL" value="" class="email" placeholder="Email Address">
+
+    <input type="submit" name="submit" value="Keep me posted">
+  </form>
+  <div class="extra-info">We won&rsquo;t sell your email, we promise.</div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/browser-based-development/">Browser-based development: Fewer builds, better tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/14/hosted-weinre/">Weinre: Sane, hosted debugging tools for your Mulberry apps</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
+      </li>
+    
+  </ul>
+
+  <ul class="subscription" data-subscription="rss">
+    <li class="rss"><a href="http://feeds.feedburner.com/TouraMulberry" rel="subscribe-rss" title="subscribe via RSS">Subscribe via RSS</a></li>
+    
+  </ul>
+</section>
+<section class="support">
+  <h1>Support</h1>
+  <ul>
+    <li>Visit the <a class="google-group" href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a></li>
+    <li>Chat with other developers in the #touramulberry channel on <a href="http://webchat.freenode.net/">Freenode</a></li>
+  </ul>
+</section>
+
+<section>
+  <h1>Mulberry on Twitter</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("touradev", 4, true);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/touradev" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @touradev</a>
+  
+</section>
+
+<section class="logos">
+  <p class="logos">
+    <a href="http://www.w3.org/html/logo/"> <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-multimedia-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage"> </a>
+  </p>
+  <p>
+    <a href="http://phonegap.com"><img src="/images/phonegap.png" height="75"> </a>
+  </p>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011 Toura.
+  |
+  <span><a href="/license/">License</a></span>
+  |
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script>
+$.domReady(function() {
+  $('section.support a').bind('click', function(e) {
+    e.preventDefault();
+    _gaq && _gaq.push([ '_trackEvent', 'Support Click', this.innerHTML ]);
+    window.location.href = this.href;
+  });
+});
+</script>
+
+</footer>
+  
+
+<script type="text/javascript">
+    
+      var disqus_shortname = 'touramulberry';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

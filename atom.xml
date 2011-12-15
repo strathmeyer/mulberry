@@ -4,7 +4,7 @@
   <title><![CDATA[Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2011-11-15T18:10:25-05:00</updated>
+  <updated>2011-12-15T12:54:12-05:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -12,6 +12,155 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Announcing Mulberry 0.2: More Features for Easy Customization]]></title>
+    <link href="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/"/>
+    <updated>2011-11-29T09:21:00-05:00</updated>
+    <id>http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2</id>
+    <content type="html"><![CDATA[<p><a href="http://mulberry.toura.com/download/">Mulberry 0.2</a> is out today, with several new features to make it
+even easier to customize your apps:</p>
+
+<ul>
+<li>In Mulberry 0.1, you had to be very verbose when overriding the default
+styles. As of 0.2, when an app is scaffolded, the default theme is copied
+into the app, where it can be modified directly. To pull any upstream changes
+to the built-in themes, we added <code>mulberry update_themes</code> to the CLI.</li>
+<li>A new <code>toura.app.Phonegap.registerAPI</code> method lets you create your own
+wrappers that make it easier to do development in a browser. <a href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/">Read more about browser-based development with Mulberry.</a></li>
+<li>We beefed up <code>mulberry create component</code>; it now automatically
+creates a stub .scss file for the component, and adds an @import statement to
+your theme&#8217;s <code>base.scss</code> file.</li>
+<li>Now when you add pages to your sitemap, you can just run <code>mulberry scaffold</code>
+inside your Mulberry project to create them all at once, rather than having
+to remember which ones to create yourself. <a href="http://mulberry.toura.com/docs/Command-Line-Interface.html">Read about all the command line options.</a></li>
+<li>It&#8217;s often necessary to repopulate a component or a piece of a component when
+it gets new data or its state changes. Mulberry 0.2 introduces the <code>populate</code>
+and <code>populateElement</code> methods on components to make this easier &#8211; just pass
+it a template and the data for the template, and it handles the rest. <a href="http://mulberry.toura.com/docs/Creating-Custom-Components.html">Read
+more about custom components.</a></li>
+<li>Lots of people were asking us about how to create custom routes; it was
+possible before, but it&#8217;s easier in Mulberry 0.2: we added mulberry.route and
+mulberry.routes for defining custom routes. <a href="http://mulberry.toura.com/docs/Javascript-API.html">Read more about defining routes and other aspects of the JavaScript API.</a></li>
+</ul>
+
+
+<p>We also landed a few other features, several bug fixes, some improvements to
+the command line, and lots of docs. Read the full release notes
+<a href="http://mulberry.toura.com/docs/0.2-Release-Notes.html">here</a>.</p>
+
+<p>As always, you can find us on Twitter <a href="http://twitter.com/touradev">@touradev</a>,
+visit us in the #touramulberry channel on irc.freenode.net, or drop us a note
+at <a href="mailto:mulberry@toura.com">mulberry@toura.com</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Browser-based development: Fewer builds, better tools]]></title>
+    <link href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/"/>
+    <updated>2011-11-16T10:13:00-05:00</updated>
+    <id>http://mulberry.toura.com/blog/2011/11/16/browser-based-development</id>
+    <content type="html"><![CDATA[<p>I&#8217;m in London after attending the <a href="http://fullfrontal.org">Full Frontal JavaScript Conference</a>,
+put on by the fantastic Remy and Julieanne
+Sharp in lovely, foggy, chilly Brighton. It was a great chance to meet a ton of
+developers from whom I&#8217;m usually separated by an ocean, and of course I spent
+a lot of time talking to those developers about Mulberry.</p>
+
+<p>One of the things that seemed to especially get their attention was how
+Mulberry lets you do day-to-day development in a browser, avoiding
+time-consuming compilations most of the time.  Setting up browser-based
+development on a PhoneGap project can be tricky, and development on device or
+in a simulator harkens back to the bad old days of IE6.</p>
+
+<p>If you want to develop content-rich native apps that include a non-trivial
+amount of JavaScript, you&#8217;re going to want the comforts of a modern browser.
+We&#8217;ve solved this in Mulberry in a few different ways.</p>
+
+<h2>Wrappers for PhoneGap APIs</h2>
+
+<p>PhoneGap and PhoneGap plugin APIs don&#8217;t work when you&#8217;re running your code in
+a desktop browser &#8211; indeed, if you try to call them, you&#8217;ll usually get an
+error that blocks execution of any code that comes next, which can make
+debugging a serious pain.</p>
+
+<p>Mulberry solves this by providing an interface for creating wrappers for
+PhoneGap APIs and plugins; it also has a few built-in wrappers. For example,
+here&#8217;s a wrapper for the notification API:</p>
+
+<pre><code>toura.app.PhoneGap.notification = function(pg, device) {
+  return {
+    alert : function(msg) {
+      if (pg) {
+        navigator.notification.alert(msg);
+      } else {
+        alert(msg);
+      }
+    }
+  }
+};
+</code></pre>
+
+<p>We set up the built-in wrappers using <code>toura.app.PhoneGap.registerAPI(apiName,
+module)</code>, which you can use to create your own wrappers, too. Each wrapper is
+simply a function that gets two arguments: a boolean indicating whether
+PhoneGap is present, and a device object with information about the device
+that&#8217;s being targeted. Wrappers return an object with methods that become
+available at <code>toura.app.Phonegap[apiName]</code>.</p>
+
+<p>In the example of the notification API above, once the API is registered we can
+call the function <code>toura.app.PhoneGap.notification.alert</code> from anywhere in our
+code, and it will &#8220;just work&#8221; whether we&#8217;re developing in a browser or on
+device. <a href="https://github.com/Toura/mulberry/blob/master/toura_app/javascript/toura/app/Phonegap/browser.js">Mulberry&#8217;s wrapper around the ChildBrowser plugin</a>
+is a more complex example &#8211; it simulates ChildBrowser&#8217;s behavior in a desktop
+browser, and handles differences in the Android and iOS implementations behind
+the scenes, so opening a new URL in your app requires the exact same code
+regardless of the environment.</p>
+
+<h2>Rapid Switching Between Device-Specific Code Paths</h2>
+
+<p>Even though most of your JavaScript can be the same from one device to the
+next, sometimes you&#8217;ll need to branch your code to deal with a quirk of
+a particular OS. Working on the different code paths can be a challenge when
+you&#8217;re developing in the browser, because you need a way to tell your code
+which environment you want to be simulating.</p>
+
+<p>Mulberry comes with a built-in server, and the server is set up so that
+switching between configurations is as simple as changing the URL. You can work
+on the iPad version of your app at http://localhost:3001/ios/tablet/, and then
+switch to working on the Android phone version of your app at
+http://localhost:3001/android/phone/. All of your code will automatically get
+access to information about the &#8220;device&#8221; you&#8217;re working on by calling
+<code>toura.app.Config.get('device')</code>, and of course any changes you make to your
+code or content will be visible as soon as you reload the page.</p>
+
+<h2>Remote Debugging</h2>
+
+<p>While browser-based development is great, nothing compares to testing your app
+on a device, but when you do, you&#8217;re suddenly in a world where <code>console.log</code>
+and <code>alert</code> feel like your only friends.</p>
+
+<p>Every development build you make with Mulberry has a button in the lower
+right-hand corner of the screen marked &#8220;weinre&#8221;. If you haven&#8217;t seen
+<a href="http://phonegap.github.com/weinre/">weinre</a> before, prepare for your life to
+be changed, because it lets you debug an app that&#8217;s running on your device from
+the comfort of your computer, using the Webkit developer tools you know and
+love.</p>
+
+<p>As of this week, Toura is hosting its own version of weinre for Mulberry
+developers, and it&#8217;s connected directly to the weinre button in Mulberry apps.
+<a href="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/">Read more about it here</a>.</p>
+
+<h2>More to Come</h2>
+
+<p>The Toura Dev team doesn&#8217;t just work on Mulberry &#8211; we&#8217;ve also shipped more
+than 100 apps that use the underlying Mulberry technology, which means we&#8217;re
+always trying to make our <em>own</em> experience of the toolkit a pleasant one.
+Pretty much every developer-friendly feature we&#8217;ve added so far was added
+because we&#8217;re developers, too, and we hate when our tools get in our way. That
+said, we know tools can always be better &#8211; if there&#8217;s something we could do to
+make your life easier when developing mobile apps, we hope you&#8217;ll let us know.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Weinre: Sane, hosted debugging tools for your Mulberry apps]]></title>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Toura Mulberry</title>
+  <title>Styles and Theming - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="    From zero to app in minutesMulberry takes the promise of PhoneGap — mobile apps built with webtechnologies — and smooths over many of the “gotc...">
+  <meta name="description" content="        Styles and Theming          Mulberry uses Sass for CSS, which gives us a lot of tools for keeping our code DRY, but since we use the scss s...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/Styles-and-Theming.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -86,65 +86,115 @@
     <div id="content">
       <article role="article">
   
-  <h1>From zero to app in minutes</h1>
+  <header>
+    <h1 class="entry-title">Styles and Theming</h1>
+    
+  </header>
+  
 
-<p>Mulberry takes the promise of PhoneGap — mobile apps built with web
-technologies — and smooths over many of the “gotchas” that front-end developers
-confront as they venture into client-side application development in a mobile
-environment. When you use Mulberry to help you build mobile apps with web
-technologies, here are just a few of the things you get out of the box:</p>
+  <p>Mulberry uses <a href="http://sass-lang.com/">Sass</a> for CSS, which gives us a lot of tools for keeping our code DRY, but since we use the <strong>scss</strong> syntax, you can write all your code in plain CSS if that’s what you’re more comfortable with.</p>
+
+<p>To begin styling your app, you need to define its theme. When you scaffold an app, by default it will get the &#8211; you guessed it &#8211; <strong>default</strong> theme. This is an ok starting point but not that exciting, so you’ll want to either tweak it by overriding some of the existing styles, or start from scratch and create a new theme. Either way, you do all your work in the themes folder.</p>
+
+<h3>Tweaking the existing default theme</h3>
+
+<p>When you scaffold an app it gives you a complete copy of the default theme in <code>themes/default</code>. If you don&#8217;t want something drastically different, this is a good starting point that you can tweak as needed.  The starting point is <code>base.scss</code>. This is where you add your styles or import other files. The built in themes may change or be updated with bugfixes in the future, but since you&#8217;re working on your own copy, you won&#8217;t get them immediately. To get the latest themes, type</p>
+
+<pre><code>mulberry update_themes
+</code></pre>
+
+<p>And it will overwrite any changes you have locally with the latest version. If you&#8217;re using version control you should be able to merge the updates into your code without a problem.</p>
+
+<h3>Creating a new theme</h3>
+
+<p>While the default theme is an OK starting point, you&#8217;ll probably want to create your own theme. To create a new theme from scratch, simply:</p>
 
 <ul>
-<li>Ready-to-deploy apps to Android, iPhone, and iPad</li>
-<li>Rapid in-browser iteration, eliminating the need for constant, time-consuming
-device builds</li>
-<li>Over-the-air data updates that persist for offline use, keeping your app’s
-content current without requiring resubmission</li>
-<li>Integration of common plugins and components</li>
-<li>A complete framework for creating dynamic JavaScript applications</li>
+<li>create a new directory in themes</li>
+<li>create a <code>base.scss</code> file in that directory</li>
+<li>change the theme name in <code>_config.yml</code> to your theme’s directory</li>
+<li>add your styles or import directives to <code>base.scss</code></li>
 </ul>
 
 
-<p>Mulberry provides all of this and more, giving you the building blocks you need
-to create a content-rich application that will work on iOS and Android, whether
-your user is online or off. With Mulberry’s clear patterns and simple APIs, you
-can develop a robust “single-page” application that you can immediately deploy
-to the iOS and Android app stores. When you’re ready to build your next app,
-your components, templates, and themes will plug easily into any application
-that uses the Mulberry framework.</p>
+<p>You can probably figure out how to style what you want by looking through the Web Inspector, but there are a few things you might want to know about how Mulberry markup that will be helpful.</p>
 
-<div id="tour">
-  <h3>Take a tour</h3>
-  <iframe src="http://player.vimeo.com/video/29127698?title=0&amp;byline=0&amp;portrait=0&amp;color=c2d78b" width="585" height="329" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
-</div>
+<h3>Pages, Screens, Regions and Components</h3>
+
+<p>These are the building blocks of a Mulberry app. You’ve already seen references to them in the template definitions, but here’s what it means for styling. Mulberry takes a template definition and constructs consistent markup with helpful hooks for styling whichever part of your app you need to. For instance the page template definition classname gets added to the page’s root element, so if you want to apply a style to pages with that template, it’s no problem:</p>
+
+<pre><code>.page.my-template {
+  color: green;
+}
+</code></pre>
+
+<p>Pages contain screens, which also contain their name as a class:</p>
+
+<pre><code>.page.my-template {
+  color: MidnightBlue;
+
+  .screen.index {
+    background-color: LightGoldenrodYellow;
+  }
+}
+</code></pre>
+
+<p>And lastly there are regions (columns and rows), which can be selected either based on the className you assign to them in the page template (optional in the template definition) or based on their position in the template.</p>
+
+<pre><code>.page.my-template {
+  color: green;
+
+  .screen.index {
+    background-color: orange;
+
+    .row.header {
+      height: 60px;
+    }
+
+    &gt; .row.nth-child(2) {
+      &gt; .column.first-child {
+        width: 200px;
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3>Components</h3>
+
+<p>You probably don’t want to put too many styles for your components within the page template styles, because you want the component styles to be reused no matter what page it’s placed in. So component styles are best handled separately, although the conventions are similar. Say we want to style the ImageGallery component.</p>
+
+<pre><code>.component.image-gallery {
+  background-color: LemonChiffon;
+}
+</code></pre>
+
+<h3>Hiding and Showing Components and Elements</h3>
+
+<p>One of the most common UI style actions is simply hiding and showing something depending on user input. By default every component and ever element within a component has a <code>hidden</code> class which specifies how you want that element to be hidden when the <code>_Component::hide</code> method is called. By default it’s simply <code>display:none</code>. But by overriding the <code>hidden</code> class you can use CSS transforms to give things a little more flair.</p>
+
+<pre><code>.component.my-component {
+  .something-cool {
+    opacity: 1;
+    -webkit-transition: opacity .3s ease-in;
+
+    &amp;.hidden {
+      opacity: 0;
+      display: block !important;
+    }
+  }
+}
+</code></pre>
+
+<p>Now, whenever the something-cool element gets hidden, it will fade out nicely. When it gets unhidden, it fades in nicely. The even nicer thing here is that we have added this without touching any application code. We can can keep presentation logic out of Javascript and in CSS.</p>
+
+<h2>Other Topics</h2>
+
+<ul>
+<li><a href="/docs/Style-Application-Sequence.html">Style Application Sequence</a></li>
+</ul>
 
 
-<h3>A pluggable framework for building mobile apps</h3>
-
-<p>Mulberry is a powerful, pluggable framework for creating mobile applications
-using familiar HTML5 technologies. Use Mulberry’s <strong>built-in components</strong> to
-create, customize, and compile content-rich applications, or use Mulberry’s
-simple APIs to build components, interactions, layouts, and themes that you can
-<strong>share across your applications</strong>.</p>
-
-<h3>Powerful out of the box</h3>
-
-<p>Mulberry comes with built-in components, page layouts, and a simple theme that
-will get you up and running in a hurry, which means you can <strong><a href="/getting-started/">create your
-first Mulberry app in the time it takes to create and organize your content</a></strong>. When you’re ready to branch out, you can create
-your own components using Haml and Mulberry’s Javascript APIs. You can also
-take advantage of SASS to customize the default theme or create your own style
-from scratch.</p>
-
-<h3>An emphasis on smart reuse</h3>
-
-<p>The Mulberry framework was designed from the start with reuse in mind, with a
-focus on loose coupling and separation of concerns. Mulberry provides <strong>a solid
-base for custom development</strong>, with an emphasis on smart reuse within and across
-applications. It gives you the infrastructure you need — a router, models,
-views, offline storage, over-the-air data updates, and lots more — plus simple
-APIs for extending the framework with your own functionality. With Mulberry,
-creating and customizing apps becomes a <strong>reliably repeatable process</strong>.</p>
 
   
     <footer>
@@ -152,7 +202,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/index.html" data-via="touradev" data-counturl="http://mulberry.toura.com/index.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/Styles-and-Theming.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/Styles-and-Theming.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -164,8 +214,6 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -248,6 +296,7 @@ creating and customizing apps becomes a <strong>reliably repeatable process</str
 
   
 </aside>
+
 
 
     </div>

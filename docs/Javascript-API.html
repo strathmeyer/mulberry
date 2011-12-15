@@ -1,0 +1,613 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Javascript API - Toura Mulberry</title>
+  <meta name="author" content="Toura Dev">
+
+  
+  <meta name="description" content="        Javascript API          The Mulberry JavaScript framework provides a number of useful methods that youcan use when creating a custom applic...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mulberry.toura.com/docs/Javascript-API.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css?_c=2011-12-15T12:54:12-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/TouraMulberry" rel="alternate" title="Toura Mulberry" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25683438-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      if (document.location.host.match('localhost')) { return; }
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+
+<body   >
+  <header role="banner">
+    <hgroup class=header>
+  <a href="http://github.com/Toura/mulberry" class="fork-me"><img src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+  <h1 class=logo><a href="http://mulberry.toura.com">Toura Mulberry</a></h1>
+</hgroup>
+
+
+  </header>
+
+  <nav role="navigation">
+    <nav class="main">
+  <div>
+    <ul>
+      <li><a href="/download/">Download</a></li>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/docs/">Docs</a></li>
+      <li><a href="/support/">Support</a></li>
+      <li><a href="/upcoming_events/">Upcoming Events</a></li>
+    </ul>
+
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:mulberry.toura.com" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+
+  </div>
+</nav>
+
+
+  </nav>
+
+  <div id="main">
+    <div id="content">
+      <article role="article">
+  
+  <header>
+    <h1 class="entry-title">Javascript API</h1>
+    
+  </header>
+  
+
+  <p>The Mulberry JavaScript framework provides a number of useful methods that you
+can use when creating a custom application using the Mulberry toolkit.</p>
+
+<p>Note that the <code>mulberry</code> “namespace” is just an alias to the <code>toura</code> namespace;
+all <code>mulberry.*</code> methods can be accessed as <code>toura.*</code> as well, and they are
+generally defined in the framework code as <code>toura.*</code>.</p>
+
+<h2>Building Blocks</h2>
+
+<h3>mulberry.component(name, prototype)</h3>
+
+<p><em>Defined in: <code>toura_app/javascript/toura/components/_Component.js</code>.</em></p>
+
+<p>Creates and returns a constructor for a
+component with the provided name using the provided prototye. The created
+component can be used as part of a template definition as
+<code>custom.ComponentName</code> or programmatically as
+<code>client.components.ComponentName</code>. See <a href="/docs/Creating-Custom-Components.html">Creating Custom Components</a> for more
+details.</p>
+
+<p>Here is an example of a component defined with mulberry.component:</p>
+
+<pre><code>mulberry.component('WidgetA', {
+  componentTemplate : dojo.cache('client.components', 'WidgetA/WidgetA.haml'),
+  prep : function() {
+    var images = this.baseObj.images;
+  },
+
+  init : function() {
+    this.connect(this.domNode, 'click', '_wiggle');
+  },
+
+  _wiggle : function(e) {
+    e.preventDefault();
+
+    // ... code to do the wiggling ...
+
+    this.onWiggle();
+  },
+
+  onWiggle : function() {
+    // method for capability connection
+  }
+});
+</code></pre>
+
+<h3>mulberry.capability(name, prototype)</h3>
+
+<p><em>Defined in: <code>toura_app/javascript/toura/capabilities/_Capability.js</code></em></p>
+
+<p>Creates a capability, which can be added to a template definition to describe
+the interaction between components on a page. A capability created using
+<code>mulberry.capability</code> can be referred to in a template definition as
+<code>CapabilityName</code>. See <a href="/docs/Capabilities.html">Capabilities</a> for more details.</p>
+
+<p>Here is an example of a capability that describes how WidgetB should behave
+when WidgetA&#8217;s <code>onWiggle</code> method is called:</p>
+
+<pre><code>mulberry.capability('WidgetA_WidgetB', {
+  requirements : {
+    widgetA : 'custom.WidgetA',
+    widgetB : 'custom.WidgetB'
+  },
+
+  connects : [
+    [ 'widgetA', 'onWiggle', 'handleWiggle' ]
+  ],
+
+  handleWiggle : function() {
+    widgetB.jiggle();
+  }
+});
+</code></pre>
+
+<h3>mulberry.datasource</h3>
+
+<p><em>Defined in: <code>toura_app/javascript/toura/Utilities.js</code></em></p>
+
+<p>Creats a datasource using the provided name and prototype. The datasource can
+be instantiated for application-wide use at application start by subscribing to
+the <code>/app/started</code> topic, or it can be instantiated as needed in individual
+capabilities or components. In either case, the datasource is availalbe at
+<code>client.data.DatsourceName</code>.</p>
+
+<pre><code>mulberry.datasource('Google', {
+  search : function(term) {
+    return mulberry.jsonp('http://www.google.com?q=' + term + '&amp;format=json');
+  }
+});
+
+var s = dojo.subscribe('/app/started', function() {
+  client.data.Google = new client.data.Google();
+  dojo.unsubscribe(s);
+});
+</code></pre>
+
+<h2>Routing</h2>
+
+<p>Defined in <code>toura_app/javascript/toura/app/Router.js</code>.</p>
+
+<h3>mulberry.route(route, handler, isDefault)</h3>
+
+<p>Defines a custom route for the application. The route argument can be a string
+or a regular expression; for examples, see
+<code>toura_app/javascript/toura/app/Routes.js</code>. The handler argument is a
+function to be used to handle the route. It receives two arguments: a params
+object containing parameters contained in the URL, and an augmented route
+object with information about the route being run. The isDefault argument is
+optional; if true, the route will be used as the default (home) route for the
+application.</p>
+
+<h3>mulberry.routes(routesArray)</h3>
+
+<p>Defines a set of custom routes for the application using an array of routes
+objects. Each object must have a <code>route</code> and a <code>handler</code> property; each
+object may optionally include an <code>isDefault</code> property. These properties work
+just like the arguments to <code>mulberry.route</code>.</p>
+
+<h3>mulberry.app.Router.go(hash)</h3>
+
+<p>Directs the application to go to the specified hash.</p>
+
+<h3>mulberry.app.Router.home()</h3>
+
+<p>Directs the application to go to the home/default route.</p>
+
+<h3>mulberry.app.Router.back()</h3>
+
+<p>Directs the application to go back one page.</p>
+
+<h2>Page Creation</h2>
+
+<p><em>Defined in <code>toura_app/javascript/toura/app/PageFactory</code></em></p>
+
+<h3>mulberry.app.PageFactory.createPage(pageData)</h3>
+
+<p>Directs the application to construct a page based on the provided <code>pageData</code>
+object. The object should include a <code>pageController</code> property to indicate which
+pre-defined template to use; if one is not provided, the Default template will
+be used. The entire <code>pageData</code> object will be available to all components on
+the page via their <code>baseObj</code> property. For usage examples, see
+<code>toura_app/javascript/toura/app/Routes.js</code>.</p>
+
+<h2>User Interface</h2>
+
+<p><em>Defined in <code>toura_app/javascript/toura/app/UI.js</code></em></p>
+
+<h3>mulberry.app.UI.showPage(page)</h3>
+
+<p>Places the provided page object in the user interface, and transitions from the
+old page to the new page.</p>
+
+<h3>mulberry.app.UI.viewport</h3>
+
+<p>An object containing information about the dimensions of the viewport.</p>
+
+<h3>mulberry.app.UI.currentPage</h3>
+
+<p>An object containing information about the current page.</p>
+
+<h2>PhoneGap/Device</h2>
+
+<h3>mulberry.app.PhoneGap.registerAPI(name, moduleFunction)</h3>
+
+<p><em>Defined in <code>toura_app/javascript/toura/app/PhoneGap.js</code></em></p>
+
+<p>Creates an entry in the <code>mulberry.app.PhoneGap</code> namespace with the provided
+name, exposing the module that is returned when the moduleFunction is executed.
+The moduleFunction receives two arguments: a boolean indicating whether
+PhoneGap is present in the current environment, and an object containing
+information about the current device.</p>
+
+<p>Here is an example:</p>
+
+<pre><code>mulberry.app.PhoneGap.registerAPI('custom', function(phonegap, device) {
+  return {
+    logDeviceType : function() {
+      console.log(device.type);
+      if (phonegap) {
+        console.log('Phonegap is available, too!');
+      }
+    }
+  }
+});
+
+mulberry.app.PhoneGap.custom.logDeviceType();
+</code></pre>
+
+<h3>mulberry.app.PhoneGap.network</h3>
+
+<p><em>Defined in <code>toura_app/javascript/toura/app/PhoneGap/network.js</code></em></p>
+
+<ul>
+<li><code>isReachable()</code> Returns a promise that will resolve true if a network is
+available; the promise resolves false otherwise.</li>
+</ul>
+
+
+<h3>mulberry.app.PhoneGap.notification</h3>
+
+<p><em>Defined in <code>toura_app/javascript/toura/app/PhoneGap/notification.js</code></em></p>
+
+<ul>
+<li><code>alert()</code> Displays an alert notification.</li>
+</ul>
+
+
+<h3>mulberry.app.PhoneGap.browser</h3>
+
+<p><em>Defined in <code>toura_app/javascript/toura/app/PhoneGap/browser.js</code></em></p>
+
+<ul>
+<li><code>url(url)</code> Opens a ChildBrowser at the specified URL.</li>
+<li><code>getBrowser()</code> Returns the ChildBrowser instance.</li>
+</ul>
+
+
+<h2>Config</h2>
+
+<p><em>Defined in <code>toura_app/javascript/toura/app/Config.js</code></em></p>
+
+<h3>mulberry.app.Config.get(key)</h3>
+
+<p>Returns the value of the specified configuration key. Information about an app,
+for example, is available via <code>mulberry.app.Config.get('app');</code></p>
+
+<h3>mulberry.app.Config.set(key, value)</h3>
+
+<p>Sets the value of the specified configuration key to the provided value.</p>
+
+<h2>Device Storage</h2>
+
+<h3>mulberry.app.DeviceStorage.get(key)</h3>
+
+<p>Gets the value of the specified key from device storage.</p>
+
+<h3>mulberry.app.DeviceStorage.set(key, value)</h3>
+
+<p>Stores the value of the specified key in device storage.</p>
+
+<h3>mulberry.app.DeviceStorage.drop()</h3>
+
+<p>Clears <em>all</em> device storage, including SQLite and local storage.</p>
+
+<h2>Utilities</h2>
+
+<p><em>Defined in <code>toura_app/javascript/toura/Utilities.js</code>.</em></p>
+
+<h3>mulberry.tmpl(string, dataObject)</h3>
+
+<p>Returns a string based on substituting placeholders in the provided string with
+values from the provided dataObject. This is an alias for
+<a href="http://dojotoolkit.org/api/1.6/dojo/string/substitute"><code>dojo.string.substitute</code></a>.
+For more details, see <a href="http://www.enterprisedojo.com/2011/10/14/coast-to-coast-with-dojo-string-substitute/">this article from Daniel Eric Lee</a>.</p>
+
+<h3>mulberry.haml(hamlTemplateString)</h3>
+
+<p>Given a <a href="https://github.com/creationix/haml-js">Haml template</a>, returns a
+function that can be passed a data object. The returned function will use the
+data object to populate the template, and return a string.</p>
+
+<pre><code>var templateFn = mulberry.haml(".foo= bar");
+
+templateFn({ bar : 'baz' }); // &lt;div class="foo"&gt;baz&lt;/div&gt;
+</code></pre>
+
+<h3>mulberry.jsonp(url)</h3>
+
+<p>Returns a promise that will resolve with the JSON returned from the provided URL.</p>
+
+<pre><code>var response = mulberry.jsonp('http://foo.com');
+
+response.then(function(data) {
+  console.log(data);
+});
+</code></pre>
+
+<h2>Useful pub/sub topics</h2>
+
+<p>The JavaScript framework publishes several useful &#8220;topics&#8221; at key points in the
+application&#8217;s lifecycle. You can add a subscription to any of these topics via
+<code>dojo.subscribe</code> in order to trigger certain actions at certain times:</p>
+
+<pre><code>dojo.subscribe('/app/started', function() {
+  // things to do when the app is started
+});
+</code></pre>
+
+<p>Note that the <code>dojo.subscribe</code> method returns a &#8220;handle&#8221; that can be passed to
+<code>dojo.unsubscribe</code> if the subscription is no longer needed.</p>
+
+<h3>/app/deviceready</h3>
+
+<p>Subscriptions to this topic will run as soon as the device is ready. In a
+PhoneGap environment, this topic is triggered when the <code>deviceready</code> event
+fires; in a browser environment, this topic is triggered when the <code>body</code>
+element&#8217;s <code>onload</code> event fires. <em>This is intended for internal use only, but it
+may prove useful to you.</em> Triggered in <code>toura_app/javascript/toura/base.js</code>.</p>
+
+<h3>/app/ready</h3>
+
+<p>Subscriptions to this topic will run as soon as the data for the application
+has been bootstrapped, but before the DOM has been populated.  <em>This topic is
+also intended for internal use only, but it may prove useful to you.</em>
+Triggered in <code>toura_app/javascript/toura/base.js</code>.</p>
+
+<h3>/app/started</h3>
+
+<p>Subscriptions to this topic will run once the initial view of the application
+has been displayed. Triggered in <code>toura_app/javascript/toura/base.js</code>.</p>
+
+<h3>/router/handleHash/after</h3>
+
+<p>Subscriptions to this topic will run once a change in the URL&#8217;s hash has been
+handled; note that the new content may not yet be displayed at this time.
+Triggered in <code>toura_app/javascript/toura/app/Router.js</code>.</p>
+
+<h3>/node/view</h3>
+
+<p>Subscriptions to this topic will run when any page specified via markdown is
+viewed; subscribers to this topic will receive an argument containing the URL
+of the page that was viewed. Triggered in
+<code>toura_app/javascript/toura/app/Routes.js</code>.</p>
+
+<h3>/window/resize</h3>
+
+<p>Subscriptions to this topic will run whenever the window is resized. Triggered
+in <code>toura_app/javascript/toura/app/UI.js</code>.</p>
+
+<h3>/button/menu</h3>
+
+<p>Subscriptions to this topic will run whenever a device&#8217;s menu button is
+pressed. Triggered in <code>toura_app/javascript/toura/app/UI.js</code>.</p>
+
+<h3>/page/transition/end</h3>
+
+<p>Subscriptions to this topic will run when the application is finished
+transitioning to a new page. Triggered in
+<code>toura_app/javascript/toura/containers/Pages.js</code></p>
+
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/Javascript-API.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/Javascript-API.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+
+<aside class="sidebar">
+  
+    <section class="mailing-list">
+  <h1>Stay in Touch</h1>
+
+  <form class="signup-form" method="POST"
+    action="http://github.us1.list-manage2.com/subscribe/post?u=55fc9d13f9b123630e693855b&amp;id=5eb483eb97">
+
+    <input id="email_1" type="text" name="EMAIL" value="" class="email" placeholder="Email Address">
+
+    <input type="submit" name="submit" value="Keep me posted">
+  </form>
+  <div class="extra-info">We won&rsquo;t sell your email, we promise.</div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/browser-based-development/">Browser-based development: Fewer builds, better tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/14/hosted-weinre/">Weinre: Sane, hosted debugging tools for your Mulberry apps</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
+      </li>
+    
+  </ul>
+
+  <ul class="subscription" data-subscription="rss">
+    <li class="rss"><a href="http://feeds.feedburner.com/TouraMulberry" rel="subscribe-rss" title="subscribe via RSS">Subscribe via RSS</a></li>
+    
+  </ul>
+</section>
+<section class="support">
+  <h1>Support</h1>
+  <ul>
+    <li>Visit the <a class="google-group" href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a></li>
+    <li>Chat with other developers in the #touramulberry channel on <a href="http://webchat.freenode.net/">Freenode</a></li>
+  </ul>
+</section>
+
+<section>
+  <h1>Mulberry on Twitter</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("touradev", 4, true);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/touradev" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @touradev</a>
+  
+</section>
+
+<section class="logos">
+  <p class="logos">
+    <a href="http://www.w3.org/html/logo/"> <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-multimedia-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage"> </a>
+  </p>
+  <p>
+    <a href="http://phonegap.com"><img src="/images/phonegap.png" height="75"> </a>
+  </p>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011 Toura.
+  |
+  <span><a href="/license/">License</a></span>
+  |
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script>
+$.domReady(function() {
+  $('section.support a').bind('click', function(e) {
+    e.preventDefault();
+    _gaq && _gaq.push([ '_trackEvent', 'Support Click', this.innerHTML ]);
+    window.location.href = this.href;
+  });
+});
+</script>
+
+</footer>
+  
+
+<script type="text/javascript">
+    
+      var disqus_shortname = 'touramulberry';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
