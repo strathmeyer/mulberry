@@ -4,7 +4,7 @@
   <title><![CDATA[Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2012-01-12T17:11:41-05:00</updated>
+  <updated>2012-01-12T18:36:50-05:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -32,7 +32,7 @@ It was already possible to create new routes, but now you can run <code>mulberry
 </ul>
 
 
-<p>In addition to all the new stuff, we&#8217;ve got a bug of bugfixes, improved development server stability, and more complete test coverage. For the full story, <a href="http://mulberry.toura.com/docs/0.3-release-notes.html">read the full release notes</a>.</p>
+<p>In addition to all the new stuff, we&#8217;ve got a bunch of bugfixes, improved development server stability, and more complete test coverage. For the full story, <a href="http://mulberry.toura.com/docs/0.3-release-notes.html">read the full release notes</a>.</p>
 
 <p>As always, follow us at <a href="http://twitter.com/touradev">@touradev</a> to keep up to date on the latest developments, or get help in the <a href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a>.</p>
 ]]></content>
