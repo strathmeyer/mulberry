@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/docs/upgrading.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-12T16:41:15-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T16:57:04-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -111,6 +111,13 @@
 <h2>From 0.2 to 0.3:</h2>
 
 <ul>
+<li><code>templates</code> are now called <code>page_defs</code>
+
+<ul>
+<li>Rename the <code>templates</code> directory to <code>page_defs</code></li>
+<li>In all your page markdown files, change <code>template</code> to <code>page_def</code></li>
+</ul>
+</li>
 <li>Theming changes: To get the changes, run <code>mulberry update_themes</code> and resolve any conflicts manually
 
 <ul>

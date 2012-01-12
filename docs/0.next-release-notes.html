@@ -9,7 +9,7 @@
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        0.next Release Notes          Theming changes: To get the changes, run mulberry update_themes and resolve any conflicts manuallyIcons have ...">
+  <meta name="description" content="        0.next Release Notes                                        Tweet                              Stay in Touch              We won&rsquo;t se...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/docs/0.next-release-notes.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-12T16:41:15-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T16:57:04-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -92,37 +92,7 @@
   </header>
   
 
-  <ul>
-<li>Theming changes: To get the changes, run <code>mulberry update_themes</code> and resolve any conflicts manually
-
-<ul>
-<li>Icons have been moved to <code>themes/default/resources/icons</code>.</li>
-<li>All colors have been extracted to <code>themes/default/_settings.scss</code></li>
-<li>Instead of defining layout in page_def yaml files, use mixins in page_def scss files
-
-<ul>
-<li>Any references to the following sass mixins should be changed:
-
-<ul>
-<li><code>column-container</code> -> <code>flex-column-container</code></li>
-<li><code>row-container</code> -> <code>flex-row-container</code></li>
-</ul>
-</li>
-<li>For any custom templates you&#8217;ve created:
-
-<ul>
-<li>create an scss file in <code>themes/&lt;my theme&gt;/pagedefs</code></li>
-<li>remove all <code>type:&lt;row, column&gt;</code> parameters from the yaml. Apply <code>flex-row-container</code> and <code>flex-column-container</code> to their parent region in scss instead</li>
-<li>remove all <code>layout: size-fixed</code> from the yaml. Apply <code>fixed-flex-region</code> to the element in the scss instead</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>_ImageScroller and VideoPlayer markup and css changed</li>
-</ul>
-</li>
-</ul>
-
+  
 
 
   
