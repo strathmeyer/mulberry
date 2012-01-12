@@ -9,7 +9,7 @@
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        Components          Pages in Mulberry are displayed using a combination of components as specified bythe page&#8217;s template. Each compon...">
+  <meta name="description" content="        Components          Pages in Mulberry are displayed using a combination of components as specified bythe page&#8217;s page definition. Each...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/docs/Components.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-10T17:06:40-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T16:41:15-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -93,7 +93,7 @@
   
 
   <p>Pages in Mulberry are displayed using a combination of components as specified by
-the page&#8217;s template. Each component receives information about the page that is
+the page&#8217;s page definition. Each component receives information about the page that is
 being displayed, as well as information about where on the page the component
 will be displayed.</p>
 
@@ -116,7 +116,7 @@ occurs.</li>
 <h2>Built-In Components</h2>
 
 <p>Mulberry comes with several built-in components that you can use in your own
-templates; they are located at <code>toura_app/javascript/toura/components/</code>. The
+page definitions; they are located at <code>toura_app/javascript/toura/components/</code>. The
 built-in components are described below, including the asset type(s) that the
 component works with. <em>Asset types</em> appear in italics. For more about the
 different asset types, see the Assets documentation.</p>
@@ -165,13 +165,13 @@ links to the corresponding page.</p>
 
 <h3>ColumnHeaderImage</h3>
 
-<p>Displays the page&#8217;s <em>header</em> image inside a column region (see the Page Templates
-documentation for more information on templates and regions).</p>
+<p>Displays the page&#8217;s <em>header</em> image inside a column region (see the Page Definitions
+documentation for more information on page definitions and regions).</p>
 
 <h3>DetailTitle</h3>
 
-<p>Displays a title region on a detail screen (see the Page Templates
-documentation for more information on templates and screens), and exposes a
+<p>Displays a title region on a detail screen (see the Page Definitions
+documentation for more information on page definitions and screens), and exposes a
 setter for setting the title. Announces user interaction with the close button.</p>
 
 <h3>FeedItemDetail</h3>
@@ -234,7 +234,7 @@ interaction with the player.</p>
 
 <h2>Creating Custom Components</h2>
 
-<p>Read about <a href="/docs/Creating-Custom-Components.html">Creating Custom Components</a></p>
+<p>Read about <a href="/docs/creating-custom-components.html">Creating Custom Components</a></p>
 
 
   
@@ -276,6 +276,10 @@ interaction with the player.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
       </li>
     
@@ -289,10 +293,6 @@ interaction with the player.</p>
     
       <li class="post">
         <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
       </li>
     
   </ul>

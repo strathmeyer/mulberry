@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/docs/Styles-and-Theming.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-10T17:06:40-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T16:41:15-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -123,16 +123,16 @@
 
 <h3>Pages, Screens, Regions and Components</h3>
 
-<p>These are the building blocks of a Mulberry app. You’ve already seen references to them in the template definitions, but here’s what it means for styling. Mulberry takes a template definition and constructs consistent markup with helpful hooks for styling whichever part of your app you need to. For instance the page template definition classname gets added to the page’s root element, so if you want to apply a style to pages with that template, it’s no problem:</p>
+<p>These are the building blocks of a Mulberry app. You’ve already seen references to them in the page definitions, but here’s what it means for styling. Mulberry takes a page definition and constructs consistent markup with helpful hooks for styling whichever part of your app you need to. For instance the page definition classname gets added to the page’s root element, so if you want to apply a style to pages with that page definition, it’s no problem:</p>
 
-<pre><code>.page.my-template {
+<pre><code>.page.my-page-def {
   color: green;
 }
 </code></pre>
 
 <p>Pages contain screens, which also contain their name as a class:</p>
 
-<pre><code>.page.my-template {
+<pre><code>.page.my-page-def {
   color: MidnightBlue;
 
   .screen.index {
@@ -141,20 +141,57 @@
 }
 </code></pre>
 
-<p>And lastly there are regions (columns and rows), which can be selected either based on the className you assign to them in the page template (optional in the template definition) or based on their position in the template.</p>
+<p>And lastly there are regions, which can be selected either based on the className you assign to them in the page definition (optional in the template definition) or based on their position in the page definition.</p>
 
-<pre><code>.page.my-template {
+<pre><code>.page.my-page-def {
   color: green;
 
   .screen.index {
     background-color: orange;
 
-    .row.header {
+    .region.header {
       height: 60px;
     }
 
-    &gt; .row.nth-child(2) {
-      &gt; .column.first-child {
+    &gt; .region.nth-child(2) {
+      &gt; .region:first-child {
+        width: 200px;
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3><a id="layout-mixins"></a>Screen Layout</h3>
+
+<p>Usually, you&#8217;ll need to lay out your regions in columns and rows, so Mulberry provides a few Sass mixins to handle this in a reliable way. They use the <a href="http://www.the-haystack.com/2010/01/23/css3-flexbox-part-1/">flexible box model</a>.</p>
+
+<ul>
+<li><code>flex-row-container</code>: Defines a region as a flex-box container with child regions as rows.</li>
+<li><code>flex-column-container</code>: Defines a region as a flex-box container with child regions as columns.</li>
+<li><code>flex-region(&lt;proportion&gt;)</code>: Used for child elements of <code>flex-row-container</code> and <code>flex-column-container</code>, but allows you to specify the proportion of space the region should take up.</li>
+<li><code>fixed-flex-region</code>: Defines fixed-size region within a flex-box container.</li>
+</ul>
+
+
+<p>Here&#8217;s how they might be used to create a screen with a fixed-size header, with some columns underneath:</p>
+
+<pre><code>.page.my-page-def {
+  color: green;
+
+  .screen.index {
+    @include flex-row-container;
+    background-color: orange;
+
+    .region.header {
+      @include fixed-flex-region;
+      height: 60px;
+    }
+
+    &gt; .region.nth-child(2) {
+      @include flex-column-container;
+
+      &gt; .region:first-child {
         width: 200px;
       }
     }
@@ -164,7 +201,7 @@
 
 <h3>Components</h3>
 
-<p>You probably don’t want to put too many styles for your components within the page template styles, because you want the component styles to be reused no matter what page it’s placed in. So component styles are best handled separately, although the conventions are similar. Say we want to style the ImageGallery component.</p>
+<p>You probably don’t want to put too many styles for your components within the page definition styles, because you want the component styles to be reused no matter what page it’s placed in. So component styles are best handled separately, although the conventions are similar. Say we want to style the ImageGallery component.</p>
 
 <pre><code>.component.image-gallery {
   background-color: LemonChiffon;
@@ -193,7 +230,7 @@
 <h2>Other Topics</h2>
 
 <ul>
-<li><a href="/docs/Style-Application-Sequence.html">Style Application Sequence</a></li>
+<li><a href="/docs/style-application-sequence.html">Style Application Sequence</a></li>
 </ul>
 
 
@@ -237,6 +274,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
       </li>
     
@@ -250,10 +291,6 @@
     
       <li class="post">
         <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
       </li>
     
   </ul>

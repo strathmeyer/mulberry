@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/docs/Command-Line-Interface.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-10T17:06:40-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T16:41:15-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -94,7 +94,7 @@
 
   <p>With the exception of <code>mulberry scaffold &lt;name&gt;</code>, Mulberry commands must be run from inside a directory that contains a Mulberry project.</p>
 
-<p><strong>The location of the <code>mulberry/bin/mulberry</code> file must be in your $PATH in order for any of these commands to work!</strong></p>
+<p><strong>The location of the <code>cli/bin/mulberry</code> file must be in your $PATH in order for any of these commands to work!</strong></p>
 
 <p>You can run <code>mulberry -v</code> from anywhere to find out which version of Mulberry you are currently running.</p>
 
@@ -140,17 +140,17 @@
 
 <p>The following commands create code that can be used as the basis for adding custom functionality to your app.</p>
 
-<h3>mulberry create template &lt;name></h3>
+<h3>mulberry create page_def &lt;name></h3>
 
-<p>Create a file at <code>templates/&lt;name&gt;.yml</code>, which you can populate with information about the layout, components, and capabilities to be included in the template. <a href="/docs/Page-Templates.html">Read more about templates</a></p>
+<p>Create a file at <code>page_defs/&lt;name&gt;.yml</code>, which you can populate with information about the layout, components, and capabilities to be used on a page. <a href="/docs/page-definitions.html">Read more about page definitions</a></p>
 
 <h3>mulberry create component &lt;name></h3>
 
-<p>Create a file at <code>javascript/components/&lt;name&gt;.js</code>, along with supporting Haml and CSS files for the component. <a href="/docs/Components.html">Read more about components</a></p>
+<p>Create a file at <code>javascript/components/&lt;name&gt;.js</code>, along with supporting Haml and CSS files for the component. <a href="/docs/components.html">Read more about components</a></p>
 
 <h3>mulberry create capability &lt;name></h3>
 
-<p>Create a file at <code>javascript/capabilities/&lt;name&gt;.js</code>, which you can populate with information about how components should interact on a given page. <a href="/docs/Capabilities.html">Read more about capabilities</a>.</p>
+<p>Create a file at <code>javascript/capabilities/&lt;name&gt;.js</code>, which you can populate with information about how components should interact on a given page. <a href="/docs/capabilities.html">Read more about capabilities</a>.</p>
 
 <h3>mulberry create datasource &lt;name></h3>
 
@@ -212,6 +212,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
       </li>
     
@@ -225,10 +229,6 @@
     
       <li class="post">
         <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
       </li>
     
   </ul>

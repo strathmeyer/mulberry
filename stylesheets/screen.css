@@ -12,7 +12,7 @@
   text-align: right;
   font-size: 13px;
   line-height: 1.45em;
-  background: #002f3b url('/images/noise.png?1319730237') top left !important;
+  background: #002f3b url('/images/noise.png?1319216810') top left !important;
   border-right: 1px solid #062e39 !important;
   -moz-box-shadow: #003340 -1px 0 inset;
   -webkit-box-shadow: #003340 -1px 0 inset;
@@ -69,7 +69,7 @@ html .gist .gist-file .gist-meta {
   border: 1px solid #083e4b !important;
   color: #586e75;
   font-size: .7em !important;
-  background: #003340 url('/images/noise.png?1319730237') top left;
+  background: #003340 url('/images/noise.png?1319216810') top left;
   border: 1px solid #05232b !important;
   border-top: 1px solid #003340 !important;
   line-height: 1.5em;
@@ -79,7 +79,7 @@ html .gist .gist-file .gist-meta a {
   color: #75878b !important;
   text-decoration: none;
 }
-/* line 4, ../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
+/* line 4, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
 html .gist .gist-file .gist-meta a:hover {
   text-decoration: underline;
 }
@@ -106,7 +106,7 @@ html .gist .gist-file .gist-meta a[href*=raw] {
 
 /* line 75, ../../sass/partials/_syntax.scss */
 pre {
-  background: #002b36 url('/images/noise.png?1319730237') top left;
+  background: #002b36 url('/images/noise.png?1319216810') top left;
   -moz-border-radius: 0.4em;
   -webkit-border-radius: 0.4em;
   -o-border-radius: 0.4em;
@@ -172,7 +172,7 @@ p pre code, li pre code {
   padding: .8em !important;
   overflow-x: auto;
   line-height: 1.45em;
-  background: #002b36 url('/images/noise.png?1319730237') top left !important;
+  background: #002b36 url('/images/noise.png?1319216810') top left !important;
   color: #93a1a1 !important;
   /* Comment */
   /* Comment.Multiline */
@@ -550,7 +550,7 @@ figure.code .highlight {
   -khtml-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   font-family: "Helvetica Neue", Arial, "Lucida Grande", "Lucida Sans Unicode", Lucida, sans-serif;
-  background: #aaaaaa url('/images/code_bg.png?1319730237') top repeat-x;
+  background: #aaaaaa url('/images/code_bg.png?1319216810') top repeat-x;
   border: 1px solid #565656;
   border-top-color: #cbcbcb;
   border-left-color: #a5a5a5;
@@ -569,7 +569,7 @@ figure.code .highlight {
   text-shadow: #cbcccc 0 1px 0;
   padding-left: 3em;
 }
-/* line 4, ../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
+/* line 4, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
 .download-source:hover, html .gist .gist-file .gist-meta a[href*=raw]:hover, figure.code figcaption a:hover {
   text-decoration: underline;
 }
@@ -1165,6 +1165,19 @@ a:hover {
 /* line 19, ../../sass/custom/mulberry/_global.scss */
 a:visited {
   color: #a02629;
+}
+
+/* line 23, ../../sass/custom/mulberry/_global.scss */
+.screenshot {
+  margin: 40px 0 0 20px;
+  text-align: center;
+}
+/* line 27, ../../sass/custom/mulberry/_global.scss */
+.screenshot img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 2px;
+  -webkit-box-shadow: 0 0 9px 5px #ccc;
+  -moz-box-shadow: 0 1px 2px #ccc;
 }
 
 /* line 1, ../../sass/custom/mulberry/_layout.scss */

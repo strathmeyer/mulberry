@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>An Overview of the Mulberry Tools - Toura Mulberry</title>
+  <title>Requirements for developing Android apps - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        An Overview of the Mulberry Tools          The Mulberry toolkit is made up of three distinct pieces of functionality: the Mulberry Applicat...">
+  <meta name="description" content="        Requirements for Developing Android Apps          To build and run apps on Android Simulator, you must:Have Apache ant installed (to find o...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/requirements-for-developing-android-apps.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-12T16:41:15-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,68 +87,87 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">An Overview of the Mulberry Tools</h1>
+    <h1 class="entry-title">Requirements for Developing Android Apps</h1>
     
   </header>
   
 
-  <p>The Mulberry toolkit is made up of three distinct pieces of functionality: the Mulberry Application Framework; the Mulberry Command Line Interface; and the Mulberry Builder. Together, these three pieces help developers create, customize, and test applications using familiar web technologies, then deploy those applications as native mobile experiences.</p>
-
-<h2>The Mulberry Application Framework</h2>
-
-<p>Location: <code>app</code></p>
-
-<p>The Mulberry Application Framework provides the underlying architecture for building applications that will work without the benefit of a remote server to serve up each page in the application — these types of applications are often referred to as “single-page applications.”</p>
-
-<h3>Creating the User Interface</h3>
-
-<p>In the framework, each page displays a unit of content; we refer to a unit of content as a “node.” Each node is associated with a page definition, which specifies the layout of the page, the components to be displayed on the page, and how the components should interact with the page and with each other. These interactions are described via “capabilities.” The same page definition can be used by one or many nodes.</p>
-
-<p>Page definitions are authored in YAML, which is compiled to JSON that can be parsed by the framework. When the framework displays a page, it combines the data about the node that is being displayed with the page definition that is associated with the node, and creates a page controller. The page controller is responsible for setting up the layout of the page, placing the components in the layout, providing the components with the data from the node, and brokering communication between the components.</p>
-
-<p>Each component used in a page encapsulates a unit of functionality. When a component receives data to display, it manipulates that data as required, and then uses the data to populate a template. The template provides the DOM representation of the component. Once the DOM representation is created, a component can add event listeners to react to user interaction. A component can also expose an API of “setter” methods, allowing the page&#8217;s controller to send it new data as required. Ideally, components simply receive data and announce user interaction; they should not communicate directly with a remote resource, or with the data layer of the application.</p>
-
-<p>The Mulberry application framework comes with a selection of built-in page definitions, components, and capabilities, but it also allows developers to author their own. Developers can create unique experiences by following clear patterns and using simple APIs, all without worrying about the underlying “plumbing” of their application.</p>
-
-<h3>Creating Custom Functionality</h3>
-
-<p>In addition to providing clear patterns for creating and connecting user interface components, the Mulberry application framework also provides tools and features that facilitate more complex application development:</p>
+  <p>To build and run apps on Android Simulator, you must:</p>
 
 <ul>
-<li>a Router that can be used to specify custom state management functions</li>
-<li>APIs for persisting data locally, so applications will work without a network connection</li>
-<li>over-the-air updates, allowing applications to occasionally poll a remote server for new data, and store any new data that is found so it will be available for offline use</li>
-<li>structured, modular markup that allows for easy design customization</li>
+<li><p>Have Apache ant installed (to find out whether you already have it, run
+<code>which ant</code> from the command line). We develop with ant 1.8.x (<code>ant -version</code>)
+http://ant.apache.org</p></li>
+<li><p>Download <a href="http://developer.android.com/sdk/index.html">Android SDK package</a>
+for your platform. If you&#8217;ve run the OSX installation script, the Android SDK is installed for you via homebrew.</p></li>
+<li><p>If you did not run the installation script and wish to install Android SDK on your own, the preferred location for the SDK is
+<code>/Developer/SDKs/android-sdk-mac_x86/</code>. If you do not place it in this
+directory, Mulberry <em>should</em> detect the location of it, but no guarantees.</p></li>
+<li><p>Edit your shell&#8217;s loading files (<code>~/.bashrc</code> or <code>~/.bash\_profile</code> for bash and
+ <code>~/.zshrc</code> for zsh) and add the Android SDK platform tools to your path. For
+ example:</p>
+
+<pre><code>`export PATH=$PATH:/Developer/SDKs/android-sdk-mac_x86/tools:/Developer/SDKs/android-sdk-mac_x86/platform-tools`
+</code></pre></li>
+<li><p>Open a new teminal and run the SDK manager:</p>
+
+<pre><code>`android`
+</code></pre></li>
+<li><p>Click &#8220;Available packages&#8221;</p></li>
+<li><p>Expand &#8220;Android Repository&#8221;</p>
+
+<p>You should install:</p>
+
+<ul>
+<li>&#8220;Android SDK Tools&#8221; (latest revision)</li>
+<li>&#8220;Android SDK Platform-tools&#8221; (latest revision)</li>
+<li>SDK Platform Android 2.2, 2.3.x, 2.n (up to latest revision)</li>
+<li>SDK Platform Android 3.x</li>
 </ul>
 
 
-<h2>The Mulberry Command Line Interface (CLI)</h2>
-
-<p>Location: <code>cli/bin/mulberry</code></p>
-
-<p>The CLI is a set of helpers that makes it easy to scaffold, develop, and test an application. Specifically, it provides the ability to</p>
+<p>Expand &#8220;Third party Add-ons&#8221;, then install:</p>
 
 <ul>
-<li>rapidly spin up a new application</li>
-<li>create nodes and their associated resources and data</li>
-<li>create skeleton files for page definitions, components, and capabilities</li>
-<li>serve the application locally for rapid in-browser iteration</li>
-<li>create test builds that can run on simulators and (properly provisioned) devices</li>
-<li>create production builds that can be submitted to app stores</li>
+<li>Google APIs 8, 9 (up to latest revision)</li>
 </ul>
 
 
-<h2>The Mulberry Builder</h2>
+<p>Be careful, as some tools require certain revisions, so if you see
+&#8220;Skipping &#8216;X&#8217;; it depends on &#8216;Y&#8217;&#8221; you&#8217;ll have to go back and choose X again.</p>
 
-<p>Location: <code>builder.rb</code></p>
+<p>Keep doing this until you&#8217;ve installed everything.</p></li>
+<li><p>You do not need, but may choose, to install the Samples and Documentation.
+It&#8217;s pretty useless and just takes up space.</p></li>
+</ul>
 
-<p>The Mulberry Builder takes content and customizations from a given “content source,” and combines it with the Mulberry Application Framework to create a functional application for a specified target environment (referred to as the “build target”).</p>
 
-<p>A Mulberry project — as created by the Mulberry CLI — is one example of a content source, but the builder can consume any content source that exposes an interface via a Build Helper. A Build Helper must provide an interface as defined by the base Build::BuildHelper class (<code>builder/build_helper.rb</code>). This interface allows the Builder to interrogate the Build Helper in order to access the content and customizations provided by the content source.</p>
+<h2>Creating an Android Virtual Device</h2>
 
-<p>Separately, the Builder must be provided with information about the target environment for which it is building the application. Based on that information, the builder creates a project directory using a project template (<code>builder/project_templates/</code>), and then populates the project directory with the Mulberry Application Framework files and the content and customizations from the content source.</p>
+<p>If you do not have access to an Android device, you may want to create a
+virtual device for testing. To do this, run the SDK manager by running
+<code>android</code> on the command line, then:</p>
 
-<p>The output of the Builder is a project directory that can be compiled if necessary, and then executed in the target environment.</p>
+<ul>
+<li>On the &#8220;Virtual Devices&#8221; section click the &#8220;New&#8230;&#8221; button</li>
+<li>Name the device</li>
+<li>Select the Google APIs - API Level 8 (to test 2.2) as the target</li>
+<li>Make the SD card size 64 MB</li>
+<li>Click &#8220;Create AVD&#8221;</li>
+</ul>
+
+
+<p>Now you can run the device by running <code>emulator @your-device-name -partition-size 128</code></p>
+
+<p>To rotate the device hit 7 or 9 on your numeric keypad. If you don&#8217;t have one:
+CTRL-F12 to rotate to landscape, CTRL-F11 to rotate back.</p>
+
+<h3>Installing to your Android Virtual Device</h3>
+
+<p>Start the emulator, then type:</p>
+
+<pre><code>adb install -r /path/to/your.apk
+</code></pre>
 
 
   
@@ -157,7 +176,7 @@
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/requirements-for-developing-android-apps.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/requirements-for-developing-android-apps.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

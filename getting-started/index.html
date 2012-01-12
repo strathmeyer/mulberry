@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/getting-started/">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-10T17:06:40-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T16:41:15-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -104,8 +104,7 @@ follow the instructions in the README for getting it set up on your computer.</p
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>mulberry scaffold capitoljs</span></code></pre></td></tr></table></div></figure>
-
-<p class="img"><img src="/images/scaffold.png" title="Scaffolded directory structure"></p>
+<p class="screenshot"><img src="/images/scaffold.png" title="Scaffolded directory structure"></p>
 
 <h2 id="configure">Configure</h2>
 
@@ -133,59 +132,11 @@ information, including settings for the base theme:</p>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1"># Enter your application name here (required!)</span>
 </span><span class='line'><span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">CapitolJS</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1"># Presently there is only one theme, the default theme. We need to document how</span>
-</span><span class='line'><span class="c1"># to create additional themes.</span>
 </span><span class='line'><span class="l-Scalar-Plain">theme</span><span class="p-Indicator">:</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">default</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">settings</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">font-scheme</span><span class="p-Indicator">:</span>        <span class="s">&#39;dark&#39;</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">link-color</span><span class="p-Indicator">:</span>         <span class="s">&#39;#0000ff&#39;</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">background-color</span><span class="p-Indicator">:</span>   <span class="s">&#39;#fff&#39;</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">child-nav-color</span><span class="p-Indicator">:</span>    <span class="s">&#39;#fff&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="l-Scalar-Plain">os</span><span class="p-Indicator">:</span>
 </span><span class='line'>  <span class="c1"># Specify the operating systems to target</span>
@@ -200,41 +151,7 @@ information, including settings for the base theme:</p>
 </span><span class='line'><span class="c1"># to jQuery functionality, set this to true</span>
 </span><span class='line'><span class="l-Scalar-Plain">jquery</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1"># enter your facebook api key here in order to enable facebook features</span>
-</span><span class='line'><span class="l-Scalar-Plain">facebook_api_key</span><span class="p-Indicator">:</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># your twitter api key must be authorized for xauth for twitter features</span>
-</span><span class='line'><span class="c1"># to work. see https://dev.twitter.com/docs/oauth/xauth</span>
-</span><span class='line'><span class="l-Scalar-Plain">twitter_customer_key</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="l-Scalar-Plain">twitter_customer_secret</span><span class="p-Indicator">:</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># You must replace these with your own app id</span>
-</span><span class='line'><span class="c1"># for each targeted os/device type</span>
-</span><span class='line'><span class="l-Scalar-Plain">app_id</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">android</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">phone</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">com.toura.app2_fake</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">ios</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">phone</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">com.toura.app2.fake.phone</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">tablet</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">com.toura.app2.fake.tablet</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Enter your Urban Airship account details here</span>
-</span><span class='line'><span class="l-Scalar-Plain">urban_airship</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">development</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">app_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">dev_app_key</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">app_secret</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">dev_app_secret</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">production</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">app_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">prod_app_key</span>
-</span><span class='line'>    <span class="l-Scalar-Plain">app_secret</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">prod_app_secret</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">android</span><span class="p-Indicator">:</span>
-</span><span class='line'>     <span class="l-Scalar-Plain">transport</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">c2dm</span>
-</span><span class='line'>     <span class="l-Scalar-Plain">c2dm_sender</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">c2dmsender@mail.com</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Enter your flurry api keys here</span>
-</span><span class='line'><span class="l-Scalar-Plain">flurry</span><span class="p-Indicator">:</span>
-</span><span class='line'> <span class="l-Scalar-Plain">ios</span><span class="p-Indicator">:</span>
-</span><span class='line'>   <span class="l-Scalar-Plain">api_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">flurry_ios_api_key</span>
-</span><span class='line'> <span class="l-Scalar-Plain">android</span><span class="p-Indicator">:</span>
-</span><span class='line'>   <span class="l-Scalar-Plain">api_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">flurry_android_api_key</span>
+</span><span class='line'><span class="nn">...</span>
 </span></code></pre></td></tr></table></div></figure>
 
 <h2 id="construct">Construct</h2>
@@ -336,13 +253,12 @@ your filesystem:</p>
 </span><span class='line'><span class="l-Scalar-Plain">third-party apps. He tweets at @slexaxton and blogs at http://alexsexton.com/</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<p class="img"><img src="/images/images.png" title="The images directory"></p>
-
+<p class="screenshot"><img src="/images/images.png"></a>
 <h2 id="customize">Customize</h2>
 
-<p>You can define your own page layouts in YAML and take advantage of built-in components &hellip;</p>
+<p>You can define your own page definitions in YAML and take advantage of built-in components &hellip;</p>
 
-<figure class='code'><figcaption><span>templates.yml </span></figcaption>
+<figure class='code'><figcaption><span>audio-with-images-phone.yml </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -365,44 +281,33 @@ your filesystem:</p>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
 </pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">audio-with-images-phone</span><span class="p-Indicator">:</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">node</span>
-</span><span class='line'>
 </span><span class='line'>  <span class="l-Scalar-Plain">screens</span><span class="p-Indicator">:</span>
 </span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">index</span>
 </span><span class='line'>      <span class="l-Scalar-Plain">backgroundImage</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
 </span><span class='line'>      <span class="l-Scalar-Plain">regions</span><span class="p-Indicator">:</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">fixed</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">row</span>
+</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">page-nav</span>
 </span><span class='line'>        <span class="l-Scalar-Plain">components</span><span class="p-Indicator">:</span>
 </span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">PageNav</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">row</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">image-gallery</span>
 </span><span class='line'>        <span class="l-Scalar-Plain">components</span><span class="p-Indicator">:</span>
 </span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">ImageGallery</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">row</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">size</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">fixed</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">audio-gallery</span>
 </span><span class='line'>        <span class="l-Scalar-Plain">components</span><span class="p-Indicator">:</span>
 </span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">AudioPlayer</span>
-</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">row</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bottom</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">scrollable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
 </span><span class='line'>        <span class="l-Scalar-Plain">components</span><span class="p-Indicator">:</span>
 </span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">AudioList</span>
-</span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">ChildNodes</span>
-</span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">AudioCaption</span>
-</span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">BodyText</span>
-</span><span class='line'>        <span class="l-Scalar-Plain">scrollable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<p>&hellip; or create your own components to integrate with the framework:</p>
+<p>and style them in Sass&#8230;<p>
 
-<p class="img"><img src="/images/twitter-page.png" title="A custom page using a custom component"></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mulberry create component Twitter</span></code></pre></td></tr></table></div></figure>
-
-<figure class='code'><figcaption><span>javascript/components/Twitter.js </span></figcaption>
+<figure class='code'><figcaption><span>_audio-with-images-phone.scss </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -417,69 +322,23 @@ your filesystem:</p>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">mulberry</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;Twitter&#39;</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">componentTemplate</span> <span class="o">:</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">cache</span><span class="p">(</span><span class="s1">&#39;client.components&#39;</span><span class="p">,</span> <span class="s1">&#39;Twitter/Twitter.haml&#39;</span><span class="p">),</span>
-</span><span class='line'>  <span class="nx">tweetTemplate</span> <span class="o">:</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">cache</span><span class="p">(</span><span class="s1">&#39;client.components&#39;</span><span class="p">,</span> <span class="s1">&#39;Twitter/Tweet.haml&#39;</span><span class="p">),</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.page.audio-with-images-phone</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nc">.screen.index</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> flex-row-container</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="nx">init</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">baseObj</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s1">&#39;twitter&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nc">.region.page-nav</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">@include</span><span class="nd"> fixed-flex-region</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s1">&#39;http://search.twitter.com/search.json?q=&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">term</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">dataType</span> <span class="o">:</span> <span class="s1">&#39;jsonp&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">success</span> <span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">proxy</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;_onLoad&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">_onLoad</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">tweets</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">results</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">tpl</span> <span class="o">=</span> <span class="nx">mulberry</span><span class="p">.</span><span class="nx">haml</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tweetTemplate</span><span class="p">),</span>
-</span><span class='line'>        <span class="nx">html</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">tweets</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tweet</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">tweet</span><span class="p">.</span><span class="nx">link</span> <span class="o">=</span> <span class="s1">&#39;http://twitter.com/capitoljs/status/&#39;</span> <span class="o">+</span> <span class="nx">tweet</span><span class="p">.</span><span class="nx">id_str</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="nx">tweet</span><span class="p">.</span><span class="nx">created_at</span> <span class="o">=</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">date</span><span class="p">.</span><span class="nx">locale</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span>
-</span><span class='line'>            <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">tweet</span><span class="p">.</span><span class="nx">created_at</span><span class="p">),</span> <span class="p">{</span>
-</span><span class='line'>              <span class="nx">datePattern</span> <span class="o">:</span> <span class="s1">&#39;EEE&#39;</span><span class="p">,</span>
-</span><span class='line'>              <span class="nx">timePattern</span> <span class="o">:</span> <span class="s1">&#39;h:m a&#39;</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>          <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="nx">tweet</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">tweet</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span>
-</span><span class='line'>            <span class="sr">/@(\S+)/g</span><span class="p">,</span>
-</span><span class='line'>            <span class="s2">&quot;&amp;lt;a href=&#39;http://twitter.com/#!/$1&#39;&gt;@$1&amp;lt;/a&gt;&quot;</span>
-</span><span class='line'>          <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="k">return</span> <span class="nx">tpl</span><span class="p">(</span><span class="nx">tweet</span><span class="p">);</span>
-</span><span class='line'>        <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">$domNode</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">region</span><span class="p">.</span><span class="nx">refreshScroller</span><span class="p">();</span>
+</span><span class='line'>    <span class="nc">.region.audio-gallery</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">@include</span><span class="nd"> fixed-flex-region</span><span class="p">;</span>
+</span><span class='line'>      <span class="na">height</span><span class="o">:</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
+
+<p>&hellip; or <a href="/docs/creating-custom-components.html">create your own components</a> to integrate with the framework.</p>
 
 <p>Mulberry&rsquo;s customization opportunities go far beyond components. Mulberry
 provides a robust JavaScript framework for building your applications,
@@ -574,6 +433,10 @@ a <a href="/license/">permissive license</a>.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
       </li>
     
@@ -587,10 +450,6 @@ a <a href="/license/">permissive license</a>.</p>
     
       <li class="post">
         <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
       </li>
     
   </ul>
