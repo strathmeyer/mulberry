@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Page Templates - Toura Mulberry</title>
+  <title>0.3 Release Notes - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        Page Templates          Each page in a Mulberry application is displayed using a page template. You can usebuilt-in templates, or create yo...">
+  <meta name="description" content="        0.3 Release Notes          Features &amp; ImprovementsAdded the ability to create custom properties on pages. If you create a field in the ...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,9 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/Page-Templates.html">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/0.3-release-notes.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-10T17:06:40-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T17:25:08-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -87,156 +87,78 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">Page Templates</h1>
+    <h1 class="entry-title">0.3 Release Notes</h1>
     
   </header>
   
 
-  <p>Each page in a Mulberry application is displayed using a page <strong>template</strong>. You can use
-built-in templates, or create your own. To specify a template for a page, add a
-template property to the page&#8217;s YAML header:</p>
-
-<pre><code>---
-title: My Page
-template:
-  phone: default
-  tablet: default
----
-
-My page's content is amazing.
-</code></pre>
-
-<p>The template name is added as a class on the page&#8217;s root element as a hook for
-styling. In this case we&#8217;re using the <code>default</code> template for both phone and
-tablet. For really simple pages this might be ok, but most of the time you&#8217;ll
-probably want your tablet pages to have a different layout. In that case, you&#8217;d
-specify different templates for each device type:</p>
-
-<pre><code>---
-title: My Image Page
-template:
-  phone: image-gallery-phone
-  tablet: image-gallery-tablet
----
-
-My images are amazing.
-</code></pre>
-
-<p>If you specify a template that does not exist, the page will not be
-displayed in your app. If you do not specify a template, then the built-in
-<code>default</code> template will be used.</p>
-
-<h2>Creating Your Own Page Templates</h2>
-
-<p>You can specify your own page templates using a simple YAML structure. Your
-templates can use Mulberry&#8217;s built-in components and capabilities, or you can create
-your own custom components and capabilities.</p>
-
-<p>Mulberry can create the YAML skeleton for a new template for you:</p>
-
-<pre><code>mulberry create template my-template
-</code></pre>
-
-<p>This will create a file <code>my-template.yml</code> in your project&#8217;s templates
-directory.</p>
-
-<p>A template consists of one or more <strong>screens</strong>; each screen contains one or more
-<strong>regions</strong> which are defined as either <strong>columns</strong> or <strong>rows</strong>; and each region contains one or more components. Regions can also contain other regions, allowing for complex layouts. Templates can also specify
-interactions between components via <strong>capabilities</strong>.</p>
-
-<p>This is best explained with an example:</p>
-
-<pre><code>my-template:
-  screens:
-    - name: index
-      regions:
-        - type: row
-          size: fixed
-          components:
-            - PageNav
-        - type: row
-          scrollable: true
-          components:
-            - PageHeaderImage
-            - BodyText
-</code></pre>
-
-<p>Regions also have a few other options. Set <code>scrollable: true</code> to make the region scrollable. The <code>size</code> option defines how the region will determine its size. It has two possible values:</p>
+  <h2>Features &amp; Improvements</h2>
 
 <ul>
-<li><code>flex</code>: [default] the region will take up as much space as it can. Multiple regions within the same container will all take up equal amount of space.</li>
-<li><code>fixed</code>: the region will take the size of its contents &#8211; no more, no less.</li>
+<li><p>Added the ability to create custom properties on pages. If you create a field in the yaml frontmatter of your page, it will available in your component. (<a href="https://github.com/Toura/mulberry/pull/148">issue: 148</a>)</p></li>
+<li><p>Created a theme <code>resources</code> directory for images, fonts, etc. Place any files your theme needs in <code>themes/&lt;my theme&gt;/resources</code>, then refer to them in <code>resources</code> (no slashes) in your scss, and it&#8217;ll work on the server and in the build. (<a href="https://github.com/Toura/mulberry/pull/155">issue: 155</a>)</p></li>
+<li><p>Added <code>mulberry create route</code> command. For example, run <code>mulberry create route '/foo/:bar'</code> and it will generate the necessary code and add it to <code>routes.js</code>, which you can then customize. ([issue: 158]
+(https://github.com/Toura/mulberry/pull/158))</p></li>
+<li><p>Improved the design of the grid view page_def for tablet. (<a href="https://github.com/Toura/mulberry/pull/177">issue: 177</a>)</p></li>
+<li><p>Added the ability to run <code>mulberry</code> commands from any directory inside a Mulberry project, whereas previously it only worked at the project route. (<a href="https://github.com/Toura/mulberry/pull/178">issue: 178</a>)</p></li>
+<li><p>Parameterized the &#8220;default&#8221; theme colors and fonts. Change the values in <code>themes/default/_settings.scss</code> and they&#8217;ll be used globally. (<a href="https://github.com/Toura/mulberry/pull/182">issue: 182</a>)</p></li>
+<li><p>Improved the design of the image gallery, audio, and video page_defs. (<a href="https://github.com/Toura/mulberry/pull/183">issue: 183</a>)</p></li>
+<li><p>Created installer scripts for OSX and Windows. Find the script for your OS in <a href="https://github.com/Toura/mulberry/tree/master/install"><code>/install/&lt;os&gt;/</code></a>, follow the instructions in the README, then run the installer script.
+(<a href="https://github.com/Toura/mulberry/pull/220">issue: 220</a>)</p></li>
+<li><p>Added <code>mulberry.page</code> method for defining simple routes.</p></li>
+<li><p>Added <code>mulberry.createPage</code> as a shorthand method for <code>toura.app.PageFactory.createPage</code></p></li>
+<li><p>Added <code>mulberry.showPage</code> as a shorthand method for <code>toura.app.UI.showPage</code></p></li>
+<li><p>Added <code>mulberry.store</code> and <code>mulberry.model</code> for creating data persistence stores and models. See <code>app/toura/_Store.js</code> and <code>app/toura/_Model.js</code>.</p></li>
 </ul>
 
 
-<p>If you need more control over the size of your regions (which you probably will), then you can handle that in the Sass for the template, explained in <a href="/docs/Styles-and-Theming.html">Styles and Theming</a>.</p>
+<h2>Changes</h2>
 
-<h2>Built-In Page Templates</h2>
+<ul>
+<li><p>Renamed <code>templates</code> to <code>page_defs</code>.</p></li>
+<li><p>Moved sitemap-based page generation to <code>mulberry generate</code>.
+(<a href="https://github.com/Toura/mulberry/pull/172">issue: 172</a>)</p></li>
+<li><p>Added a wrapper for PhoneGap device APIs: geolocation, accelerometer, camera API.
+(<a href="https://github.com/Toura/mulberry/pull/193">issue: 193</a>)</p></li>
+<li><p>Cleaned up locations of JS build directories.
+(<a href="https://github.com/Toura/mulberry/pull/197">issue: 197</a>)</p></li>
+<li><p>Renamed <code>toura.pageControllers.Configurable</code> to <code>toura.Page</code>.
+(<a href="https://github.com/Toura/mulberry/pull/202">issue: 202</a>)</p></li>
+<li><p>Allow <code>_Component#populate</code> to take a single data element instead of requiring an object.
+(<a href="https://github.com/Toura/mulberry/pull/205">issue: 205</a>)</p></li>
+<li><p>Moved <code>toura_app/javascript</code> to <code>app</code>
+(<a href="https://github.com/Toura/mulberry/pull/222">issue: 222</a>)</p></li>
+<li><p>Renamed <code>toura.Page</code> to <code>toura.containers.Page</code>
+(<a href="https://github.com/Toura/mulberry/pull/222">issue: 222</a>)</p></li>
+<li><p>Renamed <code>toura.containers.Pages</code> to <code>toura.containers.Viewport</code>
+(<a href="https://github.com/Toura/mulberry/pull/222">issue: 222</a>)</p></li>
+<li><p>Anonymous reporting of CLI usage. When you scaffold an app, you&#8217;ll be prompted whether you want to send anonymous data to us which we&#8217;ll use to help improve Mulberry. (<a href="https://github.com/Toura/mulberry/pull/232">issue: 232</a>, <a href="https://github.com/Toura/mulberry/pull/247">issue: 247</a>)</p></li>
+<li><p>Removed style (<code>type: row|column</code>, <code>size: fixed</code>) attributes from pagedefs and replaced that functionality with Sass mixins. To create rows, use <code>flex-row-container</code>; to create columns, use <code>flex-column-container</code>; to create make a region within a flex container to be fixed-size, use <code>fixed-flex-region</code> (<a href="https://github.com/Toura/mulberry/pull/233">issue: 233</a>).</p></li>
+<li><p>Added a simpler JSONP helper. This avoids the need to use <code>dojo.io.script.get</code>. Instead, you can do: <code>toura.jsonp(url, config))</code>;
+(<a href="https://github.com/Toura/mulberry/pull/239">issue: 239</a>)</p></li>
+</ul>
 
-<p>Mulberry comes with several built-in page templates. Any of these templates can be
-specified as the template for a page in the page file&#8217;s YAML header.</p>
 
-<h3>audio-with-images-phone and audio-with-images-tablet</h3>
+<h2>Bug Fixes</h2>
 
-<p>Displays audios associated with a page; selecting an audio plays
-the audio in an audio player. If an audio has an associated caption, it will
-be displayed when the audio is selected. Also displays the page text and
-links to subpages, if any.</p>
+<ul>
+<li><p>Make sure Chrome always loads changed images that are referenced in CSS.</p></li>
+<li><p>Make sure <code>mulberry serve</code> fails when you try to run it on a port that&#8217;s in use.
+(<a href="https://github.com/Toura/mulberry/pull/154">issue: 154</a>)</p></li>
+<li><p>Allow <code>mulberry serve</code> to work with apps with &#8217; in name
+(<a href="https://github.com/Toura/mulberry/pull/234">issue: 234</a>)</p></li>
+<li><p>Fix cases where <code>mulberry serve</code> intermittently fails to serve all JS files.
+(<a href="https://github.com/Toura/mulberry/pull/245">issue: 245</a>)</p></li>
+</ul>
 
-<h3>default</h3>
 
-<p>Displays the page text, a page header image (if specified), and
-links to subpages, if any.</p>
+<h2>Tests</h2>
 
-<h3>grid-view</h3>
+<ul>
+<li>Improved testing of builds.
+(<a href="https://github.com/Toura/mulberry/pull/186">issue: 186</a>)</li>
+</ul>
 
-<p>Displays the page text and a grid of links to subpages; a featured image
-should be specified in order to be displayed in the grid.</p>
-
-<h3>home</h3>
-
-<p>Displays the page text and links to subpages. Also includes an
-application-level navigation component, which links to the Search, About, and
-Favorites pages.</p>
-
-<h3>images-and-text-phone and images-and-text-tablet</h3>
-
-<p>Displays the images associated with a page in a swipeable image gallery;
-selecting an image in the image gallery opens a larger view of the image,
-which can be panned and zoomed. If an image has a caption, it will be
-displayed when the associated image is displayed. This template also displays
-the page text and links to subpages, if any.</p>
-
-<h3>full-screen-images</h3>
-
-<p>Displays the images associated with a page in a full-screen view. If an image
-has a caption, it will be displayed when the associated image is displayed.</p>
-
-<h3>locations-map</h3>
-
-<p>Displays the locations associated with a page on a map.</p>
-
-<h3>location-list</h3>
-
-<p>Displays the locations associated with a page in a list. If
-the page also has images associated with it, they will be displayed in a
-gallery above the list of locations; selecting an image in the gallery will
-display the image in a full-screen view.</p>
-
-<h3>videos</h3>
-
-<p>Displays videos associated with a page; selecting a video from the
-list of videos plays the video in a video player. If a video has an
-associated caption, the caption will be displayed when the audio is selected.
-Also displays the page text and links to subpages, if any.</p>
-
-<p>TODOC: subregions</p>
-
-<p>TODOC: capabilities</p>
-
-<p>TODOC: multiple screens</p>
-
-<p>TODOC: region properties (scrollable, size, etc.)</p>
 
 
   
@@ -245,7 +167,7 @@ Also displays the page text and links to subpages, if any.</p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/Page-Templates.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/Page-Templates.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/0.3-release-notes.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/0.3-release-notes.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -278,6 +200,10 @@ Also displays the page text and links to subpages, if any.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
       </li>
     
@@ -291,10 +217,6 @@ Also displays the page text and links to subpages, if any.</p>
     
       <li class="post">
         <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
       </li>
     
   </ul>

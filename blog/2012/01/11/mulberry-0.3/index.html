@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Feature Flags - Toura Mulberry</title>
+  <title>Announcing Mulberry 0.3: Even Easier Customization - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        Feature Flags          Each of the following flags can be set to true or false by setting toura.features[flagName].multiLineChildNodes (def...">
+  <meta name="description" content="It&#8217;s a new year, and with that comes a new release of Mulberry! As with the previous release, our goal is to make it easier to get started wi...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/Feature-flags.html">
+  <link rel="canonical" href="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-12T17:25:08-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -84,35 +84,88 @@
 
   <div id="main">
     <div id="content">
-      <article role="article">
+      <div>
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Feature Flags</h1>
     
-  </header>
+      <h1 class="entry-title">Announcing Mulberry 0.3: Even Easier Customization</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
   
 
-  <p>Each of the following flags can be set to true or false by setting <code>toura.features[flagName]</code>.</p>
+<time datetime="2012-01-11T15:39:00-05:00" pubdate>Jan 11<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+      <p class="meta author">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Dan Imal</span></span>
+
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It&#8217;s a new year, and with that comes a new release of <a href="/download/">Mulberry</a>! As with the previous release, our goal is to make it easier to get started with Mulberry, and once you&#8217;re up and running, we want to make it easier to customize your app. Some of the highlights:</p>
 
 <ul>
-<li><code>multiLineChildNodes</code> (default: false) Determines whether child node names that would span multiple lines are displayed in full.</li>
-<li><code>sharing</code> (default: true) Determines whether sharing is enabled in the app.</li>
-<li><code>favorites</code> (default: true) Determines whether user favorites are enabled in the app.</li>
-<li><code>fontSize</code> (default: true) Determines whether app users can change the font size.</li>
-<li><code>siblingNav</code> (default: false) Determines whether navigation between sibling nodes is enabled.</li>
-<li><code>debugPage</code> (default: false) Determines whether the user will have access to the in-app debugging page. If this is true, then typing <code>toura:&lt;anything&gt;</code> into the search input and submitting the search form (by clicking on the button) will initiate debugging.</li>
-<li><code>debugToolbar</code> (default: false) Determines whether the in-app debugging toolbar will be present.</li>
+<li><p><strong>Installer scripts for OSX and Windows (Ubuntu is on the way):</strong>
+Getting started with Mulberry used to require downloading and installing a lot of other dependencies. While we haven&#8217;t been able to <em>completely</em> automate this, we have made it a whole lot easier. Find the script for your OS in <a href="https://github.com/Toura/mulberry/tree/master/install"><code>/install/&lt;os&gt;/</code></a>, follow the instructions in the README, then run the installer script, and you&#8217;ll be up and running.</p></li>
+<li><p><strong>Customizable default theme:</strong>
+The &#8220;default&#8221; theme used to be difficult to customize. If you decided to use it you were basically stuck with a <em>lot</em> of gray. Now all the colors and fonts can now be changed from the <code>themes/default/_settings.scss</code> file, so you don&#8217;t have to dig through alot of code or create a completely new theme just to change some colors. The icons are now customizable as well. Simply replace any of the images in <code>themes/default/icons</code> with whatever you want.</p></li>
+<li><p><strong>Templates are now &#8220;page_defs&#8221;:</strong>
+In 0.2, we had &#8220;templates&#8221; which were yaml files where you&#8217;d define the layout for a page in columns and rows. But these templates also had a lot of non-presentational information, which tended to be confusing. So we changed things so that page layout is handled in CSS (as it should be), and page_defs got a little simpler. We added a few Sass mixins to help with page layout. <a href="/docs/page-definitions.html">Read more about page_defs.</a></p></li>
+<li><p><strong>New and Improved Code Generators:</strong>
+It was already possible to create new routes, but now you can run <code>mulberry create route '/foo/:bar'</code> and it will generate the necessary code and add it to <code>routes.js</code>, which you can then customize. Running <code>mulberry create page_def</code> will now generate a boilerplate scss file and add <code>import</code> directive.</p></li>
 </ul>
 
 
+<p>In addition to all the new stuff, we&#8217;ve got a bug of bugfixes, improved development server stability, and more complete test coverage. For the full story, <a href="/docs/0.3-release-notes.html">read the full release notes</a>.</p>
+
+<p>As always, follow us at <a href="http://twitter.com/touradev">@touradev</a> to keep up to date on the latest developments, or get help in the <a href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Dan Imal</span></span>
+
+      
+
+
+
 
   
-    <footer>
+
+<time datetime="2012-01-11T15:39:00-05:00" pubdate>Jan 11<span>th</span>, 2012</time>
       
-      
-        <div class="sharing">
+
+<span class="categories">
+  in
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/Feature-flags.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/Feature-flags.html" >Tweet</a>
+    <a class='category' href='/blog/categories/release/'>release</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/" data-via="touradev" data-counturl="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -120,11 +173,23 @@
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2011/11/29/mulberry-0.2/" title="Previous Post: Announcing Mulberry 0.2: More Features for Easy Customization">&laquo; Announcing Mulberry 0.2: More Features for Easy Customization</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
 
 <aside class="sidebar">
   
@@ -208,7 +273,6 @@
 </aside>
 
 
-
     </div>
   </div>
 
@@ -238,7 +302,10 @@ $.domReady(function() {
       var disqus_shortname = 'touramulberry';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/';
+        var disqus_url = 'http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

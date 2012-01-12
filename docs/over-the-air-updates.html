@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Over the Air Updates - Toura Mulberry</title>
+  <meta name="author" content="Toura Dev">
+
+  
+  <meta name="description" content="        Over the Air Updates          Over the Air (OTA) UpdatesOTA (Over The Air) updates allow you to update the content of your applicationwitho...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mulberry.toura.com/docs/over-the-air-updates.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T17:25:08-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/TouraMulberry" rel="alternate" title="Toura Mulberry" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25683438-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      if (document.location.host.match('localhost')) { return; }
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+
+<body   >
+  <header role="banner">
+    <hgroup class=header>
+  <a href="http://github.com/Toura/mulberry" class="fork-me"><img src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+  <h1 class=logo><a href="http://mulberry.toura.com">Toura Mulberry</a></h1>
+</hgroup>
+
+
+  </header>
+
+  <nav role="navigation">
+    <nav class="main">
+  <div>
+    <ul>
+      <li><a href="/download/">Download</a></li>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/docs/">Docs</a></li>
+      <li><a href="/support/">Support</a></li>
+      <li><a href="/upcoming_events/">Upcoming Events</a></li>
+    </ul>
+
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:mulberry.toura.com" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+
+  </div>
+</nav>
+
+
+  </nav>
+
+  <div id="main">
+    <div id="content">
+      <article role="article">
+  
+  <header>
+    <h1 class="entry-title">Over the Air Updates</h1>
+    
+  </header>
+  
+
+  <h1>Over the Air (OTA) Updates</h1>
+
+<p>OTA (Over The Air) updates allow you to update the content of your application
+without submitting a new version of your app to the app store. With an OTA
+update you can change the text on pages, add new assets, even change the
+sitemap for your application &#8211; all without having to wait for your app to be
+approved before users can receive it.</p>
+
+<p>To help you get a big picture understanding of how OTA&#8217;s work, and the
+potential pitfalls, we&#8217;re going to describe the main actors in the app
+[content] update process and several different OTA scenarios.</p>
+
+<h1>The Players in App Content Distribution</h1>
+
+<h2>Mulberry app (project)</h2>
+
+<p>It all starts here. This is your Mulberry project. It contains the source code
+for your app and the tools to build it for submission to app stores whence it
+will ultimately be distributed to users&#8217; devices.</p>
+
+<p>It also contains the tools to manage OTA&#8217;s directly to those devices.</p>
+
+<h2>App store</h2>
+
+<p>This is the original gatekeeper to end user&#8217;s devices. You can&#8217;t even begin to
+talk about OTA&#8217;s for your app until it is installed on the device, which is
+what the app store does. It is also the mechanism through which updates that
+entail source code changes get distributed to devices.</p>
+
+<p>The app store is not involved directly in the actual over-the-air update
+itself, but is an important player in the overall OTA management process.</p>
+
+<h2>Deployed app</h2>
+
+<p>Once your app has gotten past the app store and installed onto a device, it is
+ready to receive OTA&#8217;s (if it was configured to be OTA enabled when it was
+deployed). The only way to disable OTA&#8217;s is to disable it in your project and
+deploy an app store update.</p>
+
+<h2>OTA Server</h2>
+
+<p>The OTA Server distributes your over-the-air updates directly to devices. You
+publish your update to this server and your app installed on the device queries
+it for updates.</p>
+
+<p>Toura provides an OTA server that you can use for OTA&#8217;s for your Mulberry
+apps.</p>
+
+<h1>OTA Scenarios</h1>
+
+<p>There are different scenarios in which you can publish an OTA for your app with
+different possible consequences to consider. It is possible, in some cases, to
+deploy an OTA that breaks your app and leave your users stuck without an update
+for weeks, potentially. Thus, it is very important to consider these
+consequences when you publish an OTA update.</p>
+
+<p>Some of the different scenarios are discussed below.</p>
+
+<h2>OTA with New App, Publish on Deploy</h2>
+
+<p>The simplest scenario is publishing a brand new app for the first time, with
+OTA&#8217;s enabled:</p>
+
+<p><img src="http://www.lucidchart.com/publicSegments/view/4eeba060-abbc-4342-b224-53aa0a0226bf/image.png" alt="OTA with New App, Publish on Deploy" /></p>
+
+<p>When you run <code>mulberry deploy</code> on your project, if there is no existing version
+yet on the OTA server, it will automatically publish version 1 to it. This is
+also the version used in the build output by <code>mulberry deploy</code> that you submit
+to the app store and that will eventually be installed on users&#8217; devices.</p>
+
+<p>When the app is booted after installation, it checks the OTA server to see if
+any new later versions of your app&#8217;s content have been published, sees that
+there are none and therefore does not download any updates.</p>
+
+<h2>OTA with Existing App, Publish on Deploy</h2>
+
+<p>Once you&#8217;ve got an OTA-enabled app installed on a device, it is ready to
+receive OTA&#8217;s.</p>
+
+<p>On a subsequent run of <code>mulberry deploy</code> it will no longer
+automatically publish a new version to the OTA server.  But it will if you pass
+the <code>--publish-ota</code> flag to it:</p>
+
+<p><img src="http://www.lucidchart.com/publicSegments/view/4eeb9ff9-d7e4-4ba2-b477-6ddb0a56de19/image.png" alt="OTA with Existing App, Publish on Deploy" /></p>
+
+<p>After the new version of your app content has been published to the OTA
+server and bundled with your app store submission, it may be weeks before
+your app is approved and ready to be installed on devices.  In the meantime,
+existing OTA-enabled deployments can receive the update.</p>
+
+<p>If the OTA is OK, devices that already have the previous version installed can
+receive the content update before the app store version of the app is ready
+(Devices A and B). Device A above gets the OTA, but for whatever reason does
+not install the app store update; it still gets the benefit of the new content.
+Device C, though it was OTA-enabled, did not get the OTA for whatever reason
+(maybe the user just never used it during the time period between the app
+store submission and approval), but still gets the content update bundled along
+with the new app store version when it installs it.</p>
+
+<p><strong>Note: The OTA does not distribute JavaScript source code, only content. If
+the nature of the change to your app&#8217;s content is such that only the newer
+version of the source code is able to process it without breaking, then the
+receivers of the OTA (Devices A and B) could be stuck for weeks with a
+broken app and no way to fix it.</strong></p>
+
+<h2>OTA with Existing App, Publish on Approval</h2>
+
+<p>If you do not pass the <code>--publish-ota</code> flag to <code>mulberry deploy</code> it will not
+auto-publish a new version to the OTA server:</p>
+
+<p><img src="http://www.lucidchart.com/publicSegments/view/4eeba02b-7144-4da6-b1d0-4bb70a56bd61/image.png" alt="OTA with Existing App, Publish on Approval" /></p>
+
+<p>If you tag this version in your SCCM, check it out once the app has been
+approved, and then run <code>mulberry publish_ota</code> to publish the update to the OTA
+server, there is no possibility of any device with code that is incompatible
+with the new content receiving it before the app store version with compatible
+code is available for download.</p>
+
+<p>This is the safer way to deploy your OTA-enabled apps, but there is more
+management overhead. The downside is that even if the older app store version
+of your app is able to receive the new content it will still have to wait until
+the new app store version is approved before getting it.</p>
+
+<p>Strictly speaking, it is not actually necessary to do the publish to the OTA
+server in this scenario unless you want to support content updates to devices
+that for whatever reason do not install the app store update (Device A).</p>
+
+<h2>OTA with Existing App, Publish Without Deployment</h2>
+
+<p>It is also possible to publish content updates without deploying a new app
+store version of your app to devices:</p>
+
+<p><img src="http://www.lucidchart.com/publicSegments/view/4eeba757-cd54-4f83-893d-57b00a56bbe4/image.png" alt="OTA with Existing App, Publish Without Deployment" /></p>
+
+<p>You may want to do this simply because you want to get some new content out to
+your users but you are not ready to submit a new app store update yet. Or you
+may simply want to send regular content updates to your users between new app
+store versions of your app.</p>
+
+<p>This is the kind of OTA that you want to be really sure will not break apps.
+The changes should be confined to the kind that you know are safe for your app.</p>
+
+<h2>Safe/Unsafe Updates</h2>
+
+<p>Generally, adding new assets can be considered safe.</p>
+
+<p>Removing assets is risky. Be sure there are no dependencies in the deployed
+JavaScript code on any specific assets that you remove.</p>
+
+<p>Changing the sitemap is also risky. Again, be sure that there are no
+dependencies in the deployed JavaScript code on the particular page hierarchy
+that it shipped with.</p>
+
+<h1>Media Assets</h1>
+
+<p>For media assets such as images, audios, and videos, it is not possible to
+update the actual binary content over the air. You can change captions and
+other metadata, but not the file itself. Removal of assets, though for all
+intents and purposes will make the asset unavailable to the app, will not
+delete the actual files from the device (in case you were hoping to shrink the
+app&#8217;s storage requirements with an OTA).</p>
+
+<p>The exception to this is streaming assets, which are referenced with full URI&#8217;s
+in your pages. New assets added as streaming assets to your pages will be
+available to your app in an OTA.</p>
+
+<h1>Configuration</h1>
+
+<p>It&#8217;s easy to set up your app for OTA&#8217;s.  Just &#8230;</p>
+
+<p>Add the details for the OTA server to your <code>config.yml</code>:</p>
+
+<pre><code>toura_api:
+ url: https://api.toura.com/
+ key: your_app_key
+ secret: your_app_secret
+</code></pre>
+
+<p>You can sign up to create an application that can receive OTA&#8217;s at
+<a href="http://api.toura.com/">http://api.toura.com/</a>.</p>
+
+<p>Also in <code>config.yml</code>, enable/disable OTA&#8217;s for your app like so</p>
+
+<pre><code>ota:
+  enabled: true
+</code></pre>
+
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/over-the-air-updates.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/over-the-air-updates.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+
+<aside class="sidebar">
+  
+    <section class="mailing-list">
+  <h1>Stay in Touch</h1>
+
+  <form class="signup-form" method="POST"
+    action="http://github.us1.list-manage2.com/subscribe/post?u=55fc9d13f9b123630e693855b&amp;id=5eb483eb97">
+
+    <input id="email_1" type="text" name="EMAIL" value="" class="email" placeholder="Email Address">
+
+    <input type="submit" name="submit" value="Keep me posted">
+  </form>
+  <div class="extra-info">We won&rsquo;t sell your email, we promise.</div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/browser-based-development/">Browser-based development: Fewer builds, better tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/14/hosted-weinre/">Weinre: Sane, hosted debugging tools for your Mulberry apps</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
+      </li>
+    
+  </ul>
+
+  <ul class="subscription" data-subscription="rss">
+    <li class="rss"><a href="http://feeds.feedburner.com/TouraMulberry" rel="subscribe-rss" title="subscribe via RSS">Subscribe via RSS</a></li>
+    
+  </ul>
+</section>
+<section class="support">
+  <h1>Support</h1>
+  <ul>
+    <li>Visit the <a class="google-group" href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a></li>
+    <li>Chat with other developers in the #touramulberry channel on <a href="http://webchat.freenode.net/">Freenode</a></li>
+  </ul>
+</section>
+
+<section>
+  <h1>Mulberry on Twitter</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("touradev", 4, true);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/touradev" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @touradev</a>
+  
+</section>
+
+<section class="logos">
+  <p class="logos">
+    <a href="http://www.w3.org/html/logo/"> <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-multimedia-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage"> </a>
+  </p>
+  <p>
+    <a href="http://phonegap.com"><img src="/images/phonegap.png" height="75"> </a>
+  </p>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 Toura.
+  |
+  <span><a href="/license/">License</a></span>
+  |
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script>
+$.domReady(function() {
+  $('section.support a').bind('click', function(e) {
+    e.preventDefault();
+    _gaq && _gaq.push([ '_trackEvent', 'Support Click', this.innerHTML ]);
+    window.location.href = this.href;
+  });
+});
+</script>
+
+</footer>
+  
+
+<script type="text/javascript">
+    
+      var disqus_shortname = 'touramulberry';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -9,7 +9,7 @@
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="Mulberry 0.2 is out today, with several new features to make iteven easier to customize your apps:In Mulberry 0.1, you had to be very verbose when ...">
+  <meta name="description" content="It&#8217;s a new year, and with that comes a new release of Mulberry! As with the previous release, our goal is to make it easier to get started wi...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/blog/">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-10T17:06:40-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T17:25:08-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -86,6 +86,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+  
+
+<time datetime="2012-01-11T15:39:00-05:00" pubdate>Jan 11<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/01/11/mulberry-0.3/#disqus_thread">Comments</a>
+        
+      </p>
+      <p class="meta author">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Dan Imal</span></span>
+
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s a new year, and with that comes a new release of <a href="/download/">Mulberry</a>! As with the previous release, our goal is to make it easier to get started with Mulberry, and once you&#8217;re up and running, we want to make it easier to customize your app. Some of the highlights:</p>
+
+<ul>
+<li><p><strong>Installer scripts for OSX and Windows (Ubuntu is on the way):</strong>
+Getting started with Mulberry used to require downloading and installing a lot of other dependencies. While we haven&#8217;t been able to <em>completely</em> automate this, we have made it a whole lot easier. Find the script for your OS in <a href="https://github.com/Toura/mulberry/tree/master/install"><code>/install/&lt;os&gt;/</code></a>, follow the instructions in the README, then run the installer script, and you&#8217;ll be up and running.</p></li>
+<li><p><strong>Customizable default theme:</strong>
+The &#8220;default&#8221; theme used to be difficult to customize. If you decided to use it you were basically stuck with a <em>lot</em> of gray. Now all the colors and fonts can now be changed from the <code>themes/default/_settings.scss</code> file, so you don&#8217;t have to dig through alot of code or create a completely new theme just to change some colors. The icons are now customizable as well. Simply replace any of the images in <code>themes/default/icons</code> with whatever you want.</p></li>
+<li><p><strong>Templates are now &#8220;page_defs&#8221;:</strong>
+In 0.2, we had &#8220;templates&#8221; which were yaml files where you&#8217;d define the layout for a page in columns and rows. But these templates also had a lot of non-presentational information, which tended to be confusing. So we changed things so that page layout is handled in CSS (as it should be), and page_defs got a little simpler. We added a few Sass mixins to help with page layout. <a href="/docs/page-definitions.html">Read more about page_defs.</a></p></li>
+<li><p><strong>New and Improved Code Generators:</strong>
+It was already possible to create new routes, but now you can run <code>mulberry create route '/foo/:bar'</code> and it will generate the necessary code and add it to <code>routes.js</code>, which you can then customize. Running <code>mulberry create page_def</code> will now generate a boilerplate scss file and add <code>import</code> directive.</p></li>
+</ul>
+
+
+<p>In addition to all the new stuff, we&#8217;ve got a bug of bugfixes, improved development server stability, and more complete test coverage. For the full story, <a href="/docs/0.3-release-notes.html">read the full release notes</a>.</p>
+
+<p>As always, follow us at <a href="http://twitter.com/touradev">@touradev</a> to keep up to date on the latest developments, or get help in the <a href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1302,6 +1358,10 @@ build something interesting, we hope you&#8217;ll <a href="mailto:mulberry@toura
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
       </li>
     
@@ -1315,10 +1375,6 @@ build something interesting, we hope you&#8217;ll <a href="mailto:mulberry@toura
     
       <li class="post">
         <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
       </li>
     
   </ul>

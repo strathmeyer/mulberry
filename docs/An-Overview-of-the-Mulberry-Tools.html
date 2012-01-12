@@ -20,7 +20,7 @@
   
   <link rel="canonical" href="http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-10T17:06:40-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-12T17:25:08-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -96,19 +96,19 @@
 
 <h2>The Mulberry Application Framework</h2>
 
-<p>Location: toura_app/</p>
+<p>Location: <code>app</code></p>
 
 <p>The Mulberry Application Framework provides the underlying architecture for building applications that will work without the benefit of a remote server to serve up each page in the application — these types of applications are often referred to as “single-page applications.”</p>
 
 <h3>Creating the User Interface</h3>
 
-<p>In the framework, each page displays a unit of content; we refer to a unit of content as a “node.” Nodes are displayed using page templates, which specify the layout of the page, the components to be displayed on the page, and how the components should interact with the page and with each other. These interactions are described via “capabilities.”</p>
+<p>In the framework, each page displays a unit of content; we refer to a unit of content as a “node.” Each node is associated with a page definition, which specifies the layout of the page, the components to be displayed on the page, and how the components should interact with the page and with each other. These interactions are described via “capabilities.” The same page definition can be used by one or many nodes.</p>
 
-<p>Template definitions are authored in YAML, which is compiled to JSON that can be parsed by the framework. When the framework displays a page, it combines the data about the node that is being displayed with the template definition that is associated with the node, and creates a page controller. The page controller is responsible for setting up the layout of the page, placing the components in the layout, providing the components with the data from the node, and brokering communication between the components.</p>
+<p>Page definitions are authored in YAML, which is compiled to JSON that can be parsed by the framework. When the framework displays a page, it combines the data about the node that is being displayed with the page definition that is associated with the node, and creates a page controller. The page controller is responsible for setting up the layout of the page, placing the components in the layout, providing the components with the data from the node, and brokering communication between the components.</p>
 
-<p>Each component encapsulates a unit of functionality, and components can be reused across multiple page templates. When a component receives data to display, it manipulates that data as required, and then uses the data to populate a template. The template is the DOM representation of the component. Once the DOM representation is created, a component can add event listeners to react to user interaction. A component can also expose an API of “setter” methods, allowing the page controller to send it new data as required. Ideally, components simply receive data and announce user interaction; they should not communicate directly with a remote resource, or with the data layer of the application.</p>
+<p>Each component used in a page encapsulates a unit of functionality. When a component receives data to display, it manipulates that data as required, and then uses the data to populate a template. The template provides the DOM representation of the component. Once the DOM representation is created, a component can add event listeners to react to user interaction. A component can also expose an API of “setter” methods, allowing the page&#8217;s controller to send it new data as required. Ideally, components simply receive data and announce user interaction; they should not communicate directly with a remote resource, or with the data layer of the application.</p>
 
-<p>The Mulberry application framework comes with a selection of built-in templates, components, and capabilities, but it also allows developers to author their own. Developers can create unique experiences by following clear patterns and using simple APIs, all without worrying about the underlying “plumbing” of their application.</p>
+<p>The Mulberry application framework comes with a selection of built-in page definitions, components, and capabilities, but it also allows developers to author their own. Developers can create unique experiences by following clear patterns and using simple APIs, all without worrying about the underlying “plumbing” of their application.</p>
 
 <h3>Creating Custom Functionality</h3>
 
@@ -124,14 +124,14 @@
 
 <h2>The Mulberry Command Line Interface (CLI)</h2>
 
-<p>Location: mulberry/bin/mulberry</p>
+<p>Location: <code>cli/bin/mulberry</code></p>
 
 <p>The CLI is a set of helpers that makes it easy to scaffold, develop, and test an application. Specifically, it provides the ability to</p>
 
 <ul>
 <li>rapidly spin up a new application</li>
 <li>create nodes and their associated resources and data</li>
-<li>create skeleton files for page templates, components, and capabilities</li>
+<li>create skeleton files for page definitions, components, and capabilities</li>
 <li>serve the application locally for rapid in-browser iteration</li>
 <li>create test builds that can run on simulators and (properly provisioned) devices</li>
 <li>create production builds that can be submitted to app stores</li>
@@ -140,13 +140,13 @@
 
 <h2>The Mulberry Builder</h2>
 
-<p>Location: lib/builder.rb</p>
+<p>Location: <code>builder.rb</code></p>
 
 <p>The Mulberry Builder takes content and customizations from a given “content source,” and combines it with the Mulberry Application Framework to create a functional application for a specified target environment (referred to as the “build target”).</p>
 
-<p>A Mulberry project — as created by the Mulberry CLI — is one example of a content source, but the builder can consume any content source that exposes an interface via a Build Helper. A Build Helper must provide an interface as defined by the base Build::BuildHelper class (lib/builder/build_helper.rb). This interface allows the Builder to interrogate the Build Helper in order to access the content and customizations provided by the content source.</p>
+<p>A Mulberry project — as created by the Mulberry CLI — is one example of a content source, but the builder can consume any content source that exposes an interface via a Build Helper. A Build Helper must provide an interface as defined by the base Build::BuildHelper class (<code>builder/build_helper.rb</code>). This interface allows the Builder to interrogate the Build Helper in order to access the content and customizations provided by the content source.</p>
 
-<p>Separately, the Builder must be provided with information about the target environment for which it is building the application. Based on that information, the builder creates a project directory using a project template (lib/builder/project_templates/), and then populates the project directory with the Mulberry Application Framework files and the content and customizations from the content source.</p>
+<p>Separately, the Builder must be provided with information about the target environment for which it is building the application. Based on that information, the builder creates a project directory using a project template (<code>builder/project_templates/</code>), and then populates the project directory with the Mulberry Application Framework files and the content and customizations from the content source.</p>
 
 <p>The output of the Builder is a project directory that can be compiled if necessary, and then executed in the target environment.</p>
 
@@ -190,6 +190,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
       </li>
     
@@ -203,10 +207,6 @@
     
       <li class="post">
         <a href="/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/">An Opinionated Framework, Focused on Reuse</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/30/custom-functionality/">Creating Custom Functionality with Mulberry</a>
       </li>
     
   </ul>
