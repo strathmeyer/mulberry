@@ -4,7 +4,7 @@
   <title><![CDATA[Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2012-01-13T14:06:38-05:00</updated>
+  <updated>2012-01-13T17:39:41-05:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -18,7 +18,7 @@
     <link href="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/"/>
     <updated>2012-01-11T15:39:00-05:00</updated>
     <id>http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3</id>
-    <content type="html"><![CDATA[<p>It&#8217;s a new year, and with that comes a new release of Mulberry! As with the previous release, our goal is to make it easier to get started with Mulberry, and once you&#8217;re up and running, we want to make it easier to customize your app. Some of the highlights:</p>
+    <content type="html"><![CDATA[<p>It&#8217;s a new year, and with that comes a new release of <a href="http://mulberry.toura.com/download/">Mulberry</a>! As with the previous release, our goal is to make it easier to get started with Mulberry, and once you&#8217;re up and running, we want to make it easier to customize your app. Some of the highlights:</p>
 
 <ul>
 <li><p><strong>Installer scripts for OSX and Windows (Ubuntu is on the way):</strong>
@@ -32,7 +32,7 @@ It was already possible to create new routes, but now you can run <code>mulberry
 </ul>
 
 
-<p>In addition to all the new stuff, we&#8217;ve got a bunch of bugfixes, improved development server stability, and more complete test coverage. For the full story, <a href="http://mulberry.toura.com/docs/0.3-release-notes.html">read the full release notes</a>.</p>
+<p>In addition to all the new stuff, we&#8217;ve got a bug of bugfixes, improved development server stability, and more complete test coverage. For the full story, <a href="http://mulberry.toura.com/docs/0.3-release-notes.html">read the full release notes</a>.</p>
 
 <p>As always, follow us at <a href="http://twitter.com/touradev">@touradev</a> to keep up to date on the latest developments, or get help in the <a href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a>.</p>
 ]]></content>
