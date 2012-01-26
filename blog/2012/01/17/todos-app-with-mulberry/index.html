@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>0.3 Brings New Tools for Interactive Apps - Toura Mulberry</title>
+  <meta name="author" content="Toura Dev">
+
+  
+  <meta name="description" content="Dan Imal gave a good overview of the 0.3 release of Mulberry the otherday, but I wanted to follow up by taking a deeper dive into some of the newfe...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mulberry.toura.com/blog/2012/01/17/todos-app-with-mulberry/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css?_c=2012-01-26T16:39:16-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/TouraMulberry" rel="alternate" title="Toura Mulberry" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25683438-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      if (document.location.host.match('localhost')) { return; }
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+
+<body   >
+  <header role="banner">
+    <hgroup class=header>
+  <a href="http://github.com/Toura/mulberry" class="fork-me"><img src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+  <h1 class=logo><a href="http://mulberry.toura.com">Toura Mulberry</a></h1>
+</hgroup>
+
+
+  </header>
+
+  <nav role="navigation">
+    <nav class="main">
+  <div>
+    <ul>
+      <li><a href="/download/">Download</a></li>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/docs/">Docs</a></li>
+      <li><a href="/support/">Support</a></li>
+      <li><a href="/upcoming_events/">Upcoming Events</a></li>
+    </ul>
+
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:mulberry.toura.com" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+
+  </div>
+</nav>
+
+
+  </nav>
+
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">0.3 Brings New Tools for Interactive Apps</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+  
+
+<time datetime="2012-01-17T17:00:00-05:00" pubdate>Jan 17<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+      <p class="meta author">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rebecca Murphey</span></span>
+
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Dan Imal gave a good <a href="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/">overview of the 0.3 release of Mulberry</a> the other
+day, but I wanted to follow up by taking a deeper dive into some of the new
+features that landed that make it easier to use Mulberry to build all kinds of
+apps.  I&#8217;ll be talking about all of this at <a href="http://mulberry.toura.com/upcoming_events/">some upcoming events</a>, but if you can&#8217;t make it
+to any of them, hopefully this post will give you good insight into how these
+improvements can help you build apps faster using Mulberry.</p>
+
+<p>Probably the easiest way to understand these features is to look at a simple
+Todos app. Our app will have a home page that lets you add todo items and view
+unfinished ones, and a page that shows completed items; those items, and their
+state, will persist on the device until the user deletes them. You can follow
+along with the completed app <a href="https://github.com/Toura/mulberry-demos/tree/master/todos">on
+GitHub</a>.</p>
+
+<p><img src="http://www.rebeccamurphey.com/i/4f15e41f7437a.jpg" alt="A Mulberry Todos App" /></p>
+
+<p>Once we&#8217;ve scaffolded our app by running <code>mulberry scaffold todos</code>, we know
+that we&#8217;ll need a few things:</p>
+
+<ul>
+<li>A page definition for the Todos page</li>
+<li>A page definition for the Completed page</li>
+<li>A store for the todo items</li>
+<li>Components for entering todos, listing todos, and working with todos en masse</li>
+</ul>
+
+
+<p>We can add all of those things via the command line:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mulberry create page_def todos completed
+</span><span class='line'>mulberry create store todos
+</span><span class='line'>mulberry create component TodoForm TodoList TodoTools</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We&#8217;ll also want to specify routes for our two pages.  As of 0.3, we get a new
+API method, <code>mulberry.page</code>, that lets us define a data-driven route and skip
+the need to create a markdown file for the pgae. Here&#8217;s what our <code>routes.js</code>
+file will look like:</p>
+
+<figure class='code'><figcaption><span>javascript/routes.js </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">provide</span><span class="p">(</span><span class="s1">&#39;client.routes&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mulberry</span><span class="p">.</span><span class="nx">page</span><span class="p">(</span><span class="s1">&#39;/todos&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">name</span> <span class="o">:</span> <span class="s1">&#39;Todos&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">pageDef</span> <span class="o">:</span> <span class="s1">&#39;todos&#39;</span>
+</span><span class='line'><span class="p">},</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mulberry</span><span class="p">.</span><span class="nx">page</span><span class="p">(</span><span class="s1">&#39;/completed&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">name</span> <span class="o">:</span> <span class="s1">&#39;Completed&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">pageDef</span> <span class="o">:</span> <span class="s1">&#39;completed&#39;</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Each of these calls to <code>mulberry.page</code> passes an object that has details about
+how to display the page associated with the route, and in each case that object
+has a <code>pageDef</code> property. Page definitions spell out how different components
+will be laid out for a given page, and what capabilities that page will have.
+Here&#8217;s the page definition for the todos page, located at <code>page_defs/todos.yml</code>:</p>
+
+<figure class='code'><figcaption><span>page_defs/todos.yml </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">todos</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">capabilities</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">PageTodos</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">screens</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">index</span>
+</span><span class='line'>      <span class="l-Scalar-Plain">regions</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">todo-form-container</span>
+</span><span class='line'>          <span class="l-Scalar-Plain">components</span><span class="p-Indicator">:</span>
+</span><span class='line'>          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">custom.TodoForm</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">scrollable</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>          <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">todo-list-container</span>
+</span><span class='line'>          <span class="l-Scalar-Plain">components</span><span class="p-Indicator">:</span>
+</span><span class='line'>          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">custom.TodoList</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">todo-tools-container</span>
+</span><span class='line'>          <span class="l-Scalar-Plain">components</span><span class="p-Indicator">:</span>
+</span><span class='line'>          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">custom.TodoTools</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The 0.3 release also introduced the concept of &#8220;stores,&#8221; which help us persist
+and query data. The default behavior of a store is to persist the data on
+device using local storage, though you can override or extend that behavior if
+you&#8217;d like. Here&#8217;s our todos store, located at <code>javascript/stores/todos.js</code>:</p>
+
+<figure class='code'><figcaption><span>javascript/stores/todos.js </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">provide</span><span class="p">(</span><span class="s1">&#39;client.stores.todos&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mulberry</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="s1">&#39;todos&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">model</span> <span class="o">:</span> <span class="s1">&#39;Todo&#39;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">finish</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="s1">&#39;finish&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">unfinish</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="s1">&#39;unfinish&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This creates a store at <code>client.stores.todos</code>; that store will automatically
+get methods like <code>add</code>, <code>query</code>, <code>remove</code>, and <code>put</code>, plus the additional
+<code>finish</code> and <code>unfinish</code> methods that we&#8217;ve specified in the prototype we
+passed. Those last two methods are used to pass messages to individual models.</p>
+
+<p>We also specify a model property, which tells the store to expect that we&#8217;ve
+defined a <code>Todo</code> model. We do so in <code>javascript/models/Todo.js</code>, and it looks
+like this:</p>
+
+<figure class='code'><figcaption><span>javascript/models/Todo.js </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">provide</span><span class="p">(</span><span class="s1">&#39;client.models.Todo&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mulberry</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;Todo&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">complete</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">finish</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;complete&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">unfinish</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;complete&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, we&#8217;re ready to wire up our app&#8217;s todos page. When we generated the page
+definition file for the todos page, Mulberry automatically assigned it a
+capability called <code>PageTodos</code>; this capability will be responsible for getting
+the page set up, and then brokering communication between the components as the
+user works with their todo items.</p>
+
+<p>Here&#8217;s what that capability, located at <code>javascript/capabilities/PageTodos.js</code>,
+looks like, with some inline comments to make it easier to follow:</p>
+
+<figure class='code'><figcaption><span>javascript/capabilities/PageTodos.js </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">provide</span><span class="p">(</span><span class="s1">&#39;client.capabilities.PageTodos&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mulberry</span><span class="p">.</span><span class="nx">capability</span><span class="p">(</span><span class="s1">&#39;PageTodos&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="cm">/*</span>
+</span><span class='line'><span class="cm">   * The capability expects the following components to be present in order for</span>
+</span><span class='line'><span class="cm">   * the capability to work.</span>
+</span><span class='line'><span class="cm">   */</span>
+</span><span class='line'>  <span class="nx">requirements</span> <span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">todoList</span> <span class="o">:</span> <span class="s1">&#39;custom.TodoList&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">todoForm</span> <span class="o">:</span> <span class="s1">&#39;custom.TodoForm&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">todoTools</span> <span class="o">:</span> <span class="s1">&#39;custom.TodoTools&#39;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/*</span>
+</span><span class='line'><span class="cm">   * These &quot;listeners&quot; will be set up as part of setting up the page. So, for</span>
+</span><span class='line'><span class="cm">   * example, when the TodoForm component instance announces that a user has</span>
+</span><span class='line'><span class="cm">   * added a todo (by calling its `onAdd` method), then the capability&#39;s `_add`</span>
+</span><span class='line'><span class="cm">   * method will be run.</span>
+</span><span class='line'><span class="cm">   */</span>
+</span><span class='line'>  <span class="nx">connects</span> <span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>    <span class="p">[</span> <span class="s1">&#39;todoForm&#39;</span><span class="p">,</span> <span class="s1">&#39;onAdd&#39;</span><span class="p">,</span> <span class="s1">&#39;_add&#39;</span> <span class="p">],</span>
+</span><span class='line'>    <span class="p">[</span> <span class="s1">&#39;todoList&#39;</span><span class="p">,</span> <span class="s1">&#39;onComplete&#39;</span><span class="p">,</span> <span class="s1">&#39;_complete&#39;</span> <span class="p">],</span>
+</span><span class='line'>    <span class="p">[</span> <span class="s1">&#39;todoList&#39;</span><span class="p">,</span> <span class="s1">&#39;onDelete&#39;</span><span class="p">,</span> <span class="s1">&#39;_delete&#39;</span> <span class="p">],</span>
+</span><span class='line'>    <span class="p">[</span> <span class="s1">&#39;todoTools&#39;</span><span class="p">,</span> <span class="s1">&#39;onCompleteAll&#39;</span><span class="p">,</span> <span class="s1">&#39;_completeAll&#39;</span> <span class="p">]</span>
+</span><span class='line'>  <span class="p">],</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/*</span>
+</span><span class='line'><span class="cm">   * When the page is set up, we&#39;ll grab a reference to the todos store, and</span>
+</span><span class='line'><span class="cm">   * then update the list of todos.</span>
+</span><span class='line'><span class="cm">   */</span>
+</span><span class='line'>  <span class="nx">init</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">stores</span><span class="p">.</span><span class="nx">todos</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_updateList</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">_delete</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_updateList</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">_add</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_updateList</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">_complete</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">finish</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_updateList</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">_updateList</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="o">!</span><span class="nx">item</span><span class="p">.</span><span class="nx">complete</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;todos&#39;</span><span class="p">,</span> <span class="nx">items</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">_completeAll</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="o">!</span><span class="nx">item</span><span class="p">.</span><span class="nx">complete</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dojo</span><span class="p">.</span><span class="nx">hitch</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">t</span><span class="p">.</span><span class="nx">finish</span><span class="p">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_updateList</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All that&#8217;s left to do now is to actually make the components do what they need
+to do. Components are intentionally &#8220;dumb&#8221; &#8211; their job is to receive data from
+an outside source, render that data using a template, and announce user
+interaction by calling (often empty) methods. Here, for example, is the
+TodoForm component, located at <code>javascript/components/TodoForm.js</code>:</p>
+
+<figure class='code'><figcaption><span>javascript/components/TodoForm.js </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">provide</span><span class="p">(</span><span class="s1">&#39;client.components.TodoForm&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mulberry</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;TodoForm&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">componentTemplate</span> <span class="o">:</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">cache</span><span class="p">(</span><span class="s1">&#39;client.components&#39;</span><span class="p">,</span> <span class="s1">&#39;TodoForm/TodoForm.haml&#39;</span><span class="p">),</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">init</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">domNode</span><span class="p">,</span> <span class="s1">&#39;submit&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">description</span> <span class="o">=</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">descriptionInput</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span>
+</span><span class='line'>          <span class="nx">item</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">description</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">item</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">description</span> <span class="o">:</span> <span class="nx">description</span> <span class="p">};</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">domNode</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">onAdd</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">onAdd</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It displays the form (using the template located at
+<code>javascript/components/TodoForm/TodoForm.haml</code>), listens for the user to submit
+the form, checks to make sure there was some input, and then calls its <code>onAdd</code>
+method, which the PageTodos capability has registered its interest in. The
+other components are similarly simple.</p>
+
+<p>The Mulberry framework was born out of our experience with making content-rich apps,
+but we&#8217;re hard at work making it easy to use Mulberry to build all kinds of
+apps &#8211; pretty much anything that might manifest itself as a single-page
+JavaScript application. We hope you&#8217;ll <a href="http://mulberry.toura.com/download/">download the 0.3 version</a>, <a href="https://github.com/Toura/mulberry-demos/tree/master/todos">take the Todos demo for a spin</a>, and let us know how we&#8217;re doing.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rebecca Murphey</span></span>
+
+      
+
+
+
+
+  
+
+<time datetime="2012-01-17T17:00:00-05:00" pubdate>Jan 17<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/blog/2012/01/17/todos-app-with-mulberry/" data-via="touradev" data-counturl="http://mulberry.toura.com/blog/2012/01/17/todos-app-with-mulberry/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/01/11/mulberry-0.3/" title="Previous Post: Announcing Mulberry 0.3: Even Easier Customization">&laquo; Announcing Mulberry 0.3: Even Easier Customization</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section class="mailing-list">
+  <h1>Stay in Touch</h1>
+
+  <form class="signup-form" method="POST"
+    action="http://github.us1.list-manage2.com/subscribe/post?u=55fc9d13f9b123630e693855b&amp;id=5eb483eb97">
+
+    <input id="email_1" type="text" name="EMAIL" value="" class="email" placeholder="Email Address">
+
+    <input type="submit" name="submit" value="Keep me posted">
+  </form>
+  <div class="extra-info">We won&rsquo;t sell your email, we promise.</div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/17/todos-app-with-mulberry/">0.3 Brings New Tools for Interactive Apps</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/11/mulberry-0.3/">Announcing Mulberry 0.3: Even Easier Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/29/mulberry-0.2/">Announcing Mulberry 0.2: More Features for Easy Customization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/16/browser-based-development/">Browser-based development: Fewer builds, better tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/14/hosted-weinre/">Weinre: Sane, hosted debugging tools for your Mulberry apps</a>
+      </li>
+    
+  </ul>
+
+  <ul class="subscription" data-subscription="rss">
+    <li class="rss"><a href="http://feeds.feedburner.com/TouraMulberry" rel="subscribe-rss" title="subscribe via RSS">Subscribe via RSS</a></li>
+    
+  </ul>
+</section>
+<section class="support">
+  <h1>Support</h1>
+  <ul>
+    <li>Visit the <a class="google-group" href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a></li>
+    <li>Chat with other developers in the #touramulberry channel on <a href="http://webchat.freenode.net/">Freenode</a></li>
+  </ul>
+</section>
+
+<section>
+  <h1>Mulberry on Twitter</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("touradev", 4, true);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/touradev" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @touradev</a>
+  
+</section>
+
+<section class="logos">
+  <p class="logos">
+    <a href="http://www.w3.org/html/logo/"> <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-device-multimedia-semantics-storage.png" width="261" height="64" alt="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage" title="HTML5 Powered with CSS3 / Styling, Device Access, Multimedia, Semantics, and Offline &amp; Storage"> </a>
+  </p>
+  <p>
+    <a href="http://phonegap.com"><img src="/images/phonegap.png" height="75"> </a>
+  </p>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 Toura.
+  |
+  <span><a href="/license/">License</a></span>
+  |
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<script>
+$.domReady(function() {
+  $('section.support a').bind('click', function(e) {
+    e.preventDefault();
+    _gaq && _gaq.push([ '_trackEvent', 'Support Click', this.innerHTML ]);
+    window.location.href = this.href;
+  });
+});
+</script>
+
+</footer>
+  
+
+<script type="text/javascript">
+    
+      var disqus_shortname = 'touramulberry';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mulberry.toura.com/blog/2012/01/17/todos-app-with-mulberry/';
+        var disqus_url = 'http://mulberry.toura.com/blog/2012/01/17/todos-app-with-mulberry/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
