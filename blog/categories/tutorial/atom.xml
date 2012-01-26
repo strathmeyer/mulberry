@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tutorial | Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/blog/categories/tutorial/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2012-01-26T16:53:44-05:00</updated>
+  <updated>2012-01-26T14:04:24-08:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Weinre: Sane, hosted debugging tools for your Mulberry apps]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/"/>
-    <updated>2011-11-14T22:40:00-05:00</updated>
+    <updated>2011-11-14T22:40:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/14/hosted-weinre</id>
     <content type="html"><![CDATA[<p>At Toura, we perform the vast majority of our day-to-day development in our
 desktop WebKit browsers - Chrome and Safari. Although the desktop browsers
@@ -62,7 +62,7 @@ HTML, and more - right on the device!</p>
   <entry>
     <title type="html"><![CDATA[Creating Custom Functionality with Mulberry]]></title>
     <link href="http://mulberry.toura.com/blog/2011/10/30/custom-functionality/"/>
-    <updated>2011-10-30T14:10:00-04:00</updated>
+    <updated>2011-10-30T14:10:00-07:00</updated>
     <id>http://mulberry.toura.com/blog/2011/10/30/custom-functionality</id>
     <content type="html"><![CDATA[<p>Out of the box, Mulberry's great at making simple content-driven apps, but one
 of the things we heard loud and clear during the closed alpha was that

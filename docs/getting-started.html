@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>An Overview of the Mulberry Tools - Toura Mulberry</title>
+  <title>Getting Started - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        An Overview of the Mulberry Tools          The Mulberry toolkit is made up of three distinct pieces of functionality: the Mulberry Applicat...">
+  <meta name="description" content="        Getting Started          InstallationYou should read the READMEfor installation instructions before proceeding with the rest of the steps b...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,9 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/an-overview-of-the-mulberry-tools.html">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/getting-started.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-26T16:53:44-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-26T14:04:24-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -87,68 +87,100 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">An Overview of the Mulberry Tools</h1>
+    <h1 class="entry-title">Getting Started</h1>
     
   </header>
   
 
-  <p>The Mulberry toolkit is made up of three distinct pieces of functionality: the Mulberry Application Framework; the Mulberry Command Line Interface; and the Mulberry Builder. Together, these three pieces help developers create, customize, and test applications using familiar web technologies, then deploy those applications as native mobile experiences.</p>
+  <h2>Installation</h2>
 
-<h2>The Mulberry Application Framework</h2>
+<p><strong>You should read the <a href="https://github.com/Toura/mulberry/blob/master/README.md">README</a>
+for installation instructions before proceeding with the rest of the steps below.</strong></p>
 
-<p>Location: <code>app</code></p>
+<h2>Scaffold</h2>
 
-<p>The Mulberry Application Framework provides the underlying architecture for building applications that will work without the benefit of a remote server to serve up each page in the application — these types of applications are often referred to as “single-page applications.”</p>
+<p>Mulberry lets you quickly create the basic structure for an application at the
+location you specify. Run this from the directory where you want to create a new
+directory that will contain your app.</p>
 
-<h3>Creating the User Interface</h3>
+<pre><code>mulberry scaffold myapp
+</code></pre>
 
-<p>In the framework, each page displays a unit of content; we refer to a unit of content as a “node.” Each node is associated with a page definition, which specifies the layout of the page, the components to be displayed on the page, and how the components should interact with the page and with each other. These interactions are described via “capabilities.” The same page definition can be used by one or many nodes.</p>
+<h2>Configure</h2>
 
-<p>Page definitions are authored in YAML, which is compiled to JSON that can be parsed by the framework. When the framework displays a page, it combines the data about the node that is being displayed with the page definition that is associated with the node, and creates a page controller. The page controller is responsible for setting up the layout of the page, placing the components in the layout, providing the components with the data from the node, and brokering communication between the components.</p>
+<p>The scaffolding step will create a few files and directories. You&#8217;ll need to
+edit the file <code>config.yml</code> to provide some basic configuration information. See
+the notes in the file for details.</p>
 
-<p>Each component used in a page encapsulates a unit of functionality. When a component receives data to display, it manipulates that data as required, and then uses the data to populate a template. The template provides the DOM representation of the component. Once the DOM representation is created, a component can add event listeners to react to user interaction. A component can also expose an API of “setter” methods, allowing the page&#8217;s controller to send it new data as required. Ideally, components simply receive data and announce user interaction; they should not communicate directly with a remote resource, or with the data layer of the application.</p>
+<h2>Construct</h2>
 
-<p>The Mulberry application framework comes with a selection of built-in page definitions, components, and capabilities, but it also allows developers to author their own. Developers can create unique experiences by following clear patterns and using simple APIs, all without worrying about the underlying “plumbing” of their application.</p>
+<p>The scaffolding step also creates a <code>sitemap.yml</code> file. Edit this to describe
+the structure of your application. Note that the home and about pages are
+created for you automatically, and generally are the only two pages at the top
+level of the sitemap; all other pages should be placed below the home page.</p>
 
-<h3>Creating Custom Functionality</h3>
+<pre><code>- home:
+  - schedule
+  - speakers
+  - points-of-interest
+- about
+</code></pre>
 
-<p>In addition to providing clear patterns for creating and connecting user interface components, the Mulberry application framework also provides tools and features that facilitate more complex application development:</p>
+<p>In order for your app to work, you&#8217;ll need a Markdown file in the pages
+directory for each page in the sitemap. These files also include some metadata
+in the form of a YAML header. At a minimum, you need to specify the title to
+display for the page, and the template you want to use. Make sure that the file
+you create has the same name as the entry in the sitemap; for example, the home
+page should be placed at <code>pages/home.md</code>:</p>
 
-<ul>
-<li>a Router that can be used to specify custom state management functions</li>
-<li>APIs for persisting data locally, so applications will work without a network connection</li>
-<li>over-the-air updates, allowing applications to occasionally poll a remote server for new data, and store any new data that is found so it will be available for offline use</li>
-<li>structured, modular markup that allows for easy design customization</li>
-</ul>
+<pre><code>---
+title: CapitolJS
+template: Home
+---
 
+Good afternoon agent. Your mission, should you choose to accept it, involves
+the learning of the programming language JavaScript and how to use it properly
+and effectively. You will be joined by an intimate task force of elite members
+of the JavaScript community to assist you in this task. You may select to
+attend either or both of the evening social events occurring the night before
+and night of the event. This event is happening on September 18th, 2011 in
+Washington, DC at the [Hotel Palomar](http://www.hotelpalomar-arlington.com/).
+If you accept this mission, be sure to follow
+[@capitoljs](http://www.twitter.com/capitoljs) and register today, like all
+JSConf events - it will sell out. See you in Washington DC.
+</code></pre>
 
-<h2>The Mulberry Command Line Interface (CLI)</h2>
+<p>For more on creating pages, see the Creating Pages and Assets documentation.</p>
 
-<p>Location: <code>cli/bin/mulberry</code></p>
+<h2>Customize</h2>
 
-<p>The CLI is a set of helpers that makes it easy to scaffold, develop, and test an application. Specifically, it provides the ability to</p>
+<p>Mulberry allows extensive customization of your application. See the documentation
+in the repository <a href="https://github.com/toura/mulberry/wiki">Wiki</a> for details.</p>
 
-<ul>
-<li>rapidly spin up a new application</li>
-<li>create nodes and their associated resources and data</li>
-<li>create skeleton files for page definitions, components, and capabilities</li>
-<li>serve the application locally for rapid in-browser iteration</li>
-<li>create test builds that can run on simulators and (properly provisioned) devices</li>
-<li>create production builds that can be submitted to app stores</li>
-</ul>
+<h2>Develop</h2>
 
+<p>For rapid iteration, you can run your app in a desktop WebKit browser and get
+access to your standard development tools. Run the following from the root of
+your project:</p>
 
-<h2>The Mulberry Builder</h2>
+<pre><code>mulberry serve
+</code></pre>
 
-<p>Location: <code>builder.rb</code></p>
+<h2>Test</h2>
 
-<p>The Mulberry Builder takes content and customizations from a given “content source,” and combines it with the Mulberry Application Framework to create a functional application for a specified target environment (referred to as the “build target”).</p>
+<p>Generate test builds that you can run in a simulator or on a properly
+provisioned device. Run the following from the root of your project:</p>
 
-<p>A Mulberry project — as created by the Mulberry CLI — is one example of a content source, but the builder can consume any content source that exposes an interface via a Build Helper. A Build Helper must provide an interface as defined by the base Build::BuildHelper class (<code>builder/build_helper.rb</code>). This interface allows the Builder to interrogate the Build Helper in order to access the content and customizations provided by the content source.</p>
+<pre><code>mulberry test
+</code></pre>
 
-<p>Separately, the Builder must be provided with information about the target environment for which it is building the application. Based on that information, the builder creates a project directory using a project template (<code>builder/project_templates/</code>), and then populates the project directory with the Mulberry Application Framework files and the content and customizations from the content source.</p>
+<h2>Deploy</h2>
 
-<p>The output of the Builder is a project directory that can be compiled if necessary, and then executed in the target environment.</p>
+<p>Create binaries for the various form factors and operating systems your app
+supports. Run the following from the root of your project:</p>
+
+<pre><code>mulberry deploy
+</code></pre>
 
 
   
@@ -157,7 +189,7 @@
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/an-overview-of-the-mulberry-tools.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/an-overview-of-the-mulberry-tools.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/getting-started.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/getting-started.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

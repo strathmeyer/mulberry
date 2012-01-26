@@ -4,7 +4,7 @@
   <title><![CDATA[Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2012-01-26T16:53:44-05:00</updated>
+  <updated>2012-01-26T14:04:24-08:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[0.3 Brings New Tools for Interactive Apps]]></title>
     <link href="http://mulberry.toura.com/blog/2012/01/17/todos-app-with-mulberry/"/>
-    <updated>2012-01-17T17:00:00-05:00</updated>
+    <updated>2012-01-17T17:00:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2012/01/17/todos-app-with-mulberry</id>
     <content type="html"><![CDATA[<p>Dan Imal gave a good <a href="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/">overview of the 0.3 release of Mulberry</a> the other
 day, but I wanted to follow up by taking a deeper dive into some of the new
@@ -423,7 +423,7 @@ JavaScript application. We hope you&#8217;ll <a href="http://mulberry.toura.com/
   <entry>
     <title type="html"><![CDATA[Announcing Mulberry 0.3: Even Easier Customization]]></title>
     <link href="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/"/>
-    <updated>2012-01-11T15:39:00-05:00</updated>
+    <updated>2012-01-11T15:39:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3</id>
     <content type="html"><![CDATA[<p>It&#8217;s a new year, and with that comes a new release of <a href="http://mulberry.toura.com/download/">Mulberry</a>! As with the previous release, our goal is to make it easier to get started with Mulberry, and once you&#8217;re up and running, we want to make it easier to customize your app. Some of the highlights:</p>
 
@@ -448,7 +448,7 @@ It was already possible to create new routes, but now you can run <code>mulberry
   <entry>
     <title type="html"><![CDATA[Announcing Mulberry 0.2: More Features for Easy Customization]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/"/>
-    <updated>2011-11-29T09:21:00-05:00</updated>
+    <updated>2011-11-29T09:21:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2</id>
     <content type="html"><![CDATA[<p><a href="http://mulberry.toura.com/download/">Mulberry 0.2</a> is out today, with several new features to make it
 even easier to customize your apps:</p>
@@ -490,7 +490,7 @@ at <a href="mailto:mulberry@toura.com">mulberry@toura.com</a>.</p>
   <entry>
     <title type="html"><![CDATA[Browser-based development: Fewer builds, better tools]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/"/>
-    <updated>2011-11-16T10:13:00-05:00</updated>
+    <updated>2011-11-16T10:13:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/16/browser-based-development</id>
     <content type="html"><![CDATA[<p>I&#8217;m in London after attending the <a href="http://fullfrontal.org">Full Frontal JavaScript Conference</a>,
 put on by the fantastic Remy and Julieanne
@@ -597,7 +597,7 @@ make your life easier when developing mobile apps, we hope you&#8217;ll let us k
   <entry>
     <title type="html"><![CDATA[Weinre: Sane, hosted debugging tools for your Mulberry apps]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/"/>
-    <updated>2011-11-14T22:40:00-05:00</updated>
+    <updated>2011-11-14T22:40:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/14/hosted-weinre</id>
     <content type="html"><![CDATA[<p>At Toura, we perform the vast majority of our day-to-day development in our
 desktop WebKit browsers - Chrome and Safari. Although the desktop browsers
@@ -643,7 +643,7 @@ HTML, and more - right on the device!</p>
   <entry>
     <title type="html"><![CDATA[An Opinionated Framework, Focused on Reuse]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/"/>
-    <updated>2011-11-03T20:31:00-04:00</updated>
+    <updated>2011-11-03T20:31:00-07:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/03/an-opinionated-framework-focused-on-reuse</id>
     <content type="html"><![CDATA[<p>One of the questions that’s come up several times in talking to other
 developers about Mulberry is this: How is Mulberry any different from all of
@@ -710,7 +710,7 @@ endeavor.</p>
   <entry>
     <title type="html"><![CDATA[Creating Custom Functionality with Mulberry]]></title>
     <link href="http://mulberry.toura.com/blog/2011/10/30/custom-functionality/"/>
-    <updated>2011-10-30T14:10:00-04:00</updated>
+    <updated>2011-10-30T14:10:00-07:00</updated>
     <id>http://mulberry.toura.com/blog/2011/10/30/custom-functionality</id>
     <content type="html"><![CDATA[<p>Out of the box, Mulberry&#8217;s great at making simple content-driven apps, but one
 of the things we heard loud and clear during the closed alpha was that

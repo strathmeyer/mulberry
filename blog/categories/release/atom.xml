@@ -4,7 +4,7 @@
   <title><![CDATA[Category: release | Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/blog/categories/release/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2012-01-26T16:53:44-05:00</updated>
+  <updated>2012-01-26T14:04:24-08:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Announcing Mulberry 0.3: Even Easier Customization]]></title>
     <link href="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/"/>
-    <updated>2012-01-11T15:39:00-05:00</updated>
+    <updated>2012-01-11T15:39:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3</id>
     <content type="html"><![CDATA[<p>It's a new year, and with that comes a new release of <a href="/download/">Mulberry</a>! As with the previous release, our goal is to make it easier to get started with Mulberry, and once you're up and running, we want to make it easier to customize your app. Some of the highlights:</p>
 
@@ -41,7 +41,7 @@ It was already possible to create new routes, but now you can run <code>mulberry
   <entry>
     <title type="html"><![CDATA[Announcing Mulberry 0.2: More Features for Easy Customization]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/"/>
-    <updated>2011-11-29T09:21:00-05:00</updated>
+    <updated>2011-11-29T09:21:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2</id>
     <content type="html"><![CDATA[<p><a href="/download/">Mulberry 0.2</a> is out today, with several new features to make it
 even easier to customize your apps:</p>

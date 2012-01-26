@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Components - Toura Mulberry</title>
+  <title>Versioning Philosophy and Commitment - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        Components          Pages in Mulberry are displayed using a combination of components as specified bythe page&#8217;s page definition. Each...">
+  <meta name="description" content="        Versioning Philosophy and Commitment          Versioning PhilosophyWhile we are in beta, we will be following a modified form of Semantic V...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,9 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/components.html">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/versioning-philosophy-and-commitment.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-26T16:53:44-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-26T14:04:24-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -87,154 +87,32 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">Components</h1>
+    <h1 class="entry-title">Versioning Philosophy and Commitment</h1>
     
   </header>
   
 
-  <p>Pages in Mulberry are displayed using a combination of components as specified by
-the page&#8217;s page definition. Each component receives information about the page that is
-being displayed, as well as information about where on the page the component
-will be displayed.</p>
+  <h1>Versioning Philosophy</h1>
 
-<p>Components are responsible for receiving data to be displayed; displaying the
-data using a template; and observing and announcing user interaction. All
-built-in and custom components follow the same basic path:</p>
+<p>While we are in beta, we will be following a modified form of <a href="http://semver.org/">Semantic Versioning</a>. Instead of Major revisions indicating breaking changes, we&#8217;ll generally behave as follows:</p>
 
 <ul>
-<li>Receive information about the page and store that information in the
-component instance&#8217;s <code>baseObj</code> property.</li>
-<li>Use the <code>baseObj</code> and other data to prepare the data to be used by the
-component&#8217;s template.</li>
-<li>Create a DOM structure by populating the template with the prepared data.</li>
-<li>Register event listeners that call methods of the component when the event
-occurs.</li>
-<li>Expose an API for updating the component&#8217;s data, if required.</li>
+<li>&#8220;Master&#8221; at a given point in time may be unstable and/or include breaking changes</li>
+<li>&#8220;Blessed&#8221; releases will be tagged - we aim to have a release once per month</li>
+<li>Non breaking changes (small features, bug fixes, etc.) will bump the patch version (e.g. 0.1.0 -> 0.1.1)</li>
+<li>Breaking changes (or significant functionality increases) will bump the minor version (e.g. 0.1.1 -> 0.2.0)</li>
 </ul>
 
 
-<h2>Built-In Components</h2>
+<h1>Commitment</h1>
 
-<p>Mulberry comes with several built-in components that you can use in your own
-page definitions; they are located at <code>toura_app/javascript/toura/components/</code>. The
-built-in components are described below, including the asset type(s) that the
-component works with. <em>Asset types</em> appear in italics. For more about the
-different asset types, see the Assets documentation.</p>
+<p>We pledge that we will document any/all breaking changes (things you must do to upgrade) for all minor version updates. We will keep this document up-to-date in as realtime a manner as possible.</p>
 
-<h3>AppNav</h3>
+<p>When we release a new version (0.x) we will simultaneously create a wiki article called &#8220;Upgrading from 0.x to 0.x+1&#8221;. Whenever a pull request lands that introduces a breaking change, we will add an entry in that article explaining how to implement the change, along with a link to the pull request.</p>
 
-<p>Displays application-level navigation elements, including links to the built-in
-Search, About, and Favorites pages.</p>
+<p>As we go along, we will continue to release additional documents but will NOT go back and update older ones. For example, we will not modify the &#8220;Upgrading from 0.1 to 0.2&#8221; document to be something akin to &#8220;Upgrading from 0.1 to 0.3&#8221;. If you are on 0.1 and wish to upgrade to 0.3, you&#8217;ll have to perform the steps in &#8220;Upgrading from 0.1 to 0.2&#8221; and then &#8220;Upgrading from 0.2 to 0.3&#8221;.</p>
 
-<h3>AssetList</h3>
-
-<p>Displays a list of assets, and announces when a user selects an asset from the
-list.</p>
-
-<h3>AudioCaption</h3>
-
-<p>Displays a caption for an audio. Exposes a setter that allows changing the
-content of the caption. (Based on BodyText.)</p>
-
-<h3>AudioList</h3>
-
-<p>An audio-specific AssetList.</p>
-
-<h3>AudioPlayer</h3>
-
-<p>A wrapper around an HTML5 audio player &#8211; with fallbacks for browsers that do
-not support the HTML5 <code>audio</code> tag &#8211; for displaying an <em>audio</em>. Exposes a
-setter that allows changing the current audio source file. Announces user
-interaction with the player.</p>
-
-<h3>BodyText</h3>
-
-<p>Displays the <em>body text</em> associated with a page, and exposes a setter that
-allows the content to be updated.</p>
-
-<h3>ChildNodeGrid</h3>
-
-<p>Displays the <em>subpages</em> of the page in a grid layout; each item in the grid
-links to the corresponding page. (Subpages must have a <code>featured_image</code>
-property specified in order to be displayed in the grid.)</p>
-
-<h3>ChildNodes</h3>
-
-<p>Displays the <em>subpages</em> of the page in a list layout; each item in the list
-links to the corresponding page.</p>
-
-<h3>ColumnHeaderImage</h3>
-
-<p>Displays the page&#8217;s <em>header</em> image inside a column region (see the Page Definitions
-documentation for more information on page definitions and regions).</p>
-
-<h3>DetailTitle</h3>
-
-<p>Displays a title region on a detail screen (see the Page Definitions
-documentation for more information on page definitions and screens), and exposes a
-setter for setting the title. Announces user interaction with the close button.</p>
-
-<h3>FeedItemDetail</h3>
-
-<p>Displays the contents of an RSS <em>feed</em> item, including an image enclosure if one
-is included in the feed item.</p>
-
-<h3>FeedItemList</h3>
-
-<p>Displays a list of RSS items from a <em>feed</em>. Announces a user&#8217;s selection from
-the list of items.</p>
-
-<h3>GoogleMap</h3>
-
-<p>Displays a set of <em>locations</em> on a Google Map, and displays information about each
-location when the user selects a location.</p>
-
-<h3>ImageCaption</h3>
-
-<p>Displays a caption for an image. Exposes a setter that allows changing the
-content of the caption. (Based on BodyText.)</p>
-
-<h3>ImageDetail</h3>
-
-<p>Displays a set of <em>images</em> in a full-screen gallery; each image can be panned and zoomed.
-Announces user interaction with the gallery.</p>
-
-<h3>ImageGallery</h3>
-
-<p>Displays a set of <em>images</em> in a swipeable gallery. Announces user interaction
-with the gallery.</p>
-
-<h3>LocationList</h3>
-
-<p>Displays a set of <em>locations</em>.</p>
-
-<h3>NodeTitleBanner</h3>
-
-<p>Displays the page title.</p>
-
-<h3>PageHeaderImage</h3>
-
-<p>Displays the page&#8217;s <em>header</em> image across the width of the page.</p>
-
-<h3>PageNav</h3>
-
-<p>Displays the page&#8217;s title, as well as various page and application tools.</p>
-
-<h3>VideoCaption</h3>
-
-<p>Displays a caption for a video. Exposes a setter that allows changing the
-content of the caption. (Based on BodyText.)</p>
-
-<h3>VideoPlayer</h3>
-
-<p>A wrapper around an HTML5 video player &#8211; with fallbacks for browsers that do
-not support the HTML5 <code>video</code> tag &#8211; for displaying a <em>video</em>. Exposes a
-setter that allows changing the current video source file. Announces user
-interaction with the player.</p>
-
-<h2>Creating Custom Components</h2>
-
-<p>Read about <a href="/docs/creating-custom-components.html">Creating Custom Components</a></p>
+<p><strong>Note</strong>: This only applies to the BETA. Once we hit 1.0, we will revise the policy to more accurately reflect SemVer.</p>
 
 
   
@@ -243,7 +121,7 @@ interaction with the player.</p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/components.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/components.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/versioning-philosophy-and-commitment.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/versioning-philosophy-and-commitment.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

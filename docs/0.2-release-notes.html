@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Release Checklist - Toura Mulberry</title>
+  <title>0.2 Release Notes - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        Release Checklist          Preparing the ReleaseRun the tests and ensure they all pass: rakeEnsure you can test the kitchensink demo: mulbe...">
+  <meta name="description" content="        0.2 Release Notes          Features &amp; ImprovementsAdded toura.app.Phonegap.registerAPI methodIt&#8217;s no longer necessary to override...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,9 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/release-checklist.html">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/0.2-release-notes.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-26T16:53:44-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-26T14:04:24-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -87,38 +87,66 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">Release Checklist</h1>
+    <h1 class="entry-title">0.2 Release Notes</h1>
     
   </header>
   
 
-  <h2>Preparing the Release</h2>
+  <h2>Features &amp; Improvements</h2>
 
 <ul>
-<li>Run the tests and ensure they all pass: <code>rake</code></li>
-<li>Ensure you can test the kitchensink demo: <code>mulberry test demos/kitchensink/</code></li>
-<li>Review the diff since the last commit: <code>git diff &lt;last_tag_name&gt;</code> (you&#8217;ll need to <code>git pull --tags</code> to get the remote tags)</li>
-<li>Write release notes and add a link to them to the repo wiki&#8217;s home page</li>
+<li>Added <code>toura.app.Phonegap.registerAPI</code> method</li>
+<li>It&#8217;s no longer necessary to override the default styles. When an app is scaffolded, the default theme is copied into the app, but it&#8217;s not required to use it. It can be edited and modified. To pull any upstream changes to the built-in themes, a <code>mulberry update_themes</code> command was added.</li>
+<li><code>mulberry create component</code> now creates a placeholder .scss file and adds an <code>@import</code> statement.</li>
+<li><code>mulberry scaffold</code> when run from inside a Mulberry project will now create any pages that are specified in the sitemap but that do not exist.</li>
+<li>The built-in ImageGallery component now has dots to indicate its status.</li>
+<li>Introduced <code>populate</code> and <code>populateElement</code> instance methods on components.</li>
+<li>Added <code>mulberry.route</code> and <code>mulberry.routes</code> for defining custom routes.</li>
+<li>Added support for pages to have &#8220;featured&#8221; images, which are used when displaying a page as an image (for example, in a grid view of child pages)</li>
+<li>A new <code>published</code> property in an app&#8217;s <code>config.yml</code> will be used as the version for app stores.</li>
 </ul>
 
 
-<h2>Creating the Release</h2>
+<h2>Changes</h2>
 
 <ul>
-<li>Bump the version in <code>cli/mulberry.rb</code> and commit</li>
-<li>Tag the release by running <code>git tag -a</code>; add a link to the release notes in the commit message</li>
-<li>Push the tag: <code>git push --tags</code></li>
-<li>Edit the downloads page on the Mulberry site to point to the new release (currently at <code>source/download/index.markdown</code> &#8211; just edit the <code>download_url</code> property); regenerate and deploy the site (see the site repo&#8217;s README for details).</li>
+<li>Template yml format changes:
+
+<ul>
+<li>regions no longer use <code>containerType</code> property</li>
+<li>regions now have a <code>type</code> property which can have the value of <code>row</code>, <code>column</code>, or <code>component</code></li>
+</ul>
+</li>
+<li>Changed format of generators - instead of <code>create_template</code>, <code>create_page</code>, it&#8217;s now <code>create template</code>, <code>create page</code>, etc. (ref: https://github.com/Toura/mulberry/pull/130)</li>
+<li>Videos page template converted to configurable system.</li>
+<li>Initial work on web builds.</li>
+<li>weinre now uses api.toura.com</li>
+<li>Upgraded Evergreen test helper to 1.0.0</li>
+<li>Upgraded jshintrb to be more flexible about which version of therubyracer it uses</li>
+<li>Kitchensink demo now includes NodeGallery page.</li>
+<li>The default theme is now copied into a scaffolded app. The main <code>custom.scss</code> is also now called <code>base.scss</code>. <code>mulberry update_themes</code> will update an app with the latest theme files.</li>
 </ul>
 
 
-<h2>Announcing the Release</h2>
+<h2>Bug Fixes</h2>
 
 <ul>
-<li>Post a message to the <a href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a> with a link to the release notes, and provide any other pertinent information.</li>
-<li>Announce the release on @touradev.</li>
-<li>Update the topic in the IRC channel: <code>/topic Toura Mulberry - http://mulberry.toura.com - Latest Release: 0.X.X</code></li>
-<li>For major releases, write a blog post.</li>
+<li><code>mulberry scaffold &lt;appname&gt;</code> now creates a file at <code>javascript/base.js</code>, which eliminates a 404 error</li>
+<li>Scaffolding projects by entering the full path for the project now works.</li>
+<li>Regions with more than one component can now scroll.</li>
+<li>Fixed a layout issue on iOS when the keyboard is dismissed.</li>
+<li>Fixed an erroneous &#8220;this message is a duplicate&#8221; error after failed posting to Twitter or Facebook.</li>
+<li>Added <code>parent</code> property to child nodes, allowing sibling nav to work.</li>
+<li><code>template</code> directory now gets created if not present when creating a new template.</li>
+</ul>
+
+
+<h2>Tests</h2>
+
+<ul>
+<li>Basic specs for command line commands.</li>
+<li>Smoke tests for all demo apps.</li>
+<li>Basic tests for adding assets to nodes.</li>
 </ul>
 
 
@@ -129,7 +157,7 @@
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/release-checklist.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/release-checklist.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/0.2-release-notes.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/0.2-release-notes.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>

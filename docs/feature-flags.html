@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Pages and Assets - Toura Mulberry</title>
+  <title>Feature Flags - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        Pages and Assets          Pages and AssetsThe first step in creating a page is creating an entry for it in yourapplication&#8217;s sitemap,...">
+  <meta name="description" content="        Feature Flags          Each of the following flags can be set to true or false by setting toura.features[flagName].multiLineChildNodes (def...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,9 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/pages-and-assets.html">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/feature-flags.html">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css?_c=2012-01-26T16:53:44-05:00" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/screen.css?_c=2012-01-26T14:04:24-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
@@ -87,184 +87,23 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">Pages and Assets</h1>
+    <h1 class="entry-title">Feature Flags</h1>
     
   </header>
   
 
-  <h1>Pages and Assets</h1>
-
-<p>The first step in creating a page is creating an entry for it in your
-application&#8217;s sitemap, located at <code>sitemap.yml</code>. This file lets you specify
-the hierarchy of your application.</p>
-
-<pre><code>- home:
-  - schedule
-  - speakers
-  - points-of-interest
-- about
-</code></pre>
-
-<p>Once you have created an entry in the sitemap, you need to create the page.
-From inside your app directory, you can run the following command:</p>
-
-<pre><code>mulberry create page speakers
-</code></pre>
-
-<p>This creates a file for you at <code>pages/speakers.md</code>. If you open the file, you
-can see that pages consist of a YAML header that provides metadata about the page, and
-a body that provides the page&#8217;s text content. Here is what the page file might
-look like when you&#8217;re done:</p>
-
-<pre><code>---
-title: Speakers
-page_def: 
-  phone: images-and-text-phone
-  tablet: images-and-text-tablet
-images:
-  - pamela-fox.png
-  - alex-sexton.png
-  - brendan-eich.png
-  - alex-russell.png
-  - nicholas-zakas.png
-  - jed-schmidt.png
-  - mike-taylor.png
-  - douglas-crockford.png
-  - rebecca-murphey.png
-  - joe-mccann.png
-  - ben-combee.png
-  - mikeal-rogers.png
----
-
-CapitolJS is bringing together 12 of the top minds in the JS community to
-provide you with the most exciting presentations and discussions. Presentations
-will be geared toward every day application and use so you will leave CapitolJS
-ready to write amazing JS. They have been out in the field and seen the action
-and now they have come back to prepare you, agent, for the world of JS.
-</code></pre>
-
-<p>The only information that must be provided in the YAML header is the title for
-the page. Pages will use a default template if one is not specified, and assets
-are optional. The page body text is also optional, and not all page templates
-will display it.</p>
-
-<h1>Creating Assets</h1>
-
-<p>Each page in a Mulberry application can have assets attached to it. <em>Assets</em> is a
-broad term covering any kind of information that might be associated with a
-page; when a page is displayed, the components used to display the page will
-have access to all of the assets associated with the page.</p>
-
-<p>Asset types fall into two categories, media assets and data assets:</p>
-
-<h3>Media Asset Types</h3>
+  <p>Each of the following flags can be set to true or false by setting <code>toura.features[flagName]</code>.</p>
 
 <ul>
-<li>Audio</li>
-<li>Image</li>
-<li>Video</li>
+<li><code>multiLineChildNodes</code> (default: false) Determines whether child node names that would span multiple lines are displayed in full.</li>
+<li><code>sharing</code> (default: true) Determines whether sharing is enabled in the app.</li>
+<li><code>favorites</code> (default: true) Determines whether user favorites are enabled in the app.</li>
+<li><code>fontSize</code> (default: true) Determines whether app users can change the font size.</li>
+<li><code>siblingNav</code> (default: false) Determines whether navigation between sibling nodes is enabled.</li>
+<li><code>debugPage</code> (default: false) Determines whether the user will have access to the in-app debugging page. If this is true, then typing <code>toura:&lt;anything&gt;</code> into the search input and submitting the search form (by clicking on the button) will initiate debugging.</li>
+<li><code>debugToolbar</code> (default: false) Determines whether the in-app debugging toolbar will be present.</li>
 </ul>
 
-
-<h3>Data Asset Types</h3>
-
-<ul>
-<li>Data</li>
-<li>Feed</li>
-<li>Location</li>
-</ul>
-
-
-<h2>Adding Media Assets to a Page</h2>
-
-<p>When you scaffold a new app, a directory for each asset type is created in your
-project&#8217;s <code>assets</code> directory. To add a media asset to a page, first you must
-create the asset in the proper directory. So, if you wanted to use a picture of
-Alex Sexton on a page, you&#8217;d add the image file at
-<code>assets/images/alex-sexton.png</code>.</p>
-
-<p>Media assets should also have captions; these are stored in the <code>captions</code>
-directory inside the directory for the asset type. So, to add a caption for the
-file you just created, you would store a Markdown file at
-<code>assets/images/captions/alex-sexton.md</code>. <em>Note that the caption filename
-matches the image filename.</em></p>
-
-<p>Once you have created a file and a caption for the asset, you can associate it
-with any page in Mulberry. You do this by adding the information about the asset to
-the page&#8217;s YAML header:</p>
-
-<pre><code>---
-title: Speakers
-page_def: 
-  phone: images-and-text-phone
-  tablet: images-and-text-tablet
-images:
-  - pamela-fox.png
-  - alex-sexton.png
-  - brendan-eich.png
-  - alex-russell.png
-  - nicholas-zakas.png
-  - jed-schmidt.png
-  - mike-taylor.png
-  - douglas-crockford.png
-  - rebecca-murphey.png
-  - joe-mccann.png
-  - ben-combee.png
-  - mikeal-rogers.png
----
-
-CapitolJS is bringing together 12 of the top minds in the JS community to
-provide you with the most exciting presentations and discussions. Presentations
-will be geared toward every day application and use so you will leave CapitolJS
-ready to write amazing JS. They have been out in the field and seen the action
-and now they have come back to prepare you, agent, for the world of JS.
-</code></pre>
-
-<p>By default, the display name for media asset will be its filename, minus the
-extension. This is probably not what you want. You can specify a display name
-for a media asset by adding a YAML header to the caption file:</p>
-
-<pre><code>---
-name: Alex Sexton
----
-
-## [Alex Sexton](http://alexsexton.com/)
-
-Alex Sexton is a Labs Engineer at Bazaarvoice in Austin, TX. He is the creator
-of yepnope.js and is a developer on the Modernizr core team. He is the current
-organizer of TXJS, a co-host on the yayQuery podcast as well as a volunteer
-bug-triager for the jQuery project. He has a passion for third party
-applications and application structure, so naturally he likes working on large
-third-party apps. He tweets at @slexaxton and blogs at http://alexsexton.com/
-</code></pre>
-
-<h2>Adding Data Assets to a Page</h2>
-
-<p>You can add data, feeds, and locations to a page much like you add media assets
-to a page: simply specify the asset filename in the proper section of a page&#8217;s
-YAML header:</p>
-
-<pre><code>---
-title: News
-page_def: 
-  phone: feed-list-tablet
-  tablet: feed-list-phone
-feeds:
-  - cnn.yml
----
-</code></pre>
-
-<p>Mulberry provides helpers to create data assets. From your app directory, you can
-run:</p>
-
-<pre><code>mulberry create data my-data           # creates assets/data/my-data.yml
-mulberry create feed my-feed           # creates assets/feeds/my-feed.yml
-mulberry create location my-location   # creates assets/locations/my-location.yml
-</code></pre>
-
-<p>These commands will create a stub file at the proper location, using the name
-you specify. The contents of the stub files indicate the proper contents for
-each type of data asset.</p>
 
 
   
@@ -273,7 +112,7 @@ each type of data asset.</p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/pages-and-assets.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/pages-and-assets.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/feature-flags.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/feature-flags.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
