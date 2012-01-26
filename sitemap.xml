@@ -44,99 +44,103 @@
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/0.1.1-release-notes.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/0.2-Release-Notes.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/0.2-release-notes.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/0.3-release-notes.html</loc>
-        <lastmod>2012-01-24T10:49:18-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/0.next-release-notes.html</loc>
-        <lastmod>2012-01-24T10:49:18-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/An-Overview-of-the-Mulberry-Tools.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/an-overview-of-the-mulberry-tools.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Capabilities.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/capabilities.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Command-Line-Interface.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/command-line-interface.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Components.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/components.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Creating-Custom-Components.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/creating-custom-components.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Feature-flags.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/feature-flags.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Getting-Started.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/getting-started.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/</loc>
-        <lastmod>2012-01-24T10:49:18-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Javascript-API.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/javascript-api.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mulberry.toura.com/docs/javascript-coding-guidelines.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/over-the-air-updates.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/page-definitions.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Pages-and-Assets.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/pages-and-assets.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Release-Checklist.html</loc>
-        <lastmod>2012-01-24T10:49:18-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/release-checklist.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/requirements-for-developing-android-apps.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/requirements-for-developing-ios-apps.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Style-Application-Sequence.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/style-application-sequence.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Styles-and-Theming.html</loc>
-        <lastmod>2012-01-24T10:49:18-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/styles-and-theming.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Upgrading-to-new-PhoneGap-versions.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/upgrading-to-new-phonegap-versions.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/docs/upgrading.html</loc>
-        <lastmod>2012-01-24T10:49:18-05:00</lastmod>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/docs/Versioning-Philosophy-and-Commitment.html</loc>
-        <lastmod>2012-01-12T17:23:35-05:00</lastmod>
+        <loc>http://mulberry.toura.com/docs/versioning-philosophy-and-commitment.html</loc>
+        <lastmod>2012-01-26T16:35:07-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/download/</loc>
@@ -144,7 +148,7 @@
     </url>
     <url>
         <loc>http://mulberry.toura.com/getting-started/</loc>
-        <lastmod>2012-01-24T10:49:18-05:00</lastmod>
+        <lastmod>2012-01-26T16:34:20-05:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/</loc>

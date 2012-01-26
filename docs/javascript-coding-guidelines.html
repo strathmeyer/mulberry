@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Getting Started - Toura Mulberry</title>
+  <title>JavaScript Coding Guidelines - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        Getting Started          InstallationYou should read the READMEfor installation instructions before proceeding with the rest of the steps b...">
+  <meta name="description" content="        JavaScript Coding Guidelines          This document, especially its structure, owes heavily to the jQuery CoreStyle Guide.These style guide...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/docs/getting-started.html">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/javascript-coding-guidelines.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-26T16:35:14-05:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,99 +87,222 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">Getting Started</h1>
+    <h1 class="entry-title">JavaScript Coding Guidelines</h1>
     
   </header>
   
 
-  <h2>Installation</h2>
+  <p><em>This document, especially its structure, owes heavily to the <a href="http://docs.jquery.com/JQuery_Core_Style_Guidelines">jQuery Core
+Style Guide</a>.</em></p>
 
-<p><strong>You should read the <a href="https://github.com/Toura/mulberry/blob/master/README.md">README</a>
-for installation instructions before proceeding with the rest of the steps below.</strong></p>
+<p>These style guidelines apply to all Mulberry JavaScript code, and to any
+JavaScript code published as part of an &#8220;official&#8221; Mulberry demo.</p>
 
-<h2>Scaffold</h2>
+<h2>JSHint</h2>
 
-<p>Mulberry lets you quickly create the basic structure for an application at the
-location you specify. Run this from the directory where you want to create a new
-directory that will contain your app.</p>
+<p>With the exception of some vendor files, the Mulberry code passes JSHint with
+the following settings:</p>
 
-<pre><code>mulberry scaffold myapp
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:curly      =&gt;  true,
+</span><span class='line'>:bitwise    =&gt;  true,
+</span><span class='line'>:eqeqeq     =&gt;  true,
+</span><span class='line'>:immed      =&gt;  true,
+</span><span class='line'>:latedef    =&gt;  true,
+</span><span class='line'>:noempty    =&gt;  true,
+</span><span class='line'>:trailing   =&gt;  true,
+</span><span class='line'>:debug      =&gt;  true,
+</span><span class='line'>:funcscope  =&gt;  true,
+</span><span class='line'>:browser    =&gt;  true,
+</span><span class='line'>:dojo       =&gt;  true</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For more on JSHint, see <a href="http://www.jshint.com/options/">the options documentation</a>.</p>
+
+<h2>Variable Declaration</h2>
+
+<p>Variables should be declared at the top of a function, even if the variable is
+not defined until later in the function. Variables that are assigned a value
+when they are declared should be on their own line; variables that are declared
+but that are not assigned a value may appear on the same line, but should
+appear at the end of the declaration statement. There should be a space before
+and after the <code>=</code>, and the variable names should be left-aligned with each
+other:</p>
+
+<pre><code>var foo = 1,
+    bar = 2,
+    bim, baz;
 </code></pre>
 
-<h2>Configure</h2>
+<p>Variables should be named using <code>camelCase</code>. Use your judgment in creating
+variable names; for example, arrays should generally have a plural name, and
+it may make sense to give booleans a name that begins with <code>is</code>.</p>
 
-<p>The scaffolding step will create a few files and directories. You&#8217;ll need to
-edit the file <code>config.yml</code> to provide some basic configuration information. See
-the notes in the file for details.</p>
+<h2>Semicolons</h2>
 
-<h2>Construct</h2>
+<p>Semicolons are never optional. Nothing should appear after a semicolon on the
+same line as the semicolon.</p>
 
-<p>The scaffolding step also creates a <code>sitemap.yml</code> file. Edit this to describe
-the structure of your application. Note that the home and about pages are
-created for you automatically, and generally are the only two pages at the top
-level of the sitemap; all other pages should be placed below the home page.</p>
+<h2>Indentation and Spacing</h2>
 
-<pre><code>- home:
-  - schedule
-  - speakers
-  - points-of-interest
-- about
+<p>The Mulberry code uses two spaces for indentation. Whether you like this or
+not, it is the way it is, and should be followed strictly.</p>
+
+<p>Mulberry code strips trailing whitespace from all lines.</p>
+
+<p>If you use vim, you may want to put something like the following in your
+<code>.vimrc</code> file.</p>
+
+<pre><code>autocmd BufWritePre * :%s/\s\+$//e
 </code></pre>
 
-<p>In order for your app to work, you&#8217;ll need a Markdown file in the pages
-directory for each page in the sitemap. These files also include some metadata
-in the form of a YAML header. At a minimum, you need to specify the title to
-display for the page, and the template you want to use. Make sure that the file
-you create has the same name as the entry in the sitemap; for example, the home
-page should be placed at <code>pages/home.md</code>:</p>
+<p>Other text editors should provide options for enabling this by default as well.</p>
 
-<pre><code>---
-title: CapitolJS
-template: Home
----
+<p>We have a <em>fairly</em> liberal policy toward the use of whitespace inside Mulberry
+code. For example:</p>
 
-Good afternoon agent. Your mission, should you choose to accept it, involves
-the learning of the programming language JavaScript and how to use it properly
-and effectively. You will be joined by an intimate task force of elite members
-of the JavaScript community to assist you in this task. You may select to
-attend either or both of the evening social events occurring the night before
-and night of the event. This event is happening on September 18th, 2011 in
-Washington, DC at the [Hotel Palomar](http://www.hotelpalomar-arlington.com/).
-If you accept this mission, be sure to follow
-[@capitoljs](http://www.twitter.com/capitoljs) and register today, like all
-JSConf events - it will sell out. See you in Washington DC.
+<pre><code>if (foo === 'bar') {
+  baz = { bim : 'bop' }
+  bop = [ 1, 2, 3 ];
+}
 </code></pre>
 
-<p>For more on creating pages, see the Creating Pages and Assets documentation.</p>
+<p>Commas should always be follwed by a space.</p>
 
-<h2>Customize</h2>
+<p>Colons should always be preceded and followed by a space.</p>
 
-<p>Mulberry allows extensive customization of your application. See the documentation
-in the repository <a href="https://github.com/toura/mulberry/wiki">Wiki</a> for details.</p>
+<h2>Strings</h2>
 
-<h2>Develop</h2>
+<p>Mulberry code uses single quotes around strings.</p>
 
-<p>For rapid iteration, you can run your app in a desktop WebKit browser and get
-access to your standard development tools. Run the following from the root of
-your project:</p>
+<h2>Blocks</h2>
 
-<pre><code>mulberry serve
+<p><code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, and <code>try</code> blocks <em>always</em> have braces and the
+body of the block <em>always</em> begins on a new line, even if the body is only
+a single line.</p>
+
+<pre><code>if (foo) {
+  bar();
+}
+
+if (foo) {
+  foo = 1;
+  return false;
+}
 </code></pre>
 
-<h2>Test</h2>
+<p><code>if</code> statements for exiting functions early are an exception, and can be
+written on one line:</p>
 
-<p>Generate test builds that you can run in a simulator or on a properly
-provisioned device. Run the following from the root of your project:</p>
+<pre><code>function(foo) {
+  if (foo===true) { return; }
 
-<pre><code>mulberry test
+  /* other function code */
+}
 </code></pre>
 
-<h2>Deploy</h2>
+<h2>Ternaries</h2>
 
-<p>Create binaries for the various form factors and operating systems your app
-supports. Run the following from the root of your project:</p>
+<p>The ternary operator can be very useful for variable assignment. However,
+nexted ternaries are not allowed. That is, the following construct should
+<em>never</em> be used:</p>
 
-<pre><code>mulberry deploy
+<pre><code>var a = b ? c : d ? e : f;
+</code></pre>
+
+<h2>Comments</h2>
+
+<p>Long comments should use <code>/* ... */</code>.</p>
+
+<p>Single line comments should always be on their own line and be above the line
+they reference. Additionally there should be an extra endline above it. For
+example:</p>
+
+<pre><code>var some = "stuff";
+
+// We're going to loop here
+for (var i = 0; i &lt; 10; i++ ) {
+  doIt();
+}
+</code></pre>
+
+<p>Inline comments are allowed as an exception when used to annotate special
+arguments in formal parameter lists:</p>
+
+<pre><code>function foo(types, selector, data, fn, /*INTERNAL*/ one ) {
+  // do stuff.
+}
+</code></pre>
+
+<h2>Testing Equality</h2>
+
+<p>The strict equality operators (<code>===</code> and <code>!==</code>) should always be used. If
+necessary, you should perform any variable coercion prior to the equality
+check.</p>
+
+<h2>Calling Functions</h2>
+
+<p>Function calls should include spaces between arguments, but should not include
+spaces after the opening parenthesis or before the closing one:</p>
+
+<pre><code>foo('bar', 1);
+</code></pre>
+
+<h2>Arrays and Objects</h2>
+
+<p>Empty objects and arrays don&#8217;t need filler spaces.</p>
+
+<pre><code>[]
+{}
+</code></pre>
+
+<p>Arrays may be declared on one or more lines, depending on readability.
+A populated array should have a space after the opening <code>[</code> and before the
+closing <code>]</code>.</p>
+
+<pre><code>var animals = [ 'cat', 'dog', 'honey badger' ];
+</code></pre>
+
+<p>Objects should almost always be declared on multiple lines, and should be
+spaced for readability. At the very least, there should be a space after the
+opening <code>{</code> and before the closing <code>}</code>, and before and after each colon:</p>
+
+<pre><code>var dog = {
+  color : 'black',
+  name : 'Ellie'
+};
+</code></pre>
+
+<h2>Type Checks</h2>
+
+<p>Type checking should always be achieved via the built-in Dojo methods:
+<code>dojo.isArray</code>, <code>dojo.isString</code>, <code>dojo.isFunction</code>, and <code>dojo.isObject</code>.</p>
+
+<h2>Event Binding and Subscriptions</h2>
+
+<p>When binding to an event or subscribing to a topic, it&#8217;s important to do so in
+a way that will be appropriately torn down. If the binding or subscription is
+happening inside a component (or any other class that inherits from
+<code>toura._View</code>), then it should be done with the component&#8217;s <code>this.connect</code> or
+<code>this.subscribe</code> method, which will automatically ensure proper teardown. If
+you perform the binding or subscription via the standard <code>dojo.connect</code> or
+<code>dojo.subscribe</code>, you are responsible for ensuring proper teardown. For
+example:</p>
+
+<pre><code>var s = dojo.subscribe('/app/ready', function() {
+  // do stuff
+  dojo.unsubscribe(s);
+});
 </code></pre>
 
 
@@ -189,7 +312,7 @@ supports. Run the following from the root of your project:</p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/getting-started.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/getting-started.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/javascript-coding-guidelines.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/javascript-coding-guidelines.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
