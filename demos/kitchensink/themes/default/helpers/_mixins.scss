@@ -246,7 +246,7 @@
 
 @mixin caption-text {
   font-size: 14px;
-  color: #555;
+  color: offset-text-color(40%);
 }
 
 @function offset-text-color($amount) {
