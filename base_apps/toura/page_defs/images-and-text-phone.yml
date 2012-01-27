@@ -17,13 +17,14 @@ images-and-text-phone:
           - className: image-gallery
             components:
             - ImageGallery
-          - className: caption
-            components:
-            - ImageCaption
+          # - className: caption
+          #   components:
+          #   - ImageCaption
 
       - scrollable: true
         className: caption-and-text
         components:
+        - ImageCaption
         - ChildNodes
         - BodyText
 
