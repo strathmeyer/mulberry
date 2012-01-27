@@ -2,8 +2,19 @@
   .screen.index {
     @include standard-screen;
 
-    .region.image-gallery {
+    .region.image-container {
       @include background-shadow;
+      @include flex-row-container;
+      @include fixed-flex-region;
+
+      .region.caption,
+      .region.image-gallery {
+        @include fixed-flex-region;
+      }
+      
+      .component.image-gallery {
+        @include fixed-height-gallery;
+      }
     }
 
     .body-text:not(.empty) {
