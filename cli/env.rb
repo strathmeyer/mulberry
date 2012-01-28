@@ -4,6 +4,8 @@ module Mulberry
       case Config::CONFIG['host_os']
         when /mswin|windows/i
           :windows
+        when /mingw/i
+          :mingw
         when /linux/i
           :linux
         when /darwin/i

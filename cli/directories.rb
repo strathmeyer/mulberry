@@ -32,7 +32,11 @@ module Mulberry
       root = File.exist?(File.join(root_path, flag)) ? root_path : default
       raise "Could not find root path for #{self}" unless root
 
-      Mulberry::Env.host_os == :windows ? Pathname.new(root).expand_path : Pathname.new(root).realpath
+      if Mulberry::Env.host_os == :windows or Mulberry::Env.host_os == :mingw
+        Pathname.new(root).expand_path
+      else
+        Pathname.new(root).realpath
+      end
     end
   end
 end

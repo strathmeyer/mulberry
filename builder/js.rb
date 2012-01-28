@@ -199,7 +199,7 @@ module Builder
         Dir.chdir BUILDSCRIPTS_DIR
         puts "Building the JavaScript -- this can take a while, be patient!"
 
-        if Mulberry::Env.host_os == :windows
+        if Mulberry::Env.host_os == :windows or Mulberry::Env.host_os == :mingw
           build_script = 'build.bat'
           location     = Pathname.new(@location).relative_path_from(Pathname.new(Dir.pwd)).to_s
         else
@@ -207,7 +207,13 @@ module Builder
           location     = @location
         end
 
-        system %{./#{build_script} profileFile=#{PROFILE_FILE} releaseDir=#{location} #{'> /dev/null' if !@build.settings[:verbose]}}
+        if Mulberry::Env.host_os == :mingw
+          prefix = '' # for bare windows
+        else
+          prefix = './' # for linux-y people (cygwin, linux, osx)
+        end
+
+        system %{#{prefix}#{build_script} profileFile=#{PROFILE_FILE} releaseDir=#{location} #{'> /dev/null' if !@build.settings[:verbose]}}
 
       ensure
         FileUtils.rm_rf profile_file
